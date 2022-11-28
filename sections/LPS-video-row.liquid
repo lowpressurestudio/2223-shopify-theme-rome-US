@@ -1,0 +1,68 @@
+<style>
+  .video-wrapper {
+    background-color: var(--light-grey);
+  }
+</style>
+
+{% assign count = 0 %}
+{% if product.metafields.global.video-id-1 != blank %}
+  {% assign count = count | plus:1 %}
+{% endif %}
+{% if product.metafields.global.video-id-2 != blank %}
+  {% assign count = count | plus:1 %}
+{% endif %}
+
+{% if product.metafields.global.video-id-1 != blank or product.metafields.global.video-id-2 != blank %}
+
+<div id="lps-video-row-{{ section.id }}" class="container lps-video-row py-5">
+  <div class="my-0 row{% if section.settings.column_alignment == 'center' %} justify-content-center{% endif %}">
+    {% if product.metafields.global.video-id-1 != blank %}
+      <div class="col-12{% if count == 2 %} col-md-6{% endif %} mb-4 video-1">
+	      <div class="video-wrapper ratio ratio-16x9">
+          {% if product.metafields.global.video-id-1.size < 13 %}
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ product.metafields.global.video-id-1 }}" width="100%" height="100%"  frameborder="0" allowfullscreen></iframe>
+          {% else %}
+      		<video onclick="play(event)" muted playsinline>
+				      <source src="{{ product.metafields.global.video-id-1 }}" type="video/mp4"></source>
+      		</video>
+          <a class="video-button-play" href="#1"></a>
+          {% endif %}
+	      </div>
+      </div>
+    {% endif %}
+    {% if product.metafields.global.video-id-2 != blank %}
+      <div class="col-12{% if count == 2 %} col-md-6{% endif %} mb-4 video-2">
+	      <div class="video-wrapper ratio ratio-16x9">
+          {% if product.metafields.global.video-id-2.size < 13 %}
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ product.metafields.global.video-id-2 }}" width="100%" height="100%"  frameborder="0" allowfullscreen></iframe>
+          {% else %}
+      		<video onclick="play(event)" muted playsinline>
+				      <source src="{{ product.metafields.global.video-id-2 }}" type="video/mp4"></source>
+      		</video>
+          <a class="video-button-play" href="#1"></a>
+          {% endif %}
+	      </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "LPS Video Row",
+  "class": "lps-video-row-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+       "content": "Displays videos from product video metafields. Either A. Upload videos to settings > files and copy the video URL into the video metafield on the product admin page, or B. Enter the youtube ID (e.g. f_T5FfqZjLQ) into the video metafield on the product admin page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Video Row"
+    }
+  ]
+}
+{% endschema %}

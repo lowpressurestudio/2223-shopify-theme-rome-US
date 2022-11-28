@@ -1,0 +1,101 @@
+<style>
+
+.page-tech .title-block {
+  padding: 1em 1.2em;
+  background-color: #808080;
+  position: relative;
+  background-image: url({{ '2223-speckle-bottom.jpg' | asset_img_url: '800x' }});
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.page-tech .title-block h1 {
+  margin: 0;
+  padding: 0.3em 0;
+  line-height: 1;
+  border-top: 5px solid var(--red);
+  border-bottom: 5px solid var(--red);
+  color: var(--white);
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+.page-tech .title-block h1:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -0.4em;
+  left: 50%;
+  width: 26px;
+  margin-left: -13px; 
+  height: 45px;
+  background-color: var(--red);
+  background-image: url({{ '2223-password-logo-three-stars.jpg' | asset_img_url: '54x' }});
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.page-tech .title-block a {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  right:0;
+  left:0;
+  text-decoration: none;
+  z-index: 1;
+  opacity: 0;
+  transition: 0.3s;
+}
+.page-tech .title-block a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .page-tech .title-block a:hover {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+}
+
+@media (min-width: 576px) {
+  .page-tech .title-block a h1 { font-size: 2em !important; }
+}
+@media (min-width: 768px) {
+  .page-tech .title-block a h1 { font-size: 2.5em !important; }
+}
+@media (min-width: 992px) {
+  .page-tech .title-block a h1 { font-size: 3em !important; }
+}
+@media (min-width: 1200px) {
+  .page-tech .title-block a h1 { font-size: 3.5em !important; }
+}
+
+</style>
+ 
+ <div class="container page-tech">
+   <div class="row mt-5">
+      
+      <div class="col-12 col-sm-4 my-2">
+         <div class="title-block mb-5 mb-md-0">
+            <a href="/pages/snowboard-tech-materials"></a>
+            <h1>Snowboard<br>Tech.</h1>
+         </div>
+      </div>
+      
+      <div class="col-12 col-sm-4 my-2">
+         <div class="title-block mb-5 mb-md-0">
+            <a href="/pages/snowboard-binding-tech-customization"></a>
+            <h1>Binding<br>Tech.</h1>
+         </div>
+      </div>
+       
+      <div class="col-12 col-sm-4 my-2">
+         <div class="title-block mb-5 mb-md-0">
+            <a href="/pages/snowboard-boot-tech-lacing"></a>
+            <h1>Boot<br>Tech.</h1>
+         </div>
+      </div>  
+          
+   </div>
+</div>

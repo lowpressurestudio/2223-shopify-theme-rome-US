@@ -1,0 +1,203 @@
+<div class="container-fluid page-tech">
+  <div class="container pt-5">
+    <div class="row gx-5">
+      <div class="col-9 col-md-10">
+        <h1>Snowboard Shapes</h1>
+      </div>
+      <div class="col-3 col-md-2 text-end">
+        <div class="tech-button"><a class="btn next" href="/pages/snowboard-tech-materials">Next</a></div>
+      </div>
+    </div>
+
+    <div class="row gx-5 my-5 overline">
+      <div class="col-12">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">Diamond 3D.<span class="ms-md-3">A Smooth Ride No<br>Matter the Conditions</span></h2>
+        <div class="bg-white p-3 pb-1">
+          <div class="row"> 
+            <div class="col-12">
+              <p>Our Diamond 3D is designed for edge catch free riding and crazy float on deep days. The secret sauce of Diamond 3D is a wide,
+flat running section in the middle of the board, with a gradual three-dimensional curvature. This means the board is stable when riding flat and initiates turns with ease while floating like a yacht in deep snow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mt-4">
+        <h3 class="my-3">DIRECTIONAL DIAMOND 3D</h3>
+        <div class="row gx-5 mb-5">
+          <div class="col-3 col-md-2 pt-4">
+            <div style="aspect-ratio: 10 / 46;">
+              <img class="img-fluid" src="{{ '2223-tech-board-diamond-directional-shape.png' | asset_img_url: '500x' }}" />
+            </div>
+          </div>
+          <div class="col-9 col-md-10 pt-4">
+            <img class="pb-5" style="width:20%;" src="{{ '2223-tech-board-diamond-directional-logo.png' | asset_img_url: '500x' }}" />
+            <p>Found only in the board’s nose, Directional Diamond 3D is used on our directional boards and designed to help float in deep snow and crank long, smooth turns.</p>
+          </div>
+        </div>
+        <div class="p-4 card-product-block" style="background-color: var(--img-bg);"> 
+          <div class="row gx-5">
+            {% assign collection_handle = 'directional-diamond-snowboards' %}
+            {% for product in collections[collection_handle].products %}
+              {% if product.vendor == '2223' %}
+                  <div class="col-6 col-md-4 col-lg-3 mb-3">
+                    <a href="{{ product.url }}">
+                      <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                      <h4 class="product-title">{{ product.title }}</h4>
+                    </a>
+                  </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mt-4">
+        <h3 class="my-3">TWIN DIAMOND 3D</h3>
+        <div class="row gx-5 mb-5">
+          <div class="col-3 col-md-2 pt-4">
+            <div style="aspect-ratio: 10 / 46;">
+              <img class="img-fluid" src="{{ '2223-tech-board-diamond-twin-shape.png' | asset_img_url: '500x' }}" />
+            </div>
+          </div>
+          <div class="col-9 col-md-10 pt-4">
+            <img class="pb-5" style="width:20%;" src="{{ '2223-tech-board-diamond-twin-logo.png' | asset_img_url: '500x' }}" />
+            <p>For progression-oriented boards, we use Twin Diamond 3D to add 3D uplift to both the nose and the tail to create
+a catch-free riding experience.</p>
+          </div>
+        </div>
+        <div class="p-4 card-product-block" style="background-color: var(--img-bg);"> 
+          <div class="row gx-5">
+            {% assign collection_handle = 'twin-diamond-snowboards' %}
+            {% for product in collections[collection_handle].products %}
+              {% if product.vendor == '2223' %}
+                  <div class="col-6 col-md-4 col-lg-3 mb-3">
+                    <a href="{{ product.url }}">
+                      <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                      <h4 class="product-title">{{ product.title }}</h4>
+                    </a>
+                  </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row gx-5 my-5 overline">
+      <div class="col-12">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">Double Kick.<span class="ms-md-3">Built to Press</span></h2>
+        <div class="bg-white p-3 pb-1">
+          <div class="row">
+            <div class="col-12">
+              <p>Used on freestyle-oriented boards, Double Kick is an aggressive, two-part rise in the boards nose and tail. Designed for locked in presses, torsional stability and riding away from sketchy landings.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5" style="position:relative;outline:1px solid var(--white);">
+          <img class="img-fluid" src="{{ '2223-tech-board-double-kick.jpg' | asset_img_url: '1600x' }}" />
+          <img style="position:absolute;top:0;right:0;width:150px;height:auto;" class="p-5" src="{{ '2223-tech-board-double-kick-logo.png' | asset_img_url: '500x' }}" />
+        </div>
+        <div class="mt-5 p-4 card-product-block" style="background-color: var(--img-bg);"> 
+          <div class="row gx-5">
+            {% assign collection_handle = 'double-kick-snowboards' %}
+            {% for product in collections[collection_handle].products %}
+              {% if product.vendor == '2223' %}
+                  <div class="col-6 col-md-2 col-lg-2 mb-3">
+                    <a href="{{ product.url }}">
+                      <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                      <h4 class="product-title">{{ product.title }}</h4>
+                    </a>
+                  </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row gx-5 my-5 overline">
+      <div class="col-12 mb-5">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">Camber and Shape.</h2>
+        <div class="row gx-5">
+          <div class="col-12 col-md-8 py-5">
+            <h3 class="my-3">CAMBER</h3>
+            <div class="row gx-5">
+              <div class="col-12 col-md-6 my-5 d-flex flex-column">
+                <h4>FREE-THE-RIDE</h4>
+                <p>Designed for all-mountain prowess and float in the deep. Rockered in the nose, flat under the front foot, with a positive cambered tail.</p>
+                <div class="mt-auto mb-0">
+                  <img class="img-fluid py-3" src="{{ '2223-tech-board-camber-free-the-ride.png' | asset_img_url: '800x' }}" />
+                  <div class="camber-marker-container">
+                    <div class="camber-marker" style="width: 10%;left: 11.3%;"><span class="camber-caption">ROCKER</span></div>
+                    <div class="camber-marker" style="width: 35%;left: 47.5%;"><span class="camber-caption">CAMBER</span></div>
+                  </div>
+                  <p class="nose-tail-marker"><span>NOSE</span><span>TAIL</span></p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 my-5 d-flex flex-column">
+                <h4>CONTACT ROCKER</h4>
+                <p>Flat camber between the bindings with rocker outside the bindings; smooth flexing and pressable.</p>
+                <div class="mt-auto mb-0">
+                <img class="img-fluid py-3" src="{{ '2223-tech-board-camber-contact-rocker.png' | asset_img_url: '800x' }}" />
+                  <div class="camber-marker-container">
+                    <div class="camber-marker" style="width: 13%;left: 15%;"><span class="camber-caption">ROCKER</span></div>
+                    <div class="camber-marker" style="width: 40%;left: 30%;"><span class="camber-caption">FLAT</span></div>
+                    <div class="camber-marker" style="width: 13%;left: 72%;"><span class="camber-caption">ROCKER</span></div>
+                  </div>
+                  <div class="d-none d-md-block" style="height:20px;margin:0.75em 0 1rem;">&nbsp;</div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 my-5 d-flex flex-column">
+                <h4>FUSION CAMBER</h4>
+                <p>Positive Camber with small pockets of rocker at the contact points; the modern go-to for all-mountain performance.</p>
+                <div class="mt-auto mb-0">
+                  <img class="img-fluid py-3" src="{{ '2223-tech-board-camber-fusion-camber.png' | asset_img_url: '800x' }}" />
+                  <div class="camber-marker-container">
+                    <div class="camber-marker" style="width: 10%;left: 12%;"><span class="camber-caption">ROCKER</span></div>
+                    <div class="camber-marker" style="width: 53%;left: 24%;"><span class="camber-caption">CAMBER</span></div>
+                    <div class="camber-marker" style="width: 10%;left: 79%;"><span class="camber-caption">ROCKER</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 my-5 d-flex flex-column">
+                <h4>STAY POSITIVE CAMBER</h4>
+                <p>Powerful and predictable, tried-and-true camber.</p>
+                <div class="mt-auto mb-0">
+                <img class="img-fluid py-3" src="{{ '2223-tech-board-camber-camber.png' | asset_img_url: '800x' }}" />
+                  <div class="camber-marker-container">
+                    <div class="camber-marker" style="width: 72%;left: 14%;"><span class="camber-caption">CAMBER</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 py-5">
+            <h3 class="my-3">SHAPING</h3>
+            <div class="row gx-5">
+              <div class="col-12 my-5 d-flex flex-column">
+                <h4>DIRECTIONAL</h4>
+                <p>Boards with significantly longer noses than tails, typically featuring taper to help keep the nimble and floating in deep snow. Directional boards feature camber profiles that are oriented for all-mountain riding.</p>
+                <img class="img-fluid py-3" src="{{ '2223-tech-board-shape-directional.png' | asset_img_url: '800x' }}" />
+                <p class="nose-tail-marker mb-5"><span>NOSE</span></p>
+                <h4 class="mt-5">DIRECTIONAL TWIN</h4>
+                <p>Boards with slightly longer noses than tails, but with both symmetrical camber profiles. Directional Twin boards are well-suited for riding switch and all- mountain marauding.</p>
+                <img class="img-fluid py-3" src="{{ '2223-tech-board-shape-directional-twin.png' | asset_img_url: '800x' }}" />
+                <p class="nose-tail-marker mb-5"><span>NOSE</span></p>
+                <h4 class="mt-5">TRUE TWIN</h4>
+                <p>Boards built with fully symmetrical specs; sidecuts, flex patterns and nose and tail lengths. True twin boards are great for freestyle riding and progression.</p>
+                <img class="img-fluid py-3" src="{{ '2223-tech-board-shape-true-twin.png' | asset_img_url: '800x' }}" />
+                <p class="nose-tail-marker nose-tail-marker-twin mb-5"><span>TWIN</span><b></b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% include 'tech-page-footer' %}
+

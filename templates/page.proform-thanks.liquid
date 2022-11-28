@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+    	<img class="my-5" style="max-width:275px;margin-left: 10px;" src="{{ 'lobster_header_logo.png' | asset_img_url: '600x' }}">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+   <div class="row justify-content-center">
+      <div class="col-12 col-lg-6 my-4">
+          {{ page.content }}
+      </div>
+   </div>
+   <div class="row justify-content-center">
+      <div class="col-12 col-lg-6 mb-4 msg-col" style="display: none;">
+        <h3 class="pb-0">PLEASE NOTE:</h3>
+        <p class="mt-0">It appears that we already have a record with your email address. We have added the details you have provided and sent an email containing a link to activate your account. Please activate your account, log-in and check your details carefully. Thanks!</p>
+      </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row justify-content-center pt-4 pb-5">
+            <div class="col-12 text-center">
+              <a href="/">
+                <button class="btn btn-primary btn-size";>Back to shop</button>
+              </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  
+$(document).ready(function() {
+    
+  const urlParams = new URLSearchParams(window.location.search);
+  const param_x = urlParams.get('exists');
+  
+  console.log('url param = '+param_x);
+  
+  if (param_x == '1') {
+    $('.msg-col').show(); 
+  }
+  
+});
+
+</script>
+
+
+
+
+
+

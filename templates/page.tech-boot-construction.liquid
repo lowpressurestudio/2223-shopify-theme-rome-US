@@ -1,0 +1,82 @@
+
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="container-fluid page-tech">
+  <div class="container pt-5">
+    <div class="row gx-5">
+      <div class="col-9 col-md-10">
+        <h1>Boot Construction.</h1>
+      </div>
+      <div class="col-3 col-md-2 text-end">
+        <div class="tech-button"><a class="btn next" href="/pages/snowboard-boot-tech-lacing">Next</a></div>
+      </div>
+    </div>
+
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 mb-5 d-flex flex-column">
+        <h2 class="mb-3">Outsoles.</span></h2>
+       <div class="bg-white p-3 pb-1 mb-5">
+          <p> Our outsoles are designed to provide maximum traction, compliment a boots intended flex pattern and increase it’s lifespan.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-eq-height gx-5">
+      <div class="col-12 col-md-3 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>GripLight Outsole with Vibram</h3>
+          <p>Our most rugged and durable outsole built for advanced traction and sturdy multiple season support thanks to Vibram IceTrek 2.0 compound.</p>
+          <img style="width: 250px;max-width: 70%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-outsole-griplight.jpg' | asset_img_url: '800x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-3 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>GripFlex Outsole</h3>
+          <p>A medium to responsive flexing outsole, featuring strategic lugs for traction.</p>
+          <img style="width: 250px;max-width: 70%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-outsole-gripflex.jpg' | asset_img_url: '800x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-3 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>AceFlex Outsole</h3>
+          <p>Lightweight, smooth flexing durable one-piece rubber outsole with strategic lugs for traction.</p>
+          <img style="width: 250px;max-width: 70%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-outsole-aceflex.jpg' | asset_img_url: '800x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-3 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>MiniShred Outsole</h3>
+          <p>One-piece rubber outsole with a softer flex with maximum traction..</p>
+          <img style="width: 250px;max-width: 70%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-outsole-minishred.jpg' | asset_img_url: '800x' }}" />
+        </div>
+      </div>
+    </div>
+        
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 mb-5 d-flex flex-column">
+        <a id="boot-tech-lacing" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">Materials.</span></h2>
+      </div>
+    </div>
+    
+    <div class="row gx-5">
+      <div class="col-12 col-md-6 mb-5">
+        <h3>DuraFit Shell</h3>
+        <p>This innovative welded TPU material provides next level waterproofing, abrasion resistance and helps keep the boots overall structure and flex pattern season after season.</p>
+        <img style="max-width: 60%;" class="px-5 px-sm-0 pt-3" src="{{ '2223-tech-boot-construction-durafit-shell.jpg' | asset_img_url: '800x' }}" />
+      </div>
+      <div class="col-12 col-md-6 mb-5">
+        <h3>Inner Shell Harness</h3>
+        <p>Easy to adjust cinch and pull design, built so riders can quickly tighten the shell and liner together.</p>
+        <img style="width: 150px; max-width: 40%;" class="px-5 px-sm-0 pt-3" src="{{ '2223-tech-boot-construction-inner-shell-harness.jpg' | asset_img_url: '500x' }}" />
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% include 'tech-page-footer' %}
+
+
+
+

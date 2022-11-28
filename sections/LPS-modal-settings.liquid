@@ -1,0 +1,227 @@
+{{ 'LPS-section-modal-settings.css' | asset_url | stylesheet_tag }}
+
+<div class="modal modal-settings" id="modal_settings_menu" tabindex="-1" aria-labelledby="modal_modal_settings_menu_label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="">
+      <div class="modal-body">
+        <div id="lps-modal-settings-{{ section.id }}" class="container-fluid lps-modal-settings">
+          <div class="m-0 row justify-content-center">
+            <div class="col-12 text-end pb-2">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            {%- assign count = 0 -%}
+            {%- assign colclass = '' -%}
+            {%- for block in section.blocks -%}
+              {%- assign count = count | plus: 1 -%}
+            {%- endfor -%}
+            {%- if count == 1 -%}
+              {%- assign colclass = 'col-md-12 ' -%}
+            {%- elsif count == 2 -%}
+              {%- assign colclass = 'col-md-6 ' -%}
+            {%- elsif count == 3 -%}
+              {%- assign colclass = 'col-md-4 ' -%}
+            {%- elsif count >= 4 -%}
+              {%- assign colclass = 'col-md-3 ' -%}
+            {%- endif -%}
+            
+            {%- for block in section.blocks -%}
+            {% case block.type %}
+            {%- when 'column_location' -%}      
+            <div class="col-12 {{ colclass }}mb-4 lps-modal-settings-block">
+              <div class="row">
+                {%- if block.settings.col_location_title != blank -%}
+                <div class="col-12 mb-3">
+                  <h4>{{ block.settings.col_location_title }}</h4>
+                </div>
+                {%- endif -%}
+                <div class="col-12">
+                  {%- render 'LPS-location-menu' -%} 
+                </div>
+              </div>
+            </div>
+            {%- when 'column_language' -%}      
+            <div class="col-12 {{ colclass }}mb-4 lps-modal-settings-block">
+              <div class="row">
+                {%- if block.settings.col_language_title != blank -%}
+                <div class="col-12 mb-3">
+                  <h4>{{ block.settings.col_language_title }}</h4>
+                </div>
+                {%- endif -%}
+                <div class="col-12">
+                  {%- render 'LPS-language-menu' -%} 
+                </div>
+              </div>
+            </div>
+            {%- when 'column_html' -%}      
+            <div class="col-12 {{ colclass }}mb-4 lps-modal-settings-block">
+              <div class="row">
+                {%- if block.settings.col_html_title != blank -%}
+                <div class="col-12 mb-3">
+                  <h4>{{ block.settings.col_html_title }}</h4>
+                </div>
+                {%- endif -%}
+                <div class="col-12">
+                  {{ block.settings.html }}
+                </div>
+              </div>
+            </div>
+            {%- when 'column_nav' -%}
+            <div class="col-12 {{ colclass }}mb-4 lps-modal-settings-block">
+              <div class="row">
+                {%- if block.settings.col_nav_title != blank -%}
+                <div class="col-12 mb-3">
+                  <h4>{{ block.settings.col_nav_title }}</h4>
+                </div>
+                {%- endif -%}
+                <div class="col-12">
+                  <ul>
+                  {% for link in block.settings.menu.links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {%- when 'column_img' -%}      
+            <div class="col-12 {{ colclass }}mb-4 lps-modal-settings-block">
+              <div class="row">
+                {%- if block.settings.col_img_title != blank -%}
+                <div class="col-12 mb-3">
+                  <h4>{{ block.settings.col_img_title }}</h4>
+                </div>
+                {%- endif -%}
+                <div class="col-12">
+                  {%- if block.settings.image_link != blank -%}<a href="{{ block.settings.image_link }}">{%- endif -%}
+                  <img class="img-fluid" src="{{ block.settings.image | img_url: '800x' }}">
+                  {%- if block.settings.image_link != blank -%}</a>{%- endif -%}
+                </div>
+              </div>
+            </div>
+            {%- endcase -%}
+            {%- endfor -%}
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LPS Modal Settings",
+  "class": "lps-modal-settings-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Settings for the popover modal launched in the header."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column_location",
+      "name": "Location",
+      "settings": [
+        {
+          "type": "text",
+          "id": "col_location_title",
+          "label": "Title"
+        },
+        {
+          "type": "paragraph",
+          "content": "Displays location switch menu from snippets > LPS-location-menu.liquid."
+        }
+      ]
+    },
+    {
+      "type": "column_language",
+      "name": "Language",
+      "settings": [
+        {
+          "type": "text",
+          "id": "col_language_title",
+          "label": "Title"
+        },
+        {
+          "type": "paragraph",
+          "content": "Displays language switch menu from snippets > LPS-language-menu.liquid."
+        }
+      ]
+    },
+    {
+      "type": "column_nav",
+      "name": "Nav Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "col_nav_title",
+          "label": "Title"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "column_img",
+      "name": "Image Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "col_img_title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Column Image"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "column_html",
+      "name": "HTML Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "col_html_title",
+          "label": "Title"
+        },
+        {
+          "type": "html",
+          "id": "html",
+          "label": "HTML"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Modal Settings",
+      "blocks": [
+        {
+          "type": "column_location"
+        },
+        {
+          "type": "column_language"
+        },
+        {
+          "type": "column_nav"
+        },
+        {
+          "type": "column_img"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

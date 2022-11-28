@@ -1,0 +1,236 @@
+{% if cart.currency.iso_code == "USD" %}{% assign site = 'rome_us' %}{% endif %}
+{% if cart.currency.iso_code == "EUR" %}{% assign site = 'rome_eu' %}{% endif %}
+{% if cart.currency.iso_code == "CAD" %}{% assign site = 'rome_ca' %}{% endif %}
+
+<!-- <div class="loader" style="position: fixed;z-index: 1000;height: 100%; width: 100%;background-color: rgba(255,255,255,0.5);">UPLOADING...</div> -->
+<div class="container-indent">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+    	<img class="my-5" style="max-width:275px;margin-left: 10px;" src="{{ '2223-password-logo-rome-3.jpg' | asset_img_url: '600x' }}">
+	  </div>
+      <div class="col-12 mt-3 text-center">
+    	<h1>Rome Syndicate ProForm Login</h1>
+      </div>
+      <div class="col-12 col-lg-8 form-default">
+        <p>If you have previously applied and been accepted for our Rome Syndicate ProForm Program, please login below:</p>
+        {% form 'customer_login' %}
+          {{ form_errors | default_errors }}
+          <div class="row mt-3">
+            <div class="col-md-5 mb-3">
+              <div class="email">
+                <input class="form-control" type="email" name="customer[email]" placeholder="Email">
+              </div>
+            </div>
+            <div class="col-md-5 mb-3">
+              <div class="password">
+                <input class="form-control" type="password" name="customer[password]" placeholder="Password">
+              </div>
+            </div>
+            <div class="col-2 mb-3 text-right">
+              <div class="submit">
+                <input class="button btn btn-primary" type="submit" value="Sign in" style="padding: 0.5rem 0.5rem;min-height:0;">
+              </div>
+            </div>
+          </div>
+        {% endform %}
+      </div>
+      <div class="col-12 mt-5 text-center">
+        <h1>Rome Syndicate ProForm Application</h1>
+      </div>
+      <div class="col-12 col-md-8 mb-5">
+        <div class="form-default">
+          
+          <form id="proform_form" action="https://lowpressurestudio.com/shopify_apps/add_proform_customer/index.php" method="post" enctype="multipart/form-data">
+            
+            <div class="row">
+              
+              <div class="error-msg-col col-12 mt-4 mb-2" style="display: none;">
+                <div class="col-12">
+                  <div class="py-3 px-4" style="background-color: #FFCCCC; border-radius: 6px;">
+                    <h4>I'm sorry, there has been an error:</h4>
+                  	<p class='error-msg'></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 mt-4 mb-2">
+                <p>The Rome Syndicate ProForm Program is our all-new online proform system for qualified outdoor professionals, media partners, and outdoor industry partners. Membership is by application, it is not guaranteed and can be revoked at any time. If you are interested in applying, please fill out the form below to start the application. We will usually get back to you within 5 working days.</p>
+                <p>Use your work issued email address when creating and applying for your account.</p>
+              </div>
+              <div class="col-12 mt-0 mb-3">
+                <p>
+                  <input type="checkbox" class="" id="terms_agreed" required>&nbsp;&nbsp;
+                  <label for="terms_agreed">Please agree to the</label>&nbsp;<span><a href="/pages/proform-terms-conditions" style="text-decoration: underline;">Terms and Conditions</a></span>
+                </p>
+              </div>
+              
+              <div class="col-12 text-right mb-2">
+                <div class="col-12"><p style="font-size: 1rem;">* Required Fields</p></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="hidden" name="store" id="store" value="{{ site }}">
+                <input type="text" name="customer_first_name" class="form-control" id="customer_first_name" placeholder="First Name *" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="text" name="customer_last_name" class="form-control" id="customer_last_name" placeholder="Last Name *" required>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="email" name="customer_email" class="form-control" id="customer_email" placeholder="Work Email *" required>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="password" name="customer_password" class="form-control" id="customer_password" placeholder="Password *" required>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" name="customer_company" class="form-control" id="customer_company" placeholder="Company *" required>
+              </div>
+              <div class="col-12 mb-3">
+                <textarea class="form-control" name="customer_job" id="customer_job" placeholder="Job Title / Description *" required rows="4"></textarea>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" name="customer_address_1" class="form-control" id="customer_address_1" placeholder="Address line 1 *" required>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" name="customer_address_2" class="form-control" id="customer_address_2" placeholder="Address line 2">
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" name="customer_city" class="form-control" id="customer_city" placeholder="City *" required>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" name="customer_postcode" class="form-control" id="customer_postcode" placeholder="Zip / Postcode *" required>
+              </div>
+              <div class="col-12 mb-3">
+                <select class="form-control" id="customer_country" name="customer_country" required>
+                  <option value="" disabled selected >Country *</option>
+				  {{ country_option_tags }}
+                </select>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" name="customer_phone" class="form-control" id="customer_phone" placeholder="Phone * (format: +33123456789)" required>
+              </div>
+              <div class="col-12 mb-3">
+                <select class="form-control" id="customer_pro_category" name="customer_pro_category" required>
+                  <option value="" disabled selected>Pro Category *</option>
+                  <option>Snowboard Instructor</option>
+                  <option>Shop Staff</option>
+                  <option>Shop Owner</option>
+                  <option>Park Shaper</option>
+                  <option>Park Head Shaper</option>
+                  <option>Resort Staff / Liftie</option>
+                  <option>Resort Bartender</option>
+                  <option>Resort Hotel Staff</option>
+                  <option>Resort Restaurant Staff</option>
+                  <option>Outdoor Industry Employee</option>
+                  <option>Outdoor Non Profit Employee</option>
+                  <option>Media</option>
+                  <option>Photographer/Videographer</option>
+                  <option>AM Rider</option>
+                  <option>Independent Sales Rep</option>
+                  <option>Snowboard Club Member</option>
+                  <option>Social Media Influencer</option>
+                  <option>Other (specify in comments)</option>
+                </select>
+              </div>
+              <div class="col-12 mb-3">
+                <textarea class="form-control" name="customer_comments" id="customer_comments" placeholder="Comments" rows="2"></textarea>
+              </div>
+             <div class="col-12 mt-4 mb-3">
+                <h4>Upload Application Document:</h4>
+                <p class="m-0 mt-2">Please upload one of the following:</p>
+                <p class="m-0 mt-2"> — snowboard instructor ID</p>
+                <p class="m-0 mt-2"> — snowboard club membership</p>
+                <p class="m-0 mt-2"> — copy of working contract</p>
+                <p class="m-0 mt-2"> — copy of pay slip</p>
+                <p class="m-0 mt-2"> — other document for proof of profession</p>
+              </div>
+              
+              <div class="col-12 mt-0 mb-3">
+                <input style="height:auto;" type="file" class="form-control" name="customer_pro_proof" id="customer_pro_proof" required>
+              </div>
+                            
+            </div>
+          
+            <div class="row mt-4 mb-5">
+              <div class="col-auto">
+                <div class="form-group">
+                  <button id="submit_form_button" class="button btn btn-primary" type="submit">Apply</button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+$(document).ready(function() {
+    
+  const urlParams = new URLSearchParams(window.location.search);
+  const param_x = urlParams.get('err');
+  
+  console.log(param_x);
+  
+  if (param_x != '' && param_x != null) {
+    $('.error-msg').html(param_x);
+    $('.error-msg-col').show();
+    
+	setTimeout(
+      function() {
+        $('html, body').animate({
+            scrollTop: ($('.error-msg').first().offset().top - 200)
+        },500);
+      }, 1500);    
+
+  }
+  
+//   var $phoneField = $('#customer_phone'),
+
+//       phoneFormatValidated = false;
+
+//   // Set maxium size
+//   $phoneField.attr('maxlength', 20);
+
+//   function phoneNumberValidation() {
+//       phoneFormatValidated = false;
+//       var phoneFieldVal = $phoneField.val();
+
+//       // Strip out any non-numeric characters
+//       var formattedPhoneValue = phoneFieldVal.replace(/[^0-9]/g, '');
+//       $phoneField.val(formattedPhoneValue);
+//       phoneFormatValidated = true;
+//   }
+
+//   // Run validator if there is a previously cached phone number
+//   if ($phoneField.val() != "") {
+//       phoneNumberValidation()
+//   };
+
+//   // Run validator when the user has switched focus from the phone field
+//   $phoneField.on('blur', phoneNumberValidation);
+
+//   // Run the function when the continue button is clicked or the enter key is pressed
+//   $('#submit_form_button').on('click', function(e) {
+
+//       e.preventDefault();
+//       phoneNumberValidation();
+
+//       if (phoneFormatValidated) {
+//           $('#proform_form').trigger('submit');
+//       }
+//   });
+
+//   $('#proform_form').on('keypress', function(e) {
+//       if (e.keyCode === 13) {
+//           e.preventDefault();
+//           $('#submit_form_button').trigger('click');
+//       }
+//   });
+  
+});
+
+</script>

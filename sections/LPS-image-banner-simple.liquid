@@ -1,0 +1,347 @@
+
+{% case section.settings.heading_alignment %}
+{% when 'top_left' %}
+  {% assign container_classes = '' %}
+  {% assign heading_styles = 'text-align: left;' %}
+{% when 'top_right' %}
+  {% assign container_classes = 'justify-content-end' %}
+  {% assign heading_styles = 'text-align: right;' %}
+{% when 'bottom_left' %}
+  {% assign container_classes = 'align-items-end' %}
+  {% assign heading_styles = 'text-align: left;' %}
+{% when 'bottom_right' %}
+  {% assign container_classes = 'align-items-end justify-content-end' %}
+  {% assign heading_styles = 'text-align: right;' %}
+{% else %}
+  {% assign container_classes = 'justify-content-center align-items-center' %}
+  {% assign heading_styles = 'text-align: center;' %}
+{% endcase %}
+
+<style>
+.lps-image-banner {
+  width: 100%;
+  background-size: cover;
+  background-position: {{ section.settings.bg_alignment }};
+  position: relative;
+  aspect-ratio: {{ section.settings.container-ratio-mobile | replace: "_", " / " }};
+}
+@media (min-width: 750px) {
+  .lps-image-banner {
+    aspect-ratio: {{ section.settings.container-ratio-desktop | replace: "_", " / " }};
+  }
+}
+a.lps-image-banner-link {
+  display: block !important;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.lps-image-banner .text-block {
+  padding: 3rem;
+}
+@media (min-width: 750px) {
+  .lps-image-banner .text-block {
+    padding: 8%;
+  }
+}
+.lps-image-banner h1,
+.lps-image-banner h3 {
+  line-height: 1;
+  {{ heading_styles }} 
+}
+.lps-image-banner h1 {
+  color:{{ section.settings.heading_color }};
+  font-size:{{ section.settings.heading_font_size_mobile }}px;
+}
+.lps-image-banner h3 {
+  display: inline-block;
+  font-size:{{ section.settings.subheading_font_size_mobile }}px;
+  color: var(--white);
+  background-color: var(--black);
+  text-transform: uppercase;
+  padding: 0.1em 0.5em;
+}
+@media (min-width: 750px) {
+  .lps-image-banner h1 {
+    font-size:{{ section.settings.heading_font_size }}px;
+  }
+  .lps-image-banner h3 {
+    font-size:{{ section.settings.subheading_font_size }}px;
+  }
+}
+.lps-image-banner .btn-cta {
+  font-size:{{ section.settings.cta_font_size }}px;
+  text-transform: uppercase;
+}
+.lps-image-banner .btn-cta {
+  background-color:{{ section.settings.cta_color }};
+}
+{%- if section.settings.bg_image_mobile != blank -%}
+@media (max-width: 749.9px) {
+  .lps-image-banner {
+    background-image: url('{{ section.settings.bg_image_mobile | img_url: '800x' }}');
+  }
+}
+{%- endif -%}
+{%- if section.settings.bg_image != blank -%}
+@media (min-width: 750px) {
+  .lps-image-banner {
+    background-image: url('{{ section.settings.bg_image | img_url: '1600x' }}');
+  }
+}
+{%- endif -%}
+</style>
+
+<div id="lps-image-banner-{{ section.id }}" class="container-fluid p-0">
+  <div class="lps-image-banner d-flex {{ container_classes }}" style="background-color:{{ section.settings.bg_color }};">
+    {%- if section.settings.section_link != blank -%}
+    <a class="lps-image-banner-link" href="{{ section.settings.section_link }}"></a>
+    {%- endif -%}
+    <div class="text-block" style="{{ heading_styles }}">
+      {%- if section.settings.heading_text != blank -%}
+      <h1 class="">{{ section.settings.heading_text }}</h1>
+      {%- endif -%}
+      {%- if section.settings.subheading_text != blank -%}
+      <h3 class="px-2">{{ section.settings.subheading_text }}</h3>
+      {%- endif -%}
+      {%- if section.settings.cta != blank -%}
+      <div class="mt-3"><button class="btn btn-cta btn-primary px-3 py-2">{{ section.settings.cta }}</button></div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LPS Simple Image Banner",
+  "tag": "section",
+  "class": "lps-image-banner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Container"
+    },
+    {
+      "type": "select",
+      "id": "container-ratio-desktop",
+      "options": [
+        {
+          "value": "21_9",
+          "label": "21 / 9"
+        },
+        {
+          "value": "16_9",
+          "label": "16 / 9"
+        }
+      ],
+      "default": "21_9",
+      "label": "Desktop Aspect Ratio"
+    },    
+    {
+      "type": "select",
+      "id": "container-ratio-mobile",
+      "options": [
+        {
+          "value": "4_5",
+          "label": "4 / 5"
+        },
+        {
+          "value": "1_1",
+          "label": "1 / 1"
+        }
+      ],
+      "default": "4_5",
+      "label": "Mobile Aspect Ratio"
+    },  
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "options": [
+        {
+          "value": "centered",
+          "label": "Centered"
+        },
+        {
+          "value": "top_left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top_right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom_left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom_right",
+          "label": "Bottom Right"
+        }
+      ],
+      "default": "centered",
+      "label": "Text Position"
+    },
+    {
+      "type": "header",
+      "content": "Headings"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "Heading Text",
+      "label": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "subheading_text",
+      "default": "Subheading Text",
+      "label": "Subheading Text"
+    },
+    {
+      "type": "text",
+      "id": "cta",
+      "default": "CTA Button",
+      "label": "CTA Button Text"
+    },
+    {
+      "type": "url",
+      "id": "section_link",
+      "label": "Link",
+      "info": "Leave blank for no link"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 22,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "min": 14,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading Font Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "cta_font_size",
+      "min": 14,
+      "max": 42,
+      "step": 2,
+      "unit": "px",
+      "label": "CTA Button Font Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 18,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size_mobile",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "CTA Button BG Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Backgrounds"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "select",
+      "id": "bg_alignment",
+      "options": [
+        {
+          "value": "left top",
+          "label": "Left Top"
+        },
+        {
+          "value": "left center",
+          "label": "Left Center"
+        },
+        {
+          "value": "left bottom",
+          "label": "Left Bottom"
+        },
+        {
+          "value": "right top",
+          "label": "Right Top"
+        },
+        {
+          "value": "right center",
+          "label": "Right Center"
+        },
+        {
+          "value": "right bottom",
+          "label": "Right Bottom"
+        },
+        {
+          "value": "center top",
+          "label": "Center Top"
+        },
+        {
+          "value": "center center",
+          "label": "Center Center"
+        },
+        {
+          "value": "center bottom",
+          "label": "Center Bottom"
+        }
+      ],
+      "default": "center center",
+      "label": "Background Alignment"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#F0F0F0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Simple Image Banner"
+    }
+  ]
+}
+{% endschema %}

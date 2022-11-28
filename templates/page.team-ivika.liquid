@@ -1,0 +1,75 @@
+{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}
+
+<!-- <div class="nomargin nocontainer">
+	<div class="container-fluid-custom">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<img class="img-fluid" src="{{ 'Rome-Ivika-Jurgenson-Action-1.png' | asset_img_url: '800x' }}" alt="Ivika Jürgenson snowboarding in the streets" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Ivika-Jurgenson-Profile-2020-2021.png' | asset_img_url: '800x' }}" alt="Ivika Jürgenson drinking water" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Ivika-Jurgenson-Action-2.png' | asset_img_url: '800x' }}" alt="Ivika Jürgenson street snowboarding" />
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+<div class="container-indent team-content pt-2 pt-md-5">
+	<div class="container container-fluid-custom-mobile-padding ">
+		<div class="row">
+			<div class="col-md-12">
+        <div class="full-width-title mb-5">
+          <svg preserveAspectRatio="xMinYMin" viewBox="0 0 79.5 44.5">
+            <text x="0" y="30" style="fill:var(--white);">IVIKA JÜRGENSON</text>
+            <text x="0" y="44" style="fill:var(--white);">IVIKA JÜRGENSON</text>
+            <text x="0" y="16" style="fill:var(--red);">IVIKA JÜRGENSON</text>
+          </svg>
+        </div>
+
+        <h4>Who are you and where did you first start snowboarding?</h4>
+        <p>I’m Ivika Jürgenson and I started snowboarding in a small DIY park on a tiny hill behind my school in Estonia. It wasn’t even a hill, it was basically just a pile of dirt, high enough to take speed for a rail we had built. I snowboarded there for a couple of years before I got to ride a lift for the first time.</p>
+
+        <h4>Why snowboarding? What drew you to it?</h4>
+        <p>I wanted to become a WRC driver but my dad said it’s too expensive so I chose snowboarding instead.</p>
+
+        <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/KzfkiqaOzJY" frameborder="0" allowfullscreen=""></iframe></div>
+
+         <h4>Would you rather: Grab method, Grab Japan or Grab Stalefish?</h4>
+        <p>Stalefish</p>
+
+        <h4>What does your dream boarding trip look like? Who’s coming and where are you going? </h4>
+        <p>I’ve never ridden proper powder, I’m still dreaming of a pow trip in Japan. Let’s bring the whole Rome team!</p>
+
+        <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/PUIp2rqIjM4" frameborder="0" allowfullscreen=""></iframe></div>
+
+        <h4>What are you listening to these days?</h4>
+        <p>I just watched all three seasons of Stranger Things again and I got reminded by all the nice music they used for the show. So, I’ve been listening to that kind of music lately.</p>
+
+        <h4>In your opinion, who is the greatest snowboarder of all-time?</h4>
+        <p>That’s a tough one. But I mean watching Rene is pretty mind blowing...</p>
+              
+        {% assign collection_handle = 'ivika-jurgenson' %}
+        <div class="row gx-5 my-5">
+          <div class="col-12 mb-3">
+            <h3>Ivika's Setup:</h3>
+          </div>
+        {% for product in collections[collection_handle].products %}
+          <div class="col-6 col-md-3 col-lg-2 mb-3">
+            <a href="{{ product.url }}">
+              <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+              <h4 class="product-title">{{ product.title }}</h4>
+            </a>
+          </div>
+        {% endfor %}
+        </div> 
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ page.content }}
+

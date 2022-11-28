@@ -1,0 +1,207 @@
+<script src="{{ 'LPS-collection-page-filter.js' | asset_url }}" defer="defer"></script>
+{{ 'LPS-collection-page-sidebar.css' | asset_url | stylesheet_tag }}
+
+<div class="lps-filter">
+	<p class="filter-title">Advanced Filter</p>
+	<form class="collection-filters">
+
+        {% comment %} Get all product types in collection and display as checkboxes {% endcomment %}
+        {% assign types = '' %}
+        {% for product in collection.products %}
+          {% assign types = types | append: product.type | downcase | append: "," %}
+        {% endfor %}
+        {% assign types = types | split: ',' | uniq %}
+        {% if types.size <= 1 %}
+          <div class="filter-group-hidden" data-exception="{{ types }}" data-block-attr-name="data-filter-category"></div>
+        {% else %}
+          <div class="filter-group" data-block-attr-name="data-filter-category">
+          <h5>Category</h5>
+          <div class="filter-group-category">
+          {% for category in types %}
+            <div class="form-group m-0">
+              <input id="input-{{ category }}" type="checkbox" value="{{ category }}" checked>
+              <label for="input-{{ category }}">{{ category }}<b></b></label>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% comment %} Get all genders in collection and display as checkboxes {% endcomment %}
+        {% assign genders = '' %}
+        {% for product in collection.products %}
+          {% assign product_tags = '' %}
+          {% assign product_gender = 'mens' %}
+          {% for tag in product.tags %}
+            {% assign new_tag = tag | handleize | append: ' ' %}
+            {%- if new_tag contains 'women'  %} 
+              {% assign product_gender = 'womens' %}
+            {% endif %}
+            {%- if new_tag contains 'kid' %} 
+              {% assign product_gender = 'kids' %}
+            {% endif %}
+          {% endfor %}
+          {% assign genders = genders | append: product_gender | append: "," %}
+        {% endfor %}
+        {% assign genders = genders | split: ',' | uniq %}
+        {% if genders.size <= 1 %}
+          <div class="filter-group-hidden" data-exception="{{ genders }}" data-block-attr-name="data-filter-gender"></div>
+        {% else %}
+        <div class="filter-group" data-block-attr-name="data-filter-gender">
+          <h5>Gender</h5>
+          <div class="filter-group-gender">
+          {% for gender in genders %}
+            <div class="form-group m-0">
+              <input id="input-{{ gender }}" type="checkbox" value="{{ gender }}" checked>
+              <label for="input-{{ gender }}">{{ gender }}<b></b></label>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% comment %} Get all terrains in collection and display as checkboxes {% endcomment %}
+        {% assign terrains = '' %}
+        {% for product in collection.products %}
+          {% if product.metafields.global.rating-1 %}
+            {% assign rating1 = product.metafields.global.rating-1 | plus: 0 %}
+            {% if rating1 >= 7 %}
+              {% assign terrains = terrains | append: ' park' %}
+            {% endif %}
+          {% endif %}
+          {% if product.metafields.global.rating-5 %}
+            {% assign rating5 = product.metafields.global.rating-5 | plus: 0 %}
+            {% if rating5 >= 7 %}
+              {% assign terrains = terrains | append: ' groomers' %}
+            {% endif %}
+          {% endif %}
+          {% if product.metafields.global.rating-4 %}
+            {% assign rating4 = product.metafields.global.rating-4 | plus: 0 %}
+            {% if rating4 >= 7 %}
+              {% assign terrains = terrains | append: ' pow' %}
+            {% endif %}
+          {% endif %}
+          {% if terrains == '' %}
+            {% assign highest = rating1 %}
+            {% assign terrains = 'park' %}
+            {% if rating5 > highest %}
+              {% assign highest = rating5 %}
+              {% assign terrains = 'groomers' %}
+            {% endif %}
+            {% if rating4 > highest %}
+              {% assign highest = rating4 %}
+              {% assign terrains = 'pow' %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% assign terrains = terrains | strip | split: ' ' | uniq %}
+        {% if terrains.size <= 1 %}
+          <div class="filter-group-hidden" data-exception="{{ terrains }}" data-block-attr-name="data-filter-terrain"></div>
+        {% else %}
+        <div class="filter-group" data-block-attr-name="data-filter-terrain">
+          <h5>Terrain</h5>
+          <div class="filter-group-terrain">
+          {% for terrain in terrains %}
+            <div class="form-group m-0">
+              <input id="input-{{ terrain }}" type="checkbox" value="{{ terrain }}" checked>
+              <label for="input-{{ terrain }}">{{ terrain }}<b></b></label>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% comment %} Get all price ranges in collection and display as checkboxes {% endcomment %}
+        {% assign pricemin = 1000000 %}
+        {% assign pricemax = 0 %}
+        {% for product in collection.products %}
+          {% if product.price_max > pricemax %}
+            {% assign pricemax = product.price_max %}
+          {% endif %}
+          {% if product.price_min < pricemin %}
+            {% assign pricemin = product.price_min %}
+          {% endif %}
+        {% endfor %}
+        <div class="filter-group" data-block-attr-name="data-filter-price">
+          <h5>Price</h5>
+          <div class="filter-group-price">
+            {% assign symb = cart.currency.symbol %}
+            {% if pricemax >= 0 and pricemin < 5000 %}
+            <div class="form-group m-0">
+              <input id="input-0-50" type="checkbox" value="0-50" checked>
+              <label for="input-0-50">&nbsp;&nbsp;&nbsp;&nbsp;{{ symb }}0 — {{ symb }}50<b></b></label>
+            </div>
+            {% endif %}
+            {% if pricemax >= 5000 and pricemin < 15000 %}
+            <div class="form-group m-0">
+              <input id="input-50-150" type="checkbox" value="50-150" checked>
+              <label for="input-50-150">{{ symb }}50 — {{ symb }}150<b></b></label>
+            </div>
+            {% endif %}
+            {% if pricemax >= 15000 and pricemin < 20000 %}
+            <div class="form-group m-0">
+              <input id="input-150-200" type="checkbox" value="150-200" checked>
+              <label for="input-150-200">{{ symb }}150 — {{ symb }}200<b></b></label>
+            </div>
+            {% endif %}
+            {% if pricemax >= 20000 and pricemin < 30000 %}
+            <div class="form-group m-0">
+              <input id="input-200-300" type="checkbox" value="200-300" checked>
+              <label for="input-200-300">{{ symb }}200 — {{ symb }}300<b></b></label>
+            </div>
+            {% endif %}
+            {% if pricemax >= 30000 and pricemin < 40000 %}
+            <div class="form-group m-0">
+              <input id="input-300-400" type="checkbox" value="300-400" checked>
+              <label for="input-300-400">{{ symb }}300 — {{ symb }}400<b></b></label>
+            </div>
+            {% endif %}
+            {% if pricemax >= 40000 and pricemin < 50000 %}
+            <div class="form-group m-0">
+              <input id="input-400-500" type="checkbox" value="400-500" checked>
+              <label for="input-400-500">{{ symb }}400 — {{ symb }}500<b></b></label>
+            </div>
+            {% endif %}
+            {% if pricemax >= 50000 and pricemin < 60000 %}
+            <div class="form-group m-0">
+              <input id="input-500-600" type="checkbox" value="500-600" checked>
+              <label for="input-500-600">{{ symb }}500 — {{ symb }}600<b></b></label>
+            </div>
+            {% endif %}
+            {% if pricemax >= 60000 %}
+            <div class="form-group m-0">
+              <input id="input-600-" type="checkbox" value="600-" checked>
+              <label for="input-600-">{{ symb }}600 +<b></b></label>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {% comment %} Get all sizes in collection and display as select buttons {% endcomment %}
+        {% assign sizes = '' %}
+        {% for product in collection.products %}
+          {% if product.variants.size != 0 %}
+            {% for variant in product.variants %}
+              {% assign sizes = sizes | append: variant.option1 | upcase | append: "," %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+        {% assign sizes = sizes | split: ',' | uniq | sort  %}
+        {% if sizes.size <= 1 %}
+          <div class="filter-group-hidden" data-exception="{{ sizes }}" data-block-attr-name="data-filter-sizes"></div>
+        {% else %}
+        <div class="filter-group" data-block-attr-name="data-filter-sizes" style="position: relative;">
+          <a href="#1" class="re-select-all">Re-select All</a>
+          <h5>Size</h5>
+          <div class="filter-group-size all-checked">
+          {% for size in sizes %}
+            <div class="form-group">
+              <input id="input-{{ size }}" type="checkbox" value="{{ size }}" checked>
+              <label for="input-{{ size }}">{{ size }}</label>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+    </form>
+</div>

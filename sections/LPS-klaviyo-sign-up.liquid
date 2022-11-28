@@ -1,0 +1,107 @@
+
+<style>
+.bg-klaviyo {
+  background-image: url({{ '2223-speckle-bottom.jpg' | asset_img_url: '1600x' }});
+  background-position: center top;
+  background-color: #808080;
+  background-size: cover;
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+  border-bottom: 5px solid var(--red);
+}
+@media (min-width: 750px) {
+  .bg-klaviyo {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+}
+.klaviyo-title {
+  text-align: center;
+  border-bottom: 4px solid var(--red);
+}
+.klaviyo-form div:empty {
+  display:block;
+}
+</style>
+
+<!-- KLAVIYO PUBLIC API KEY -->  
+
+{%- if cart.currency.iso_code == "EUR" -%}
+<script type="text/javascript" async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_api_code_eu }}"></script>
+{%- elsif cart.currency.iso_code == "CAD" -%}
+<script type="text/javascript" async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_api_code_ca }}"></script>
+{%- else -%}
+<script type="text/javascript" async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_api_code_us }}"></script>
+{%- endif -%}
+
+<!-- END KLAVIYO PUBLIC API KEY -->
+
+<div id="lps-klaviyo-sign-up-{{ section.id }}" class="container-fluid p-0">
+  <div class="lps-klaviyo-sign-up lps-klaviyo-sign-up-{{ section.id }}" style="background-color: {{ section.settings.bg_color}};">
+    
+    <div class="container pb-5">
+      <div class="bg-klaviyo">
+        <div class="row justify-content-center h-100 align-items-end">
+          <div class="col-11 col-lg-8 pt-3 mt-4 mb-5" style="background-color: #fff;">
+            {%- if section.settings.title != blank -%}
+            <h3 class="klaviyo-title mx-5 pb-3 pt-0">{{ section.settings.title }}</h3>
+            {%- endif -%}
+            <div class="klaviyo-form p-3 pb-0">
+              {%- if cart.currency.iso_code == "EUR" -%}
+                {%- if settings.klaviyo_newsletter_code_eu != blank -%}
+                {{ settings.klaviyo_newsletter_code_eu }}
+                {%- else -%}
+                <p>Please enter a Klaviyo code in Theme Settings > KLAVIYO > Klaviyo Newsletter Embed.</p>
+                {%- endif -%}
+              {%- elsif cart.currency.iso_code == "CAD" -%}
+                {%- if settings.klaviyo_newsletter_code_ca != blank -%}
+                {{ settings.klaviyo_newsletter_code_ca }}
+                {%- else -%}
+                <p>Please enter a Klaviyo code in Theme Settings > KLAVIYO > Klaviyo Newsletter Embed.</p>
+                {%- endif -%}
+              {%- else -%}
+                {%- if settings.klaviyo_newsletter_code_us != blank -%}
+                {{ settings.klaviyo_newsletter_code_us }}
+                {%- else -%}
+                <p>Please enter a Klaviyo code in Theme Settings > KLAVIYO > Klaviyo Newsletter Embed.</p>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LPS Klaviyo Sign Up",
+  "tag": "section",
+  "class": "lps-klaviyo-sign-up",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Title Text",
+      "label": "Title Text"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#000000"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add a Klaviyo code to Theme Settings > KLAVIYO > Klaviyo code snippet."
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Klaviyo Sign Up"
+    }
+  ]
+}
+{% endschema %}

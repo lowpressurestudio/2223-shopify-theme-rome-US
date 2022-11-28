@@ -1,0 +1,78 @@
+{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}
+
+<!-- <div class="nomargin nocontainer">
+	<div class="container-fluid-custom">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+        <img class="img-fluid" src="{{ 'Rome-Ozzy-Henning-Action-1.png' | asset_img_url: '800x' }}" alt="Ozzy Henning riding the powder on his rome snowboard" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+        <img class="img-fluid" src="{{ 'Rome-Ozzy-Henning-Profile-2020-2021.png' | asset_img_url: '800x' }}" alt="Ozzy Henning laughing while wearing his Rome Beanie" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+        <img class="img-fluid" src="{{ 'Rome-Ozzy-Henning-Action-2.png' | asset_img_url: '800x' }}" alt="Ozzy Henning doing a method grab" />
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+<div class="container-indent team-content pt-3 pt-md-5">
+	<div class="container container-fluid-custom-mobile-padding ">
+		<div class="row">
+			<div class="col-md-12">
+        <div class="full-width-title mb-5">
+          <svg preserveAspectRatio="xMinYMin" viewBox="0 0 65 42">
+            <text x="0" y="13.5" style="fill:var(--red);">OZZY HENNING</text>
+            <text x="0" y="27.5" style="fill:var(--white);">OZZY HENNING</text>
+            <text x="0" y="41.5" style="fill:var(--white);">OZZY HENNING</text>
+          </svg>
+        </div>
+        
+        <h4>Who are you and where did you first start snowboarding?</h4>
+        <p>Ozzy Henning, on a little hill in my town.</p>
+
+        <h4>Why snowboarding? What drew you to it?</h4>
+        <p>Skate Boarding and a whole bunch of other shit.</p>
+
+        <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/v06TJjr-BDg" frameborder="0" allowfullscreen=""></iframe></div>
+
+        <h4>Would you rather: Grab method, Grab Japan or Grab Stalefish?</h4>
+        <p>It can be fun to try all 3 at once.</p>
+
+        <h4>What does your dream boarding trip look like?</h4>
+        <p>Who’s coming and where are you going? A good amount of people and it involves Lots of Types of Boarding, skate snow surf all of em and more.</p>
+
+        <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/HI9NLG96nX8" frameborder="0" allowfullscreen=""></iframe></div>
+
+        <h4>What are you listening to these days?</h4>
+        <p>A very good amount of Hank 3, Merl Haggard, Waylon Jennings basically classic Country- than transfer over to some aggressive gangster rap.</p>
+
+        <h4>In your opinion, who is the greatest snowboarder of all-time?</h4>
+        <p>There can’t be one for me, to many people influence me in their own little ways.</p>
+        
+        {% assign collection_handle = 'ozzy-henning' %}
+        <div class="row gx-5 my-5">
+          <div class="col-12 mb-3">
+            <h3>Ozzy's Setup:</h3>
+          </div>
+        {% for product in collections[collection_handle].products %}
+          <div class="col-6 col-md-3 col-lg-2 mb-3">
+            <a href="{{ product.url }}">
+              <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+              <h4 class="product-title">{{ product.title }}</h4>
+            </a>
+          </div>
+        {% endfor %}
+        </div> 
+              
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ page.content }}
+  
+
+  
+

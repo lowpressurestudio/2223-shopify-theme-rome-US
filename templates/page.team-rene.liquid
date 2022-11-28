@@ -1,0 +1,77 @@
+{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}
+
+<!-- <div class="nomargin nocontainer">
+	<div class="container-fluid-custom">
+		<div class="row">
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Rene-Rinnekangas-Action-1-2020-2021.png' | asset_img_url: '800x' }}" alt="Rene Rinnekangas snowboarding in the streets on his Rome Artifact" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Rene-Rinnekangas-Action-4-2020-2021.png' | asset_img_url: '800x' }}" alt="Rene Rinnekangas jibbing the tree" />
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<img class="img-fluid" src="{{ 'Rome-Rene-Rinnekangas-Action-2-2020-2021.png' | asset_img_url: '800x' }}" alt="Rene Rinnekangas in the streets on his Rome Snowboard" />
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+<div class="container-indent team-content pt-3 pt-md-5">
+	<div class="container container-fluid-custom-mobile-padding ">
+		<div class="row">
+			<div class="col-md-12">
+        <div class="full-width-title mb-5">
+          <svg preserveAspectRatio="xMinYMin" viewBox="0 0 90 42">
+              <text x="0" y="13.5" style="fill:var(--red);">RENE RINNEKANGAS</text>
+              <text x="0" y="27.5" style="fill:var(--white);">RENE RINNEKANGAS</text>
+              <text x="0" y="41.5" style="fill:var(--white);">RENE RINNEKANGAS</text>
+          </svg>
+        </div>
+
+        <h4>Who are you and where did you first start snowboarding?</h4>
+        <p>My name is Rene Rinnekangas, I’m 21 years old, born and raised in hillbilly town of Finland :)</p>
+        
+        <h4>Why snowboarding? What drew you to it? </h4>
+        <p>I started snowboarding when I was 4 years old. My brother Riko started shredding first and I think I just had to try it out because everything He did was the coolest thing ever. Still a big fan!<br />
+        To be honest I don’t really remember those first days too much but since that I have been in love with snowboarding! Thankful for Riko forever!</p>
+        
+        <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/ovQJS6VyFAA" frameborder="0" allowfullscreen=""></iframe></div>
+        
+        <h4>Would you rather: Grab method, Grab Japan or Grab Stalefish?</h4>
+        <p>I wish I could say method but I feel like my method is not the coolest so I’d rather choose Japan :) Always really nice to do some rotations with that grab as well!</p>
+        
+        <h4>What does your dream boarding trip look like? Who’s coming and where are you going?</h4>
+        <p>I have been filming few years with two of my really good friends Jarssi and Tatu now and I feel like every trip with those guys has been super nice. I have learned a lot from those guys about snowboarding and life in general. So, I would love to go to Japan with this crew and of course bring other good friends and riders there :)</p>
+
+        <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/2DHbkDswyKg" frameborder="0" allowfullscreen=""></iframe></div>
+                
+        <h4>What are you listening to these days?</h4>
+        <p>I have been listening a lot of different type of music lately, same old rock n roll and Kätfish of course but during last Christmas i got a gift from my mom, it’s a CD with some gospel music, not sure if its only Christmas songs but it’s insane! Really happy about that CD, thank you mom!</p>
+        
+        <h4>In your opinion, who is the greatest snowboarder of all-time? </h4>
+        <p>That’s really good question. So many amazing riders so it’s really hard to choose one but I think Kazu Kokubo has inspired me so much lately! A lot of energy and style of course in his riding. He is the king of snowboarding. </p>
+
+        {% assign collection_handle = 'rene-rinnekangas-collection' %}
+        <div class="row gx-5 my-5">
+          <div class="col-12 mb-3">
+            <h3>Rene's Setup:</h3>
+          </div>
+        {% for product in collections[collection_handle].products %}
+          <div class="col-6 col-md-3 col-lg-2 mb-3">
+            <a href="{{ product.url }}">
+              <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+              <h4 class="product-title">{{ product.title }}</h4>
+            </a>
+          </div>
+        {% endfor %}
+        </div> 
+              
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ page.content }}
+
+

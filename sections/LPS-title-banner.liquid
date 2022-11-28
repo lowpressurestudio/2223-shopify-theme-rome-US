@@ -1,0 +1,76 @@
+<style>
+  .lps-title-banner {
+    padding: 3rem 3rem 2rem 3rem;
+  }
+</style>  
+
+{%- if section.settings.heading_text != blank -%}
+<section class="{{section.settings.width }} pt-0 pb-0">
+  <div id="lps-title-banner-{{ section.id }}" class="lps-title-banner" style="background-color: {{ section.settings.bg_color }}">
+    <div class="row m-0 justify-content-center">
+      <div class="col-12">
+        <h1 style="text-align: {{section.settings.text_alignment }};">{{ section.settings.heading_text }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "LPS Title Banner",
+  "tag": "section",
+  "class": "lps-text-banner-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "Title Text",
+      "label": "Title Text"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Page Width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        }
+      ],
+      "default": "container",
+      "label": "Width"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Align Left"
+        },
+        {
+          "value": "center",
+          "label": "Align Center"
+        }
+      ],
+      "default": "left",
+      "label": "Align Title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Title Banner"
+    }
+  ]
+}
+{% endschema %}

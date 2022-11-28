@@ -1,0 +1,254 @@
+{% comment %} STYLES in LPS-custom.css (.lps-video-banner) {% endcomment %}
+
+<style>
+#lps-video-banner-section-{{ section.id }} .lps-image-banner {
+  background-position: {{ section.settings.bg_alignment }};
+  aspect-ratio: {{ section.settings.container-ratio-mobile | replace: "_", " / " }};
+}
+@media (min-width: 750px) {
+  #lps-video-banner-section-{{ section.id }} .lps-image-banner {
+    aspect-ratio: {{ section.settings.container-ratio-desktop | replace: "_", " / " }};
+  }
+}
+h2.heading-{{ section.id }} {
+  font-size:{{ section.settings.heading_font_size | times: 0.8 | round }}px;
+}
+@media (min-width: 750px) {
+  h2.heading-{{ section.id }} {
+    font-size:{{ section.settings.heading_font_size | times: 0.9 | round }}px;
+  }
+}
+@media (min-width: 1200px) {
+  h2.heading-{{ section.id }} {
+    font-size:{{ section.settings.heading_font_size }}px;
+  }
+}
+button.btn-cta-{{ section.id }} {
+  font-size:{{ section.settings.cta_font_size }}px;
+}
+{%- if section.settings.bg_image_mobile != blank -%}
+@media (max-width: 749.9px) {
+  #lps-video-banner-section-{{ section.id }} .lps-image-banner {
+    background-image: url('{{ section.settings.bg_image_mobile | img_url: '800x' }}');
+  }
+}
+{%- elsif section.settings.bg_image != blank -%}
+@media (max-width: 749.9px) {
+  #lps-video-banner-section-{{ section.id }} .lps-image-banner {
+    background-image: url('{{ section.settings.bg_image | img_url: '1000x' }}');
+  }
+}
+{%- endif -%}
+{%- if section.settings.bg_image != blank -%}
+@media (min-width: 750px) {
+  #lps-video-banner-section-{{ section.id }} .lps-image-banner {
+    background-image: url('{{ section.settings.bg_image | img_url: '1600x' }}');
+  }
+}
+{%- endif -%}
+</style>
+
+<div id="lps-video-banner-section-{{ section.id }}" class="container-fluid p-0">
+  <div class="lps-image-banner d-flex {{ container_classes }}" style="background-color:{{ section.settings.bg_color }};{%- if section.settings.bg_image != blank -%}background-image: url('{{ section.settings.bg_image | img_url: '1600x' }}');{%- endif -%}">
+    
+    <div class="container">
+      <div class="row justify-content-center h-100" style="position: relative;">
+        <div class="line-top"></div>
+        <div class="line-bottom"></div>
+        <div class="logo-bottom"></div>
+        
+        <div class="col-12" style="padding-top: 150px;padding-bottom: 150px;">
+          <div class="row">
+            
+            {% comment %} SHOW LEFT SIDEBAR ON DESKTOP ONLY {% endcomment %}
+            {%- if section.settings.title != blank or section.settings.sidebar_image != blank -%}
+            <div class="col-lg-2 d-none d-lg-block" style="position:relative;">
+              {%- if section.settings.sidebar_image_url != blank -%}
+              <a href="{{ section.settings.sidebar_image_url }}" style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;"></a>
+              {%- endif -%}
+              {%- if section.settings.sidebar_image != blank -%}
+              <div class="mb-4 d-flex flex-column justify-content-center" style="background-color: #fff;padding: 2rem;">
+                <img src="{{ section.settings.sidebar_image | img_url: '600x' }}" class="img-fluid"> 
+              </div>
+              {%- endif -%}
+              {%- if section.settings.title != blank -%}
+              <div class="mb-4 d-flex flex-column justify-content-center" style="background-color: #fff;padding: 1.8rem;border-bottom: 5px solid var(--red);">
+                <h2 class="mb-0" style="font-size:2.2rem">{{ section.settings.title }}</h2>
+              </div>
+              {%- endif -%}
+            </div>
+            {%- endif -%}
+            
+            {% comment %} MAIN VIDEO {% endcomment %}
+            {%- if section.settings.title != blank or section.settings.sidebar_image != blank -%}
+              {%- assign cols = "col-lg-8" -%}
+            {%- else -%}
+              {%- assign cols = "col-12" -%}
+            {%- endif -%}
+            <div class="{{ cols }}">
+              {%- if section.settings.video.type == 'youtube' -%}
+              <div class="w-100" style="height: 0;padding-bottom: 56.17021276595745%;position:relative;">
+                <iframe style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:auto;" src="https://www.youtube.com/embed/{{ section.settings.video.id }}?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="">
+              </iframe>
+              </div>
+              {%- endif -%}
+            </div>
+            
+            {% comment %} SHOW RIGHT SPACER ON DESKTOP ONLY {% endcomment %}
+            {%- if section.settings.title != blank or section.settings.sidebar_image != blank -%}
+            <div class="col-lg-2 d-none d-lg-block"></div>
+            {%- endif -%}
+            
+            {% comment %} SHOW BOTTOM ON MOBILE ONLY {% endcomment %}
+            {%- if section.settings.title != blank or section.settings.sidebar_image != blank -%}
+            <div class="col-12 d-lg-none" style="position:relative;">
+              <div class="row justify-content-center mt-4">
+                  
+                {%- if section.settings.sidebar_image_url != blank -%}
+                <a href="{{ section.settings.sidebar_image_url }}" style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;"></a>
+                {%- endif -%}
+                
+                {%- if section.settings.sidebar_image != blank -%}
+                <div class="col-5">
+                  <div class="mb-4 h-100 d-flex flex-column justify-content-center" style="background-color: #fff;padding: 2rem;">
+                    <img src="{{ section.settings.sidebar_image | img_url: '600x' }}" class="img-fluid"> 
+                  </div>
+                </div>
+                {%- endif -%}
+                {%- if section.settings.title != blank -%}
+                <div class="col-5">
+                  <div class="mb-4 h-100 d-flex flex-column justify-content-center" style="background-color: #fff;padding: 1.8rem;border-bottom: 5px solid var(--red);">
+                    <h2 class="mb-0" style="font-size:2rem">{{ section.settings.title }}</h2>
+                  </div>
+                </div>
+                {%- endif -%}
+                
+              </div>
+            </div>
+            {%- endif -%}
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LPS Video Banner",
+  "tag": "section",
+  "class": "lps-video-banner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Container"
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video",
+      "label": "Video",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Heading Text",
+      "label": "Heading Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "sidebar_image",
+      "label": "Sidebar Image"
+    },
+    {
+      "type": "url",
+      "id": "sidebar_image_url",
+      "label": "Sidebar Image Link",
+      "info": "Leave blank for no link"
+    },
+    {
+      "type": "header",
+      "content": "Backgrounds"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "select",
+      "id": "bg_alignment",
+      "options": [
+        {
+          "value": "left top",
+          "label": "Left Top"
+        },
+        {
+          "value": "left center",
+          "label": "Left Center"
+        },
+        {
+          "value": "left bottom",
+          "label": "Left Bottom"
+        },
+        {
+          "value": "right top",
+          "label": "Right Top"
+        },
+        {
+          "value": "right center",
+          "label": "Right Center"
+        },
+        {
+          "value": "right bottom",
+          "label": "Right Bottom"
+        },
+        {
+          "value": "center top",
+          "label": "Center Top"
+        },
+        {
+          "value": "center center",
+          "label": "Center Center"
+        },
+        {
+          "value": "center bottom",
+          "label": "Center Bottom"
+        }
+      ],
+      "default": "center center",
+      "label": "Background Alignment"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#F0F0F0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Video Banner"
+    }
+  ]
+}
+{% endschema %}

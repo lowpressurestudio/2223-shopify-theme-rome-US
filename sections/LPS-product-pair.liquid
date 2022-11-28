@@ -1,0 +1,100 @@
+
+<style>
+
+.collection-image-col {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (min-width: 750px) {
+  .lps-image-banner {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+</style>
+
+{% for collection in product.collections %}
+  {% assign starts_with = collection.title | slice: 0,12 | downcase %}
+  {% if starts_with == "product pair"%}
+    {% assign paired_collection = collection %}
+    {% for poss_product in collection.products %}
+      {% if poss_product.title != product.title %}
+        {% assign paired_product = poss_product %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% if paired_product %}
+<div id="lps-product-pair-{{ section.id }}" class="lps-product-pair container my-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="h-100" style="padding: 0;background-color: #f8f8f8; border-radius: 8px;">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-7 p-0 collection-image-col" style="background-image: url({{ paired_collection.image | image_url: width: 1000 }});"> 
+            <div class="m-5">
+              <h1>Perfect Match</h1> 
+              <p>PAIRED IN COLLECTION:<br>{{ paired_collection.title }}<br><br>PAIRED PRODUCT FROM COLLECTION:<br>{{ paired_product.title }}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 py-4">
+            <img class="img-fluid" src="{{ paired_product.featured_media | image_url: width: 600 }}">
+          </div>
+          <div class="col-12 col-md-3 col-lg-3 py-4">
+            <h2>{{ paired_product.title }}</h2>
+            <div>
+              <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ paired_product.url }}" data-update-url="false">
+                {%- for option in paired_product.options_with_values -%}
+                    <fieldset class="js product-form__input">
+                      <legend class="form__label">{{ option.name }}</legend>
+                      {%- for value in option.values -%}
+                        <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                              name="{{ option.name }}"
+                              value="{{ value | escape }}"
+                              form="{{ product_form_id }}"
+                              {% if option.selected_value == value %}checked{% endif %}
+                        >
+                        <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                          {{ value }}
+                        </label>
+                      {%- endfor -%}
+                    </fieldset>
+                {%- endfor -%}
+                <script type="application/json">
+                  {{ paired_product.variants | json }}
+                </script>
+              </variant-radios>
+            </div>
+            <h2>{{ paired_product.price | money }}</h2>
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ paired_product.variants.first.id }}" />
+              <input type="hidden" id="quantity" name="quantity" value="1"/>
+              <input type="submit" value="Add to cart" class="btn shopify-payment-button__button shopify-payment-button__button--unbranded" style="width: auto;padding-left: 4rem; padding-right:4rem;" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "LPS Product Pair",
+  "tag": "section",
+  "class": "lps-product-pair",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Displays a paired product row based on the other product in a 2-product collection (e.g. board / binding)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Product Pair"
+    }
+  ]
+}
+{% endschema %}

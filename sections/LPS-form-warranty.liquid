@@ -1,0 +1,335 @@
+{% comment %} {{ 'LPS-section-modal-settings.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+<style>
+
+.select-category h3 {
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--red);
+  margin: 0 1em;
+}
+.row.form-group {
+  margin-bottom: 1em;
+}
+select {
+  border-color: var(--grey);
+  padding: 0.3em 0.5em;
+}
+
+</style>
+
+<section class="container pt-5 pb-5">
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            <h1>Warranty Form</h1>
+            <p>Our Snowboards and Bindings are built using the most advanced manufacturing techniques and only the
+                finest materials. We provide a 2 year limited warranty against manufacturing defects from the original
+                date purchased from an Authorized Dealer.</p>
+        </div>
+        <div class="col-12 col-lg-8">
+                    
+          <div class="row justify-content-center">
+              <div class="col-12 mb-5 select-category text-center">
+                  <h3 href="#1" class="btn choose snowboard">Snowboards</h3>
+                  <h3 href="#1" class="btn choose binding">Bindings</h3>
+                  <h3 href="#1" class="btn choose other">Other</h3>
+              </div>
+          </div>
+          
+          <div class="row show-hide show-all">
+              <div class="col-12">
+                  <p>If you have a warranty issue please check the list below:</p>
+              </div>
+   	      </div>
+      
+          <div class="row show-hide show-snowboard">
+            <div class="col-12"><h3 class="mt-3 mb-2 pb-0">Snowboards</h3></div>
+            <div class="col-12 col-sm-6">
+                <h4 class="pb-0">Usually Accepted for warranty:</h4>
+                <ul class="mt-2 mb-2" style="list-style-type:disc;">
+                    <li>Delamination.</li>
+                    <li>Problems with Inserts.</li>
+                    <li>Cracked topsheet (if the woodcore is not broken).</li>
+                    <li>Split edge from sidewall (if there is no obvious impact on the edge).</li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6">
+                <h4 class="pb-0">Probably Declined for Warranty:</h4>
+                <ul class="mt-2 mb-2" style="list-style-type:disc;">
+                    <li>Any damage on the base due to impact.</li>
+                    <li>Broken edges due to impact.</li>
+                    <li>A completely broken board.</li>
+                    <li>Screws pushed through the base (use of inserts screws that are too long, or used without a washer).</li>
+                </ul>
+            </div>
+          </div>
+      
+          <div class="row show-hide show-binding">
+            <div class="col-12"><h3 class="mt-3 mb-0 pb-0">Bindings</h3></div>
+            <div class="col-12">
+                <ul class="mt-2 mb-2" style="list-style-type:disc;">
+                    <li>You are covered with a limited lifetime warranty against manufacturing defects on Baseplates, Disks, Heelhoops and Highbacks.</li>
+                    <li>You are covered against manufacturing defects only under normal use, and when set up as instructed by the manual.</li>
+                    <li>You are NOT covered for cosmetic damage, like scratches or dents, or normal wear and tear.</li>
+                    <li>You are NOT covered for damage caused by misuse, collision, alteration or modification.</li>
+                    <li>You are NOT covered for damage caused by improper assembly or installation. Please read the manual carefully!</li>
+                </ul>
+            </div>
+          </div>
+      
+          <div class="row show-hide show-all">
+              <div class="col-12">
+                  <p>If you think you are covered, please fill in the form below and we'll get back to you ASAP.</p>
+              </div>
+          </div>          
+          
+          <!-- form -->
+          <div class="row show-hide show-all pt-5">
+              <div class="col-12">
+                  <form id="warranty-form" class="form-horizontal" role="form" method="post" action="https://www.lowpressurestudio.com/admin/warranties-shopify.php" enctype="multipart/form-data">
+                      <fieldset>
+                          <div class="row form-group">
+                              <div class="col-sm-6">
+                                  <input type="hidden" name="loadtime" value="" />
+                                  <input type="hidden" name="ref" value="" />
+                                  <input type="hidden" name="site_id" value="4" />
+                                  <input type="text" id="firstname" name="firstname" placeholder="First Name" class="form-control dbu_input" />
+                              </div>
+                              <div class="col-sm-6"><input type="text" id="lastname" name="lastname" vplaceholder="Last Name" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12"><input type="text" id="address" name="address" placeholder="Address" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12"><input type="text" id="city" name="city" placeholder="City / Town" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-6"><input type="text" id="state" name="state" placeholder="State / Region" class="form-control dbu_input" /></div>
+                              <div class="col-sm-6"><input type="text" id="zip" name="zip" value="" placeholder="ZIP / Post Code" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-4 col-md-3"><label class="control-label" for="textinput">Country</label></div>
+                              <div class="col-sm-8 col-md-9">
+                                  <select name="country" id="country" data-live-search="true">
+                                      <option value="choose">CHOOSE COUNTRY</option>
+                                      <option>Australia</option>
+                                      <option>Austria</option>
+                                      <option>Belgium</option>
+                                      <option>Bulgaria</option>
+                                      <option>Canada</option>
+                                      <option>China</option>
+                                      <option>Czech Republic</option>
+                                      <option>Denmark</option>
+                                      <option>Estonia</option>
+                                      <option>Finland</option>
+                                      <option>France</option>
+                                      <option>Germany</option>
+                                      <option>Great Britain Islands</option>
+                                      <option>Greece</option>
+                                      <option>Hungary</option>
+                                      <option>Ireland</option>
+                                      <option>Israel</option>
+                                      <option>Italy</option>
+                                      <option>Japan</option>
+                                      <option>Korea</option>
+                                      <option>Lithuania</option>
+                                      <option>Luxembourg</option>
+                                      <option>Netherlands</option>
+                                      <option>New Zealand</option>
+                                      <option>Norway</option>
+                                      <option>Northern Ireland</option>
+                                      <option>Poland</option>
+                                      <option>Portugal</option>
+                                      <option>Romania</option>
+                                      <option>Russia</option>
+                                      <option>Slovakia</option>
+                                      <option>Slovenia</option>
+                                      <option>Spain</option>
+                                      <option>Sweden</option>
+                                      <option>Switzerland</option>
+                                      <option>Ukraine</option>
+                                      <option>United Kingdom</option>
+                                      <option>United States</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12"><input type="text" id="phone" name="phone" placeholder="Phone Number" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12"><input type="text" id="email" name="email" placeholder="Email Address" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12"><input type="text" id="product_name" name="product_name" placeholder="Product Name" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group show-hide show-snowboard">
+                              <div class="col-sm-12"><input type="text" id="serial_number" name="serial_number" placeholder="Serial Number" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12"><input type="text" id="size" name="size" placeholder="Size" class="form-control dbu_input" /></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-4 col-md-3"><label class="control-label" for="textinput">Date of Purchase</label></div>
+                              <div class="col-sm-8 col-md-9">
+                                  <div class="row">
+                                      <div class="col-6">
+                                          <select id="month" name="date_month">
+                                              <option value="choose">MONTH</option>
+                                              <option value="January">January</option>
+                                              <option value="February">February</option>
+                                              <option value="March">March</option>
+                                              <option value="April">April</option>
+                                              <option value="May">May</option>
+                                              <option value="June">June</option>
+                                              <option value="July">July</option>
+                                              <option value="August">August</option>
+                                              <option value="September">September</option>
+                                              <option value="October">October</option>
+                                              <option value="November">November</option>
+                                              <option value="December">December</option>
+                                          </select>
+                                      </div>
+                                      <div class="col-6">
+                                          <select id="year" name="date_year">
+                                              <option value="choose">Year</option>
+                                              <option value="2022">2022</option>
+                                              <option value="2021">2021</option>
+                                              <option value="2020">2020</option>
+                                              <option value="2019">2019</option>
+                                              <option value="2018">2018</option>
+                                              <option value="2017">2017</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-4 col-md-3"><label class="control-label" for="problem">Problem</label></div>
+                              <div class="col-sm-8 col-md-9">
+                                  <select name="problem" id="problem" data-live-search="true">
+                                      <option value="choose">CHOOSE PROBLEM</option>
+                                      <optgroup label="Board Topsheet">
+                                          <option>Bump on Topsheet</option>
+                                          <option>Topsheet Scratched</option>
+                                          <option>Dimple in Topsheet</option>
+                                          <option>Optical Topsheet Failure / Wrinkle</option>
+                                          <option>Air Bubble on Topsheet</option>
+                                          <option>Optical Topsheet Blemish</option>
+                                          <option>Topsheet Misaligned</option>
+                                      </optgroup>
+                                      <optgroup label="Board Base">
+                                          <option>Inserts Visible on Base</option>
+                                          <option>Dimple in base</option>
+                                          <option>Poor Diecut Fit</option>
+                                          <option>Optical Base Blemish</option>
+                                          <option>Aluminium Inlay Failure</option>
+                                          <option>Air Bubble On Base</option>
+                                          <option>Poor Base Grind</option>
+                                      </optgroup>
+                                      <optgroup label="Board Inserts">
+                                          <option>Stripped Insert</option>
+                                          <option>Insert Crooked / Insert Too Deep</option>
+                                      </optgroup>
+                                      <optgroup label="Board Sidewall">
+                                          <option>Shifted Sidewall</option>
+                                          <option>Scratched / Ground Sidewall</option>
+                                          <option>Sidewall Print Blemish</option>
+                                          <option>Gap Between Sidewall and Edge</option>
+                                      </optgroup>
+                                      <optgroup label="Board Other">
+                                          <option>Gap Between base and Edge</option>
+                                          <option>Edge Grinding Failure</option>
+                                          <option>Camber / Flatness Issue</option>
+                                          <option>Other (please add comment)</option>
+                                      </optgroup>
+                                      <optgroup label="Binding" class="show-hide show-binding">>
+                                          <option>Broken/Cracked Baseplate</option>
+                                          <option>Broken/Cracked Highback</option>
+                                          <option>Broken Ladder Strap</option>
+                                          <option>Broken Buckle</option>
+                                          <option>Other (please add comment)</option>
+                                      </optgroup>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12"><textarea class="form-control dbu_input" id="comments" name="comments" placeholder="Comments" rows="3"></textarea></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-4 col-md-3">
+                                  <label class="control-label" for="textinput">Attach Photos<br />(.jpg or .png max 3mb)</label>
+                              </div>
+                              <div class="col-sm-8 col-md-9">
+                                <div style="margin-top:10px;position:relative;"><label style="width: 170px;">Full Product Photo:</label><input id="photo1" type="file" name="photo1" size="40" /></div>
+                                <div style="margin-top:10px;position:relative;"><label style="width: 170px;">Photo of Problem:</label><input id="photo2" type="file" name="photo2" size="40" /></div>
+                                <div style="margin-top:10px;position:relative;"><label style="width: 170px;">Photo of Problem:</label><input id="photo3" type="file" name="photo3" size="40" /></div>
+                                <div style="margin-top:10px;position:relative;"><label style="width: 170px;">Photo of Problem:</label><input id="photo4" type="file" name="photo4" size="40" /></div>
+                                <div style="margin-top:10px;position:relative;"><label style="width: 170px;">Proof of Purchase:</label><input id="photo5" type="file" name="photo5" size="40" /></div>
+                              </div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-sm-12" style="text-align:right;"><input name="submit" type="submit" value="Send" class="btn btn-primary button-arrow" /></div>
+                          </div>
+                      </fieldset>
+                  </form>
+              </div>
+          </div>
+          
+          
+        </div>
+    </div>
+</section>
+
+
+<script>
+(function() {
+    var a = setInterval( function() {
+        if ( typeof window.jQuery === 'undefined' ) {
+            return;
+        }
+        clearInterval( a );
+
+        $(document).ready(function() {
+          
+          $('.show-hide').hide();	
+          $('.choose').on('click',function() {
+            $('.choose').removeClass('active');
+            $(this).addClass('active');
+            $('.show-hide').hide();
+            if ($(this).hasClass('snowboard') ) {
+              $('.show-snowboard').fadeIn();	
+            }
+            if ($(this).hasClass('binding') ) {
+              $('.show-binding').fadeIn();	
+            }
+            if ($(this).hasClass('other') ) {
+              $('.show-other').fadeIn();	
+            }
+            $('.show-all').fadeIn();	
+          });
+          
+        });
+
+    }, 250 );
+})();
+  
+</script>
+
+{% schema %}
+{
+  "name": "LPS Form Warranty",
+  "class": "lps-form-warranty-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Display the warranty form: LPS-form-warranty.liquid."
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "LPS Form Warranty"
+    }
+  ]
+}
+{% endschema %}

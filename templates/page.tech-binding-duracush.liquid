@@ -1,0 +1,61 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="container-fluid page-tech">
+  <div class="container pt-5">
+    
+    <div class="row gx-5">
+      <div class="col-9 col-md-10">
+        <h1>DuraCush<sup>&trade;</sup>.</h1> 
+      </div>
+      <div class="col-3 col-md-2 text-end">
+        <div class="tech-button"><a class="btn next" href="/pages/snowboard-binding-tech-customization">Next</a></div>
+      </div>
+    </div>
+
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 col-md-8 mt-5">
+        <h3 class="mb-4">Futuristic Comfort and Impact Absorption.</h3>
+        <p style="color: #fff;">DuraCush&trade; is an expanded thermoplastic polyurethane material, or E-TPU, used in our SubBase pads and on footbeds to provide advanced chatter absorption and make our bindings as comfortable as possible.</p>
+		<p style="color: #fff;">Because of its unique thermo-expansion molding process, DuraCush&trade; is hyper-resistant to cold temperatures, whereas traditional materials often stiffen and negatively impact riding on the days when it matters most. No matter the temperature, DuraCush&trade; maintains its impact absorption properties for chatter-free riding, more efficient energy transfer and an overall smoother ride.</p>
+        <p><a class="mt-3 btn btn-primary" href="/collections/duracush-bindings">Products featuring Duracush&trade;</a></p>
+        
+        <div class="ratio ratio-16x9 my-5 d-none d-lg-block">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/BZ_uP0XabM4?rel=0" allowfullscreen></iframe>
+        </div>
+      
+      </div>
+      
+      <div class="col-12 col-md-4 mt-5 text-center">
+		    <img style="max-width:50%;" class="img-fluid mb-5" src="{{ 'Rome-Duracush-Logo-2021-2022.png' | asset_img_url: '800x' }}" alt="aux tech binding technology by rome snowboards" />
+        <img style="max-width:80%;" class="img-fluid mb-5" src="{{ 'Rome-Duracush-Photo-2021-2022.png' | asset_img_url: '600x' }}" alt="Snowboard binding technology" />
+      </div>
+      
+      <div class="col-12 my-5 d-block d-lg-none">
+        <div class="ratio ratio-16x9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/BZ_uP0XabM4?rel=0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+    
+    {% assign collection_handle = 'duracush-bindings' %}
+    <div class="row gx-5 my-5">
+      <div class="col-12 mb-3">
+        <h3>Bindings Featuring DuraCush<sup>&trade;</sup>:</h3>
+      </div>
+    {% for product in collections[collection_handle].products %}
+      {% if product.vendor == '2223' %}
+      <div class="col-6 col-md-3 col-lg-2 mb-3">
+        <a href="{{ product.url }}">
+          <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+          <h4 class="product-title">{{ product.title }}</h4>
+        </a>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div> 
+    
+  </div>
+</div>
+
+{% include 'tech-page-footer' %}

@@ -1,0 +1,213 @@
+{{ 'LPS-section-product-details.css' | asset_url | stylesheet_tag }}
+  
+<!-- additional feature row -->
+
+<div id="lps-product-details-{{ section.id }}" class="container-indent wrapper-product-details wrapper-product-feature-row">
+  <div class="container">
+    <div class="row justify-content-center pt-5">
+      <div class="col-10 col-md-4">
+    
+        {% if product.metafields.global.flex-1 %}
+        <div class="row mb-5">
+          <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Flex</span></h5></div>
+          <div class="col-12 col-lg-10 mb-5">
+            <div class="bar-container">
+              <div class="bar value-{{ product.metafields.global.flex-1 }}"><span>{{ product.metafields.global.flex-1 }}</span></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-5"><h6>Tweakable</h6></div>
+          <div class="col-6 col-lg-5 text-end"><h6>Powerful</h6></div>
+        </div>
+        {% endif %}
+        
+        {% if product.metafields.global.feature-9 or product.metafields.global.feature-10 %}
+        <div class="row mb-5">
+	        <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Boa</span></h5></div>
+            <div class="col-12 col-lg-10 mb-5">
+                        
+            {% assign boas = '' %}
+            {% assign boas = boas | append: product.metafields.global.feature-9 %}
+            {% assign boas = boas | append: ',' %}
+            {% assign boas = boas | append: product.metafields.global.feature-10 %}
+            {% assign boas = boas | split: ',' %}
+                      
+            {% for boa in boas %}
+              {% if boa != '' %}
+                  {% assign file = 'product-boot-boa-' | append: boa %}
+                  {% capture snippet_content %}{% include file %}{% endcapture %}
+                  {% if snippet_content contains "Liquid error" %}
+                  {{ '<div class="missing">Missing: ' | append: file  | append: '</div>' }}
+                  {% else %}              
+                  {{ snippet_content }}
+                  {% endif %}
+              {% endif %}
+            {% endfor %}
+                
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      
+      <div class="col-10 col-md-4 mb-5">
+        {% if product.metafields.global.feature-7 %}
+        <div class="row mb-5">
+	  	    <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Liner</span></h5></div>
+          <div class="col-12 col-lg-10 mb-5">
+            
+              {% assign file = 'product-boot-liner-' | append: product.metafields.global.feature-7 %}
+              {% capture snippet_content %}{% include file %}{% endcapture %}
+              {% if snippet_content contains "Liquid error" %}
+              {{ '<div class="missing">Missing: ' | append: file  | append: '</div>' }}
+              {% else %}              
+              {{ snippet_content }}
+              {% endif %}
+            
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      
+      <div class="col-10 col-md-4 mb-5">
+
+      {% if product.metafields.global.feature-8 %}
+        <div class="row mb-5">
+	  	    <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Outsole</span></h5></div>
+          <div class="col-12 col-lg-10 mb-5">
+            
+              {% assign file = 'product-boot-outsole-' | append: product.metafields.global.feature-8 %}
+              {% capture snippet_content %}{% include file %}{% endcapture %}
+              {% if snippet_content contains "Liquid error" %}
+              {{ '<div class="missing">Missing: ' | append: file  | append: '</div>' }}
+              {% else %}              
+              {{ snippet_content }}
+              {% endif %}
+            
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if product.metafields.global.material-1 or product.metafields.global.material-2 or product.metafields.global.material-3 %}
+        <div class="row mb-5">
+          <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Construction</span></h5></div>
+          <div class="col-12 col-lg-10 mb-5">
+
+          {% assign constructions = '' %}
+          {% assign constructions = constructions | append: product.metafields.global.material-1 %}
+          {% assign constructions = constructions | append: ',' %}
+          {% assign constructions = constructions | append: product.metafields.global.material-2 %}
+          {% assign constructions = constructions | append: ',' %}
+          {% assign constructions = constructions | append: product.metafields.global.material-3 %}
+          {% assign constructions = constructions | split: ',' %}
+          
+          {% for construction in constructions %}
+            {% if construction != '' %}
+                {% assign file = 'product-boot-construction-' | append: construction %}
+                {% capture snippet_content %}{% include file %}{% endcapture %}
+                {% if snippet_content contains "Liquid error" %}
+                {{ '<div class="missing">Missing: ' | append: file  | append: '</div>' }}
+                {% else %}              
+                {{ snippet_content }}
+                {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          </div>
+        </div>
+        {% endif %}
+                
+    </div>
+    
+    </div>
+    
+    <div class="row">
+      <div class="col-12 mb-3 text-center"><h5 class="btn btn-primary"><a style="text-decoration: none;" href="/pages/snowboard-boot-tech-lacing">EXPLORE SNOWBOARD BOOT TECH</a></h5></div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": "LPS Details Boots",
+  "tag": "section",
+  "class": "lps-product-details",
+  "settings": [
+    {
+      	"type": "paragraph",
+        "content": "Displays features held in product metafields:"
+    },
+    {
+      	"type": "header",
+        "content": "Characteristics:"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.rating-1 (Park)"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.rating-5 (Groomers)"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.rating-4 (Pow)"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.flex-1"
+    },
+    {
+      	"type": "paragraph",
+        "content": "Float Ratio calculated as an average of all variants global.sizetable-float-ratio"
+    },
+    {
+      	"type": "header",
+        "content": "Shape:"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.diagram-shape"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.diagram-profile"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.diagram-layup"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.diagram-3D"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.diagram-nose-tail"
+    },
+    {
+      	"type": "header",
+        "content": "Construction:"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.material-1 (to 10)"
+    },
+    {
+      	"type": "header",
+        "content": "Features:"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.feature-1 (to 10)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Details Boots"
+    }
+  ]
+}
+{% endschema %}

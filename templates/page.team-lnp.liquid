@@ -1,0 +1,45 @@
+{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}
+
+<div class="container-indent team-content pt-3 pt-md-5">
+	<div class="container container-fluid-custom-mobile-padding ">
+		<div class="row">
+			<div class="col-md-12">
+              <div class="full-width-title mb-5">
+                <svg preserveAspectRatio="xMinYMin" viewBox="0 0 53 14">
+                  <text x="0" y="13.5">
+                    <tspan style="fill:var(--red);">LNP</tspan>
+                    <tspan dx="-2.5,0,0,0" style="fill:var(--white);">LNP</tspan>
+                    <tspan dx="-2.5,0,0,0" style="fill:var(--white);">LNP</tspan>
+                  </text>
+                </svg>
+              </div>
+              
+              <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/oicKUY_wsuY" frameborder="0" allowfullscreen=""></iframe></div>
+
+<!--               <div class="embed-responsive embed-responsive-16by9">
+                <div class="embed-responsive-item"><iframe src="https://www.youtube.com/embed/FPUKHBEXIz0" frameborder="0" allowfullscreen=""></iframe></div>
+              </div>
+ -->
+              
+        {% assign collection_handle = 'lnp-collection' %}
+        <div class="row gx-5 my-5">
+          <div class="col-12 mb-3">
+            <h3>LNP's Setup:</h3>
+          </div>
+        {% for product in collections[collection_handle].products %}
+          <div class="col-6 col-md-3 col-lg-2 mb-3">
+            <a href="{{ product.url }}">
+              <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+              <h4 class="product-title">{{ product.title }}</h4>
+            </a>
+          </div>
+        {% endfor %}
+        </div> 
+              
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ page.content }}

@@ -1,0 +1,61 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="container-fluid page-tech">
+  <div class="container pt-5">
+    <div class="row gx-5">
+      <div class="col-9 col-md-10">
+        <h1>Boot Lacing.</h1>
+      </div>
+      <div class="col-3 col-md-2 text-end">
+        <div class="tech-button"><a class="btn next" href="/pages/snowboard-boot-tech-liners">Next</a></div>
+      </div>
+    </div>
+
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 mb-5 d-flex flex-column">
+        <a id="boot-tech-lacing" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">BOA<sup>&#174;</sup> Technology. <span>The BOA<sup>&#174;</sup> Advantage.</span></h2>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p>We designed our boot collection to work with specific BOA<sup>&#174;</sup> Fit Systems to create seamless connections and easy on-the-fly adjustability. We use three different lacing BOA<sup>&#174;</sup> Fit Systems to complement our boots intended flex and riding style.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-eq-height gx-5">
+      <div class="col-12 col-md-4 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>Focus BOA<sup>&#174;</sup></h3>
+          <p>H-Series Upper Dial<br>M-Series Forefoot Dial</p>
+          <p>Dual zone lacing where the upper and lower zones overlap at the ankle for maximum adjustability, support and connected-comfort</p>
+          <img style="max-width: 50%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-lacing-focus-boa.jpg' | asset_img_url: '500x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>Hybrid Heel Lock BOA<sup>&#174;</sup></h3>
+          <p>M-Series Heel Lock Dial</p>
+          <p>Advanced heel hold and ankle support to complement hybrid lacing systems</p>
+          <img style="max-width: 50%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-lacing-hybrid-heel-lock-boa.jpg' | asset_img_url: '500x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>Single Dial BOA<sup>&#174;</sup></h3>
+          <p>H-Series Tongue Dial</p>
+          <p>Quick adjustments and snug fit thanks to the Coiler&trade; technology system.</p>
+          <img style="max-width: 50%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-lacing-single-dial-boa.jpg' | asset_img_url: '500x' }}" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="row gx-5 mt-5">
+      <div class="col-12">
+        <h2 class="mb-3">TX3 Laces.</h2>
+        <p>Designed with slightly more give than wire laces, TX3 Laces are a textile lace which is better for impact and provides a ‘true to riding’ flex.</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% include 'tech-page-footer' %}

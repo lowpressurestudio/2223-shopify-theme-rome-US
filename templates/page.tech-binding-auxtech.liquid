@@ -1,0 +1,64 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="container-fluid page-tech">
+  <div class="container pt-5">
+    
+    <div class="row gx-5">
+      <div class="col-9 col-md-10">
+        <h1>Auxtech<sup>&#174;</sup>.</h1>
+      </div>
+      <div class="col-3 col-md-2 text-end">
+        <div class="tech-button"><a class="btn next" href="/pages/snowboard-binding-tech-duracush">Next</a></div>
+      </div>
+    </div>
+
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 col-md-8 mt-5">
+        <h3 class="mb-4">Hinged Patterns for Next Level Connected-Comfort.</h3>
+        <p style="color: #fff;">Auxetic Shape Technology is the result of years of refining and rethinking how binding parts work and how we can improve their grip and durability.</p>
+		<p style="color: #fff;">Auxetic patterns are geometric patterns that become thicker perpendicularly when stretched. Think of them as a network of tiny hinges that when pressure is applied, they actually expand and open. This creates a more direct connection to the boot. Better surface area pressure distribution with an ergonomic shape means a better connection overall.</p>
+        <p style="color: #fff;">The one-piece, one-material design also means increased durability no matter the conditions.</p>
+        <p style="color: #fff;">Better grip, increased durability and better- connected comfort, that’s AuxTech&reg;.</p>
+        <p><a href="https://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&f=G&l=50&d=PTXT&S1=11123628.PN.&OS=PN/11123628&RS=PN/11123628" style="font-size: 0.9em;">(Patent US 11,123,628 B2)</a></p>
+        <p><a class="mt-3 btn btn-primary" href="/collections/auxtech-bindings">Products featuring AuxTech&reg;</a></p>
+        
+        <div class="ratio ratio-16x9 my-5 d-none d-lg-block">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4zVBtymgxR8?rel=0" allowfullscreen></iframe>
+        </div>
+      
+      </div>
+      
+      <div class="col-12 col-md-4 mt-5 text-center">
+		    <img style="max-width:70%;" class="img-fluid mb-5" src="{{ 'Rome-AuxTech-Logo-2021-2022.png' | asset_img_url: '800x' }}" alt="aux tech binding technology by rome snowboards" />
+        <img style="max-width:80%;" class="img-fluid mb-5" src="{{ 'Rome-AuxTech-Photo-2021-2022.png' | asset_img_url: '600x' }}" alt="Snowboard binding technology" />
+      </div>
+      
+      <div class="col-12 my-5 d-block d-lg-none">
+        <div class="ratio ratio-16x9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4zVBtymgxR8?rel=0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+    
+    {% assign collection_handle = 'auxtech-bindings' %}
+    <div class="row gx-5 my-5">
+      <div class="col-12 mb-3">
+        <h3>Bindings Featuring Auxtech<sup>&#174;</sup>:</h3>
+      </div>
+    {% for product in collections[collection_handle].products %}
+      {% if product.vendor == '2223' %}
+      <div class="col-6 col-md-3 col-lg-2 mb-3">
+        <a href="{{ product.url }}">
+          <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+          <h4 class="product-title">{{ product.title }}</h4>
+        </a>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div> 
+           
+  </div>
+</div>
+
+{% include 'tech-page-footer' %}

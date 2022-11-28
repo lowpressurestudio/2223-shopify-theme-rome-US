@@ -1,0 +1,78 @@
+{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}
+
+<!-- <div class="nomargin nocontainer">
+	<div class="container-fluid-custom">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+        <img class="img-fluid" src="{{ 'Madison_Action.jpg' | asset_img_url: '800x' }}" alt="Madison Blackley on her rome snowboard" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+        <img class="img-fluid" src="{{ 'Madison_Portrait.jpg' | asset_img_url: '800x' }}" alt="Madison Blackley" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+        <img class="img-fluid" src="{{ 'Madison_Lifestyle.jpg' | asset_img_url: '800x' }}" alt="Madison Blackley hiking with her rome snowboard" />
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+<div class="container-indent team-content pt-3 pt-md-5">
+	<div class="container container-fluid-custom-mobile-padding ">
+		<div class="row">
+			<div class="col-md-12">
+              <div class="full-width-title mb-5">
+                <svg preserveAspectRatio="xMinYMin" viewBox="0 0 89.5 41.8">
+                  <text x="0" y="13.2" style="fill: var(--red);">MADISON BLACKLEY</text>
+                  <text x="0" y="27.2" style="fill: var(--white);">MADISON BLACKLEY</text>
+                  <text x="0" y="41.2" style="fill: var(--white);">MADISON BLACKLEY</text>
+                </svg>              
+              </div>
+        
+                <h4>Who are you and where did you first start snowboarding?</h4>
+                <p>Yo, Mads here. Just a young lass who first strapped in at the prime age of 8 in Park city, UT and has become addicted to that good white stuff (snow, duh) also I could use more dogs in my life.</p>
+
+                <h4>Why snowboarding? What drew you to it? </h4>
+                <p>Actually, my dad had been boarding since the early 80s and my older brother was learning, but Park City Ski Area had just opened up to snowboarders, previously it was a skier only resort. So of course, I was not about to let them join the club without me. If my bro was gonna do it, I was gonna do it better.  I had been skiing since I was 3 years old and this was the perfect time to one up him.</p>
+
+<!--                 <div class="embed-responsive embed-responsive-16by9">
+                  <div class="embed-responsive-item"><iframe src="https://www.redbull.com/int-en/live/kings-and-queens-of-corbets" frameborder="0" allowfullscreen=""></iframe></div>
+                </div>
+               -->
+                <h4>Would you rather: Grab method, Grab Japan or Grab Stalefish?</h4>
+                <p>I've never done a successful Japan, methods either go great or horrible, I will never turn down a great stalefish opportunity.</p>
+
+                <h4>What does your dream boarding trip look like? Who’s coming and where are you going? </h4>
+                <p>I feel like I’ve already been on so many dream trips with so many homies. But probably would have some longtime close friends, some new soon to be best friends, maybe Japan with 3 feet of fluff each morning. Toss a nice street session in there along with a hype team and some solid après, and that my friends is the recipe for a perfect trip.</p>
+
+                <div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/yIgcYSQyrSk" frameborder="0" allowfullscreen=""></iframe></div>
+
+                <h4>What are you listening to these days?</h4>
+                <p>My music choice is all over the board most days. I honestly cannot pick any genre or artist that gets me going. Big fan of anything that slaps, whether it is some dirty south rap to some top 40 pop.</p>
+
+                <h4>In your opinion, who is the greatest snowboarder of all-time?</h4>
+                <p>Jamie Anderson is the GOAT, What can’t she do?</p>
+              
+        {% assign collection_handle = 'madison-blackley-collection' %}
+        <div class="row gx-5 my-5">
+          <div class="col-12 mb-3">
+            <h3>Madison's Setup:</h3>
+          </div>
+        {% for product in collections[collection_handle].products %}
+          <div class="col-6 col-md-3 col-lg-2 mb-3">
+            <a href="{{ product.url }}">
+              <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+              <h4 class="product-title">{{ product.title }}</h4>
+            </a>
+          </div>
+        {% endfor %}
+        </div> 
+              
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ page.content }}
+
+

@@ -1,0 +1,191 @@
+{% assign ticker_set_width = 0 %}
+{%- if section.settings.logo_image_1 != blank -%}
+  {% assign img_1_width = 80 | times: section.settings.logo_image_1.aspect_ratio %}
+  {% assign ticker_set_width = ticker_set_width | plus: img_1_width | plus: 40 %}
+{% endif %}
+{%- if section.settings.logo_image_2 != blank -%}
+  {% assign img_2_width = 80 | times: section.settings.logo_image_2.aspect_ratio %}
+  {% assign ticker_set_width = ticker_set_width | plus: img_2_width | plus: 40 %}
+{% endif %}
+{%- if section.settings.logo_image_3 != blank -%}
+  {% assign img_3_width = 80 | times: section.settings.logo_image_3.aspect_ratio %}
+  {% assign ticker_set_width = ticker_set_width | plus: img_3_width | plus: 40 %}
+{% endif %}
+{%- if section.settings.logo_image_4 != blank -%}
+  {% assign img_4_width = 80 | times: section.settings.logo_image_4.aspect_ratio %}
+  {% assign ticker_set_width = ticker_set_width | plus: img_4_width | plus: 40 %}
+{% endif %}
+{%- if section.settings.logo_image_5 != blank -%}
+  {% assign img_5_width = 80 | times: section.settings.logo_image_5.aspect_ratio %}
+  {% assign ticker_set_width = ticker_set_width | plus: img_5_width | plus: 40 %}
+{% endif %}
+{%- if section.settings.logo_image_6 != blank -%}
+  {% assign img_6_width = 80 | times: section.settings.logo_image_6.aspect_ratio %}
+  {% assign ticker_set_width = ticker_set_width | plus: img_6_width | plus: 40 %}
+{% endif %}
+{% assign ticker_set_width_x4 = ticker_set_width | times: 4 %}
+
+<style>
+  .lps-logo-ticker-logo-container {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+  }
+  .lps-logo-ticker-logos img {
+    height: 80px;
+    margin: 10px 20px;
+  }
+  /* 864px * 3 sets */
+  @keyframes ticker {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-{{ ticker_set_width }}px, 0, 0);
+    }
+  }
+  .lps-logo-ticker-logos {
+    animation: ticker 15s linear infinite;
+  }
+  .lps-logo-ticker-logos img {
+    mix-blend-mode: multiply;
+  }
+</style>
+
+<div id="lps-logo-ticker-{{ section.id }}" class="container-fluid p-0" style="background-color: {{ section.settings.bg_color }};border-left: 1px solid #000;border-right: 1px solid #000;">
+  <div class="lps-logo-ticker-logo-container">
+    <div class="lps-logo-ticker-logos" style="width: {{ ticker_set_width_x4 }}px;">
+      <!-- set 1 -->
+      {%- if section.settings.logo_image_1 != blank -%}
+      <img src="{{ section.settings.logo_image_1 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_2 != blank -%}
+      <img src="{{ section.settings.logo_image_2 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_3 != blank -%}
+      <img src="{{ section.settings.logo_image_3 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_4 != blank -%}
+      <img src="{{ section.settings.logo_image_4 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_5 != blank -%}
+      <img src="{{ section.settings.logo_image_5 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_6 != blank -%}
+      <img src="{{ section.settings.logo_image_6 | img_url: '400x'}}">
+      {%- endif -%}
+      <!-- set 2 -->
+      {%- if section.settings.logo_image_1 != blank -%}
+      <img src="{{ section.settings.logo_image_1 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_2 != blank -%}
+      <img src="{{ section.settings.logo_image_2 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_3 != blank -%}
+      <img src="{{ section.settings.logo_image_3 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_4 != blank -%}
+      <img src="{{ section.settings.logo_image_4 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_5 != blank -%}
+      <img src="{{ section.settings.logo_image_5 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_6 != blank -%}
+      <img src="{{ section.settings.logo_image_6 | img_url: '400x'}}">
+      {%- endif -%}
+      <!-- set 3 -->
+      {%- if section.settings.logo_image_1 != blank -%}
+      <img src="{{ section.settings.logo_image_1 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_2 != blank -%}
+      <img src="{{ section.settings.logo_image_2 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_3 != blank -%}
+      <img src="{{ section.settings.logo_image_3 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_4 != blank -%}
+      <img src="{{ section.settings.logo_image_4 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_5 != blank -%}
+      <img src="{{ section.settings.logo_image_5 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_6 != blank -%}
+      <img src="{{ section.settings.logo_image_6 | img_url: '400x'}}">
+      {%- endif -%}
+      <!-- set 4 -->
+      {%- if section.settings.logo_image_1 != blank -%}
+      <img src="{{ section.settings.logo_image_1 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_2 != blank -%}
+      <img src="{{ section.settings.logo_image_2 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_3 != blank -%}
+      <img src="{{ section.settings.logo_image_3 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_4 != blank -%}
+      <img src="{{ section.settings.logo_image_4 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_5 != blank -%}
+      <img src="{{ section.settings.logo_image_5 | img_url: '400x'}}">
+      {%- endif -%}
+      {%- if section.settings.logo_image_6 != blank -%}
+      <img src="{{ section.settings.logo_image_6 | img_url: '400x'}}">
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "LPS Logo Ticker",
+  "tag": "section",
+  "class": "lps-logo-ticker-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Logos"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_1",
+      "label": "Logo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_2",
+      "label": "Logo 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_3",
+      "label": "Logo 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_4",
+      "label": "Logo 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_5",
+      "label": "Logo 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_6",
+      "label": "Logo 6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Logo Ticker"
+    }
+  ]
+}
+{% endschema %}

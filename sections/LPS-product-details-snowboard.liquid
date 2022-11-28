@@ -1,0 +1,328 @@
+{{ 'LPS-section-product-details.css' | asset_url | stylesheet_tag }}
+
+<!-- additional feature row -->
+
+<div id="lps-product-details-{{ section.id }}" class="container-indent wrapper-product-details wrapper-product-feature-row">
+  <div class="container">
+    <div class="row justify-content-center pt-5">
+      <div class="col-10 col-md-4 mb-5">
+
+
+      {% if product.metafields.global.material-1 or product.metafields.global.material-2 or product.metafields.global.material-3 or product.metafields.global.material-4 or product.metafields.global.material-5 or product.metafields.global.material-6 or product.metafields.global.material-10 %}
+
+        {% assign contents = '' %}
+        {% assign contents = contents | append: product.metafields.global.material-1 %}
+        {% assign contents = contents | append: ',' %}
+        {% assign contents = contents | append: product.metafields.global.material-2 %}
+        {% assign contents = contents | append: ',' %}
+        {% assign contents = contents | append: product.metafields.global.material-3 %}
+        {% assign contents = contents | append: ',' %}
+        {% assign contents = contents | append: product.metafields.global.material-4 %}
+        {% assign contents = contents | append: ',' %}
+        {% assign contents = contents | append: product.metafields.global.material-5 %}
+        {% assign contents = contents | append: ',' %}
+        {% assign contents = contents | append: product.metafields.global.material-6 %}
+        {% assign contents = contents | append: ',' %}
+        {% assign contents = contents | append: product.metafields.global.material-10 %}
+        {% assign contents = contents | split: ',' %}
+
+        {% comment %} {% if contents contains "flax-impact-plates" or contents contains "flax-walls" %}
+        <div class="row mb-5">
+          <div class="col-12 col-lg-10 mb-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="new-new-new d-flex align-items-center justify-content-evenly py-4">
+                  {% if contents contains "flax-impact-plates" %}
+                  <div style="width: 35%;">
+                    <img class="img-fluid" src="{{ '2223-icon-impact-plates.png' | asset_img_url: '300x' }}">
+                  </div>
+                  {% endif %}
+                  {% if contents contains "flax-walls" %}
+                  <div style="width: 25%;">
+                    <img  class="img-fluid" src="{{ '2223-icon-flax-walls.png' | asset_img_url: '300x' }}">
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %} {% endcomment %}
+        
+      {% endif %}
+
+        {% if product.metafields.global.flex-1 %}
+        <div class="row mb-3">
+          <div class="col-12 col-lg-10">
+            <h5 class="title-feature"><span>Flex</span></h5>
+          </div>
+          <div class="col-12 col-lg-10 mb-2">
+            <div class="bar-container">
+              <div class="bar value-{{ product.metafields.global.flex-1 }}"><span></span></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-5 mb-5">
+            <h6>Playful</h6>
+          </div>
+          <div class="col-6 col-lg-5 mb-5 text-end">
+            <h6>Precise</h6>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if product.metafields.global.rating-1 or product.metafields.global.rating-3 or product.metafields.global.rating-4 %}
+        <div class="row mb-3">
+          <div class="col-12 col-lg-10">
+            <h5 class="title-feature"><span>Terrain</span></h5>
+          </div>
+          <div class="col-12 col-lg-10 mb-5">
+            <div class="row">
+              <div class="col-4 bar-titles-stacked">
+                {% if product.metafields.global.rating-1 %}<h6>Park</h6>{% endif %}
+                {% if product.metafields.global.rating-3 %}<h6>All-Mtn</h6>{% endif %}
+                {% if product.metafields.global.rating-4 %}<h6>Powder</h6>{% endif %}
+              </div>
+              <div class="col-8">
+                <div class="bar-container bar-container-stacked">
+                  <div class="bar value-{{ product.metafields.global.rating-1 }}"><span></span></div>
+                </div>
+                <div class="bar-container bar-container-stacked">
+                  <div class="bar value-{{ product.metafields.global.rating-3 }}"><span></span></div>
+                </div>
+                <div class="bar-container bar-container-stacked">
+                  <div class="bar value-{{ product.metafields.global.rating-4 }}"><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if product.metafields.global.diagram-profile %}
+        <div class="row mb-3">
+          <div class="col-12 col-lg-10">
+            <h5 class="title-feature"><span>Camber</span></h5>
+          </div>
+          <div class="col-12 col-lg-10 mb-5">
+
+            {% assign file = 'product-board-camber-' | append: product.metafields.global.diagram-profile %}
+            {% capture snippet_content %}{% include file %}{% endcapture %}
+            {% if snippet_content contains "Liquid error" %}
+              {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
+            {% else %}
+              {{ snippet_content }}
+            {% endif %}
+
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+      <div class="col-10 col-md-4 mb-5">
+
+        {% if product.metafields.global.diagram-shape or product.metafields.global.feature-1 or product.metafields.global.feature-2 or product.metafields.global.feature-3 or product.metafields.global.feature-4 or product.metafields.global.feature-5 %}
+        <div class="row mb-5">
+          <div class="col-12 col-lg-10">
+            <h5 class="title-feature"><span>Shape and Hotrods</span></h5>
+          </div>
+          <div class="col-12 col-lg-10 mb-5">
+            <div class="row">
+              {% if product.metafields.global.diagram-shape %}
+              <div class="col-3 pr-4">
+                {% assign file = 'product-board-shape-outline-' | append: product.metafields.global.diagram-shape %}
+                {% capture snippet_content %}{% include file %}{% endcapture %}
+                {% if snippet_content contains "Liquid error" %}
+                  {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
+                {% else %}
+                  {{ snippet_content }}
+                {% endif %}
+              </div>
+              <div class="col-9">
+              {% else %}
+              <div class="col-12">
+              {% endif %}
+              
+              {% assign shapes = '' %}
+              {% assign shapes = shapes | append: product.metafields.global.feature-1 %}
+              {% assign shapes = shapes | append: ',' %}
+              {% assign shapes = shapes | append: product.metafields.global.feature-2 %}
+              {% assign shapes = shapes | append: ',' %}
+              {% assign shapes = shapes | append: product.metafields.global.feature-3 %}
+              {% assign shapes = shapes | append: ',' %}
+              {% assign shapes = shapes | append: product.metafields.global.feature-4 %}
+              {% assign shapes = shapes | append: ',' %}
+              {% assign shapes = shapes | append: product.metafields.global.feature-5 %}
+              {% assign shapes = shapes | split: ',' %}
+
+              {% for shape in shapes %}
+                {% if shape != '' %}
+                  {% assign file = 'product-board-shape-' | append: shape %}
+                  {% capture snippet_content %}{% include file %}{% endcapture %}
+                  {% if snippet_content contains "Liquid error" %}
+                    {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
+                  {% else %}
+                      {{ snippet_content }}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+        <div class="col-10 col-md-4 mb-5">
+
+          {% if product.metafields.global.material-1 or product.metafields.global.material-2 or product.metafields.global.material-3 or product.metafields.global.material-4 or product.metafields.global.material-5 or product.metafields.global.material-6 or product.metafields.global.material-10 %}
+          <div class="row mb-5">
+            <div class="col-12 col-lg-10">
+              <h5 class="title-feature"><span>Board Contents</span></h5>
+            </div>
+            <div class="col-12 col-lg-10 mb-5 board-content-container">
+
+              {% assign contents = '' %}
+              {% assign contents = contents | append: product.metafields.global.material-1 %}
+              {% assign contents = contents | append: ',' %}
+              {% assign contents = contents | append: product.metafields.global.material-2 %}
+              {% assign contents = contents | append: ',' %}
+              {% assign contents = contents | append: product.metafields.global.material-3 %}
+              {% assign contents = contents | append: ',' %}
+              {% assign contents = contents | append: product.metafields.global.material-4 %}
+              {% assign contents = contents | append: ',' %}
+              {% assign contents = contents | append: product.metafields.global.material-5 %}
+              {% assign contents = contents | append: ',' %}
+              {% assign contents = contents | append: product.metafields.global.material-6 %}
+              {% assign contents = contents | split: ',' %}
+
+              {% for content in contents %}
+                {% if content != '' %}
+                  {% assign file = 'product-board-content-' | append: content %}
+                  {% capture snippet_content %}{% include file %}{% endcapture %}
+                  {% if snippet_content contains "Liquid error" %}
+                    {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
+                  {% else %}
+                    {{ snippet_content }}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+            </div>
+            
+            {% if product.metafields.global.material-10 %}
+            <div class="col-12 col-lg-10 mt-5 mb-3">
+              {% assign file = 'product-board-content-' | append: product.metafields.global.material-10 %}
+              {% capture snippet_content %}{% include file %}{% endcapture %}
+              {% if snippet_content contains "Liquid error" %}
+                {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
+              {% else %}
+                {{ snippet_content }}
+              {% endif %}
+            </div>
+            {% endif %}
+            {% if contents contains "flax-impact-plates" %}
+            <div class="col-12 col-lg-10 mt-5 mb-3">
+              {% assign file = 'product-board-content-flax-impact-plates-bottom' %}
+              {% capture snippet_content %}{% include file %}{% endcapture %}
+              {% if snippet_content contains "Liquid error" %}
+                {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
+              {% else %}
+                {{ snippet_content }}
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+
+        </div>
+        
+        <div class="row">
+          <div class="col-12 mb-3 text-center"><h5 class="btn btn-primary"><a style="text-decoration: none;" href="/pages/snowboard-tech-materials">EXPLORE SNOWBOARD TECH</a></h5></div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- end feature row -->
+
+  {% schema %}
+  {
+  "name": "LPS Details Snowboard",
+  "tag": "section",
+  "class": "lps-product-details",
+  "settings": [{
+      "type": "paragraph",
+      "content": "Displays features held in product metafields:"
+    },
+    {
+      "type": "header",
+      "content": "Characteristics:"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.rating-1 (Park)"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.rating-5 (Groomers)"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.rating-4 (Pow)"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.flex-1"
+    },
+    {
+      "type": "paragraph",
+      "content": "Float Ratio calculated as an average of all variants global.sizetable-float-ratio"
+    },
+    {
+      "type": "header",
+      "content": "Shape:"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.diagram-shape"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.diagram-profile"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.diagram-layup"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.diagram-3D"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.diagram-nose-tail"
+    },
+    {
+      "type": "header",
+      "content": "Construction:"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.material-1 (to 10)"
+    },
+    {
+      "type": "header",
+      "content": "Features:"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.feature-1 (to 10)"
+    }
+  ],
+  "presets": [{
+    "name": "LPS Details Snowboard"
+  }]
+}
+  {% endschema %}

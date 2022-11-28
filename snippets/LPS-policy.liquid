@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  .title-col h2 {
+    font-size: 6rem;
+    line-height: 6rem;
+    margin-top: 2rem;
+  }
+  @media screen and (min-width: 750px) {
+    .separator {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #ddd;
+    }
+    .title-col h2 {
+      font-size: 6rem;
+      line-height: 6rem;
+      padding-top: 6rem;
+      padding-bottom: 2rem;
+      margin: 0;
+    }
+    .policy-content {
+      padding-top: 20rem;
+    }
+    .policy-content p {
+      margin-bottom: 2rem;
+    }
+    .policy-pages a {
+      color: var(--dark-grey);
+    }
+    .policy-pages a:hover {
+      color: var(--black;
+    }
+  }
+</style>
+
+{% assign policy_name = handle | replace: '-', '_' %}
+{% assign policy = shop[policy_name] %}
+{% assign short_name = policy.title | remove: " policy"} %}
+
+<div class="container policy-pages">
+  <div class="row">
+    <div class="col-12 col-md-3 pe-md-5">
+      <div class="sticky-md-top title-col mb-5">
+        <h2>{{ short_name }}{% if policy.title contains " policy" %}<br>Policy{% endif %}</h2>
+        <span class="separator"></span>
+        {% if policy.title contains "Shipping" %}
+        <p class="mt-5">For more information about our shipping policies, if you have questions, or if you would like to make a complaint, please <a href="/pages/contact-us">contact us</a> or by post using the details provided below:</p>
+        {% elsif policy.title contains "Privacy" %}
+        <p class="mt-5">For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please <a href="/pages/contact-us">contact us</a> or by post using the details provided below:</p>
+        {% elsif policy.title contains "Refund" %}
+        <p class="mt-5">For more information about our refund policies, if you have questions, or if you would like to make a complaint, please <a href="/pages/contact-us">contact us</a> or by post using the details provided below:</p>
+        {% elsif policy.title contains "Terms" %}
+        <p class="mt-5">For more information about our Terms and Conditions, if you have questions, or if you would like to make a complaint, please <a href="/pages/contact-us">contact us</a> or by post using the details provided below:</p>
+        {% else %}
+        <p class="mt-5">For more information, if you have questions, or if you would like to make a complaint, please <a href="/pages/contact-us">contact us</a> or by post using the details provided below:</p>
+        {% endif %}
+        <p>
+        {% if cart.currency.iso_code == "EUR" %}
+        Rome Snowboards<br>
+        Johan Van Hasseltweg 8C<br>
+        1022 WV<br>
+        Amsterdam<br>
+        The Netherlands
+        {% elsif cart.currency.iso_code == "CAD" %}
+        Rome Snowboards<br>
+        1 Derby Lane<br>
+        Waterbury,<br>
+        Vermont 05676,<br>
+        USA.
+        {% else %}
+        Rome Snowboards<br>
+        1 Derby Lane<br>
+        Waterbury,<br>
+        Vermont 05676,<br>
+        USA.
+        {% endif %}
+        </p>
+      </div>
+    </div>
+    <div class="col-12 col-md-9">
+      <div class="policy-content mb-5">
+        <span class="separator mb-5"></span>
+        {{ policy.body }}
+      </div>
+    </div>
+  </div>
+</div>

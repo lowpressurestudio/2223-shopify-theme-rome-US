@@ -1,0 +1,80 @@
+{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}
+
+<!-- <div class="nomargin nocontainer">
+	<div class="container-fluid-custom">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<img class="img-fluid" src="{{ 'Rome-Len-Jorgensen-Action-1.png' | asset_img_url: '800x' }}" alt="Len Jørgensen riding powder on Rome SDS Snowboarad" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Len-Jorgensen-Profile-2020-2021.png' | asset_img_url: '800x' }}" alt="Len Jørgensen hiking with his Rome Ravine Select" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Len-Jorgensen-Action-2.png' | asset_img_url: '800x' }}" alt="Len Jørgensen riding his Rome SDS Ravine snowboard" />
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+<div class="container-indent team-content pt-3 pt-md-5">
+	<div class="container container-fluid-custom-mobile-padding ">
+		<div class="row">
+			<div class="col-md-12">
+                <div class="full-width-title mb-5">
+					<svg preserveAspectRatio="xMinYMin" viewBox="0 0 69.5 42">
+                    	<text x="0" y="13.5" style="fill:var(--red);">LEN JØRGENSEN</text>
+                    	<text x="0" y="27.5" style="fill:var(--white);">LEN JØRGENSEN</text>
+                    	<text x="0" y="41.5" style="fill:var(--white);">LEN JØRGENSEN</text>
+                  	</svg>
+                </div>
+				<h4>Who are you and where did you first start snowboarding?</h4>
+				<p>Yoyo. Lenny powers is my name and going bazookas is my game. Grew up boarding in a little local hill called Kirkerud with my dude Ståle. That’s where RK1 started. Tiny resort with terrible conditions is the best way to get your skills going :)</p>
+
+				<h4>Why snowboarding? What drew you to it?</h4>
+				<p>The coolness, 100%. My dad enjoys skiing. But I wanted to be like the cool dudes and not like that old fart. What kept me going was the feeling. Airtime, balancing, speed, style, culture and everything in between.</p>
+				
+				<div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/YlySP0Pcdt4" frameborder="0" allowfullscreen=""></iframe></div>
+
+				<h4>Would you rather: Grab method, Grab Japan or Grab Stalefish?</h4>
+				<p>I’ve always thought stalefish is the coolest of those three but goddamn it’s the toughest to make. Hips don’t lie I gotta loosen up these joints man. After an ACL surgery a couple years ago the Japan has been scary trying but getting there now. So, I usually end up with a soggy method.</p>
+
+				<h4>What does your dream boarding trip look like? Who’s coming and where are you going?</h4>
+				<p>Japan. Night boarding! Wow that’s been a dream for a long time. Bringing all the homies from Kirkerud and the Mushroom Crew. Big gang so everyone can froth like puppies in garden. Test out this Onsen and eat some crazy food. Imagine if we could find some surf as well? And go buck wild at the karaoke. Sounds like a dream.</p>
+
+				<div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/v06TJjr-BDg" frameborder="0" allowfullscreen=""></iframe></div>
+
+				<h4>What are you listening to these days?</h4>
+				<p>Uuuuuh. Bumping a lot of different tunes. But mostly instrumental with a nice melody. Old school folk tunes put in a different environment is proper yes. But the instruments gotta be real, not to much of that computer music.<br />
+					Funk is always a Jam. You know that James brown, Curtis Mayfield kinda stuff :)</p>
+
+				<h4>In your opinion, who is the greatest snowboarder of all-time?</h4>
+				<p>Terje has had that spot for a long, long time. But some real contenders are starting to take up space. Like Ståle and Bang. The got it all, style, skills and that extra flair.</p>
+
+        {% assign collection_handle = 'len-jorgensen-collection' %}
+        <div class="row gx-5 my-5">
+          <div class="col-12 mb-3">
+            <h3>Len's Setup:</h3>
+          </div>
+        {% for product in collections[collection_handle].products %}
+          <div class="col-6 col-md-3 col-lg-2 mb-3">
+            <a href="{{ product.url }}">
+              <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+              <h4 class="product-title">{{ product.title }}</h4>
+            </a>
+          </div>
+        {% endfor %}
+        </div> 
+          
+          </div>
+		</div>
+	</div>
+</div>
+
+{{ page.content }}
+  
+
+  
+
+  
+
+

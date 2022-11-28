@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+{% if
+customer.tags contains 'pro20' or
+customer.tags contains 'pro25' or
+customer.tags contains 'pro30' or
+customer.tags contains 'pro40' or
+customer.tags contains 'pro50'
+%}
+<style>
+.field__input-btn-wrapper {
+  display: none;
+}
+</style>
+{% endif %}
+
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    {% render 'weglot_hreftags' %}
+    {% render 'weglot_switcher' %}
+    
+    <script src="{{ 'ascii-only.min.js' | asset_url }}" defer></script>
+
+</head>
+  <body>
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+  </body>
+</html>
+
+<script>
+  
+(function($) {
+
+    window.PhoneNumberInputFormatter = function() {
+        return false;
+    };
+
+    $(document).on('page:load page:change', function() {
+
+        if (Shopify.Checkout.step === 'contact_information') {
+
+            var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])'),
+
+                phoneFormatValidated = false;
+
+            // Remove automatic formatting triggers
+
+            $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
+
+            // Set maxium size
+
+            $phoneField.attr('maxlength', 20);
+
+            function phoneNumberValidation() {
+
+                phoneFormatValidated = false;
+
+
+
+                var phoneFieldVal = $phoneField.val();
+
+
+
+                // Strip out any non-numeric characters
+
+                var formattedPhoneValue = phoneFieldVal.replace(/[^0-9]/g, '');
+              
+              
+              	// add preceeding 0s until >=7 length
+              
+              	while (formattedPhoneValue.length < 7) {
+  					formattedPhoneValue = "0" + formattedPhoneValue;
+				}
+
+                $phoneField.val(formattedPhoneValue);
+
+                phoneFormatValidated = true;
+
+            }
+
+            // Run validator if there is a previously cached phone number
+
+            if ($phoneField.val() != "") {
+                phoneNumberValidation()
+            };
+
+            // Run validator when the user has switched focus from the phone field
+
+            $phoneField.on('blur', phoneNumberValidation);
+
+            // Run the function when the continue button is clicked or the enter key is pressed
+
+            $('[data-step] form [type="submit"]').on('click', function(e) {
+
+                e.preventDefault();
+
+                phoneNumberValidation();
+
+                if (phoneFormatValidated) {
+
+                    $('[data-step] form').trigger('submit');
+
+                }
+
+            });
+
+
+
+            $('[data-step] form').on('keypress', function(e) {
+
+                if (e.keyCode === 13) {
+
+                    e.preventDefault();
+
+                    $('[data-step] form [type="submit"]').trigger('click');
+
+                }
+
+            });
+
+        }
+
+    });
+
+})(Checkout.$);
+  
+</script>

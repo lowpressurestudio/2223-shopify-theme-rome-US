@@ -1,0 +1,96 @@
+<style>
+  .lps-team-block a {
+    text-decoration: none;
+  }
+  .lps-team-block a:hover div.lps-team-am-img {
+    opacity: 0.8;
+  }
+  .lps-team-block h4 {
+    text-transform: uppercase;
+    line-height: 4rem;
+    text-align: center;
+  }
+  .lps-team-am-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+  }
+  .wrapper-team-am {
+    background-color: var(--light-grey);
+  }
+</style>
+
+<div id="lps-product-details-{{ section.id }}" class="container-indent wrapper-team-am">
+  <div class="container">
+    <div class="row justify-content-center pt-5">
+      {% if section.settings.title_am != blank %}
+      <div class="col-12 mb-3">
+        <h1>{{ section.settings.title_am | escape }}</h1>
+      </div>
+      {% endif %}
+      {%- for block in section.blocks -%}
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 lps-team-block mb-3">
+        {%- if block.settings.instagram != blank -%}<a href="https://www.instagram.com/{{ block.settings.instagram }}/" target="_blank">{%- endif -%}
+        {%- if block.settings.image_am != blank -%}
+        <div class="lps-team-am-img" style="background-image: url('{{ block.settings.image_am | img_url: '800x' }}');"></div>
+        {%- endif -%}
+        {%- if block.settings.title != blank -%}
+        <h4>{{ block.settings.title }}</h4>
+        {%- else -%}
+        <h2>&nbsp;</h2>
+        {%- endif -%}
+        {%- if block.settings.instagram != blank -%}</a>{%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LPS Team Am",
+  "class": "lps-team-am-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_am",
+      "default": "Am Team",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_am",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "instagram",
+          "label": "Instagram"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Team Am",
+      "blocks": [
+        {
+          "type": "team"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

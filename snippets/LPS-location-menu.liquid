@@ -1,0 +1,5 @@
+<ul class="select-location">
+  {% if cart.currency.iso_code == "EUR" %}<li>Europe</li>{% else %}<li><a data-subdom="eu" data-title="Europe" href="#1">Europe</a></li>{% endif %}
+  {% if cart.currency.iso_code == "USD" %}<li>United States</li>{% else %}<li><a data-subdom="us" data-title="United States" href="#1">United States</a></li>{% endif %}
+  {% if cart.currency.iso_code == "CAD" %}<li>Canada</li>{% else %}<li><a data-subdom="ca" data-title="Canada" href="#1">Canada</a></li>{% endif %}
+</ul>

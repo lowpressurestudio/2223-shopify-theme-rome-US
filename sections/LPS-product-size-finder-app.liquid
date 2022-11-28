@@ -1,0 +1,300 @@
+{{ 'LPS-section-board-finder-size.css' | asset_url | stylesheet_tag }}
+
+<section class="board-finder board-finder-size container" id="board-finder-anchor">
+  
+    <!-- WEIGHTS 
+{% for variant in product.variants %}VARIANT: {{ variant.option1  }} — {{ variant.metafields.global.recommend-weight }}KG
+{% endfor %}END WEIGHTS -->
+    <!-- BOOTS 
+{% for variant in product.variants %}VARIANT: {{ variant.option1  }} — {{ variant.metafields.global.recommend-boot }}CM
+{% endfor %}END BOOTS -->  
+  
+  <div id="lps-board-finder-size-{{ section.id }}" class="lps-tabs py-5">
+
+      <div class="row">
+      {%- if section.settings.heading_text != blank -%}
+          <div class="col-12">
+              <h2>{%- if section.settings.include_product_title == true -%}{{ product.title }} {%- endif -%}{{ section.settings.heading_text }}</h2>
+          </div>
+          {%- endif -%}
+      </div>
+      <div class="row">
+          <div class="col-12 col-md-5">
+
+          {%- if section.settings.intro_text != blank -%}
+          <p id="size-finder-intro-text" class="pt-0 mt-0">{{ section.settings.intro_text }}</p>
+          {%- endif -%}
+
+          <form id="recommend-size" class="recommend-form">
+
+          <div class="row"> 
+              <div class="col-12"><h4 class="pt-4 pb-0">Boot Size:</h4></div>
+              <div class="form-group col-12 col-md-4">
+              <label for="boot-size-units">Size System</label>
+              <select id="boot-size-units" class="form-control">
+                  <option value="us">US</option>
+                  <option value="usw">US Womens</option>
+                  <option value="euro">EURO</option>
+                  <option value="uk">UK</option>
+                  <option value="mondo">Mondo</option>
+              </select>
+              </div>
+              <div class="form-group col-12 col-md-8">
+              <label class="boot-size-value-label" for="boot-size-value">Size</label>
+              <select id="boot-size-value" class="form-control boot-board-selector boot-board-selector-us" aria-required="true" name="boot-size-value" required="">
+                  <option aria-label="Select US boot size" class="us placeholder" value="">Select boot size</option>
+                  <option value="24" aria-label="Men's US 6" class="us">Men's US 6</option>
+                  <option value="24.5" aria-label="Men's US 6.5" class="us">Men's US 6.5</option>
+                  <option value="25" aria-label="Men's US 7" class="us">Men's US 7</option>
+                  <option value="25.5" aria-label="Men's US 7.5" class="us">Men's US 7.5</option>
+                  <option value="26" aria-label="Men's US 8" class="us">Men's US 8</option>
+                  <option value="26.5" aria-label="Men's US 8.5" class="us">Men's US 8.5</option>
+                  <option value="27" aria-label="Men's US 9" class="us">Men's US 9</option>
+                  <option value="27.5" aria-label="Men's US 9.5" class="us">Men's US 9.5</option>
+                  <option value="28" aria-label="Men's US 10" class="us">Men's US 10</option>
+                  <option value="28.5" aria-label="Men's US 10.5" class="us">Men's US 10.5</option>
+                  <option value="29" aria-label="Men's US 11" class="us">Men's US 11</option>
+                  <option value="29.5" aria-label="Men's US 11.5" class="us">Men's US 11.5</option>
+                  <option value="30" aria-label="Men's US 12" class="us">Men's US 12</option>
+                  <option value="30.5" aria-label="Men's US 12.5" class="us">Men's US 12.5</option>
+                  <option value="31" aria-label="Men's US 14" class="us">Men's US 13</option>
+                  <option value="32" aria-label="Men's US 15" class="us">Men's US 14</option>
+
+                  <option aria-label="Select US Womens boot size" class="usw placeholder" value="">Select boot size</option>
+                  <option value="21" aria-label="Women's US 4" class="usw">Women's US 4</option>
+                  <option value="21.5" aria-label="Women's US 4.5" class="usw">Women's US 4.5</option>
+                  <option value="22" aria-label="Women's US 5" class="usw">Women's US 5</option>
+                  <option value="22.5" aria-label="Women's US 5.5" class="usw">Women's US 5.5</option>
+                  <option value="23" aria-label="Women's US 6" class="usw">Women's US 6</option>
+                  <option value="23.5" aria-label="Women's US 6.5" class="usw">Women's US 6.5</option>
+                  <option value="24" aria-label="Women's US 7" class="usw">Women's US 7</option>
+                  <option value="24.5" aria-label="Women's US 8" class="usw">Women's US 7.5</option>
+                  <option value="25" aria-label="Women's US 8" class="usw">Women's US 8</option>
+                  <option value="25.5" aria-label="Women's US 8.5" class="usw">Women's US 8.5</option>
+                  <option value="26" aria-label="Women's US 9" class="usw">Women's US 9</option>
+                  <option value="26.5" aria-label="Women's US 9.5" class="usw">Women's US 9.5</option>
+                  <option value="27" aria-label="Women's US 10" class="usw">Women's US 10</option>
+                  <option value="27.5" aria-label="Women's US 10.5" class="usw">Women's US 10.5</option>
+                  <option value="28" aria-label="Women's US 11" class="usw">Women's US 11</option>
+
+                  <option aria-label="Select EURO boot size" class="euro placeholder" value="">Select boot size</option>
+                  <option value="21" aria-label="EURO 34" class="euro">EURO 34</option>
+                  <option value="21.5" aria-label="EURO 34.5" class="euro">EURO 34.5</option>
+                  <option value="22" aria-label="EURO 35" class="euro">EURO 35</option>
+                  <option value="22.5" aria-label="EURO 336" class="euro">EURO 36</option>
+                  <option value="23" aria-label="EURO 36.5" class="euro">EURO 36.5</option>
+                  <option value="23.5" aria-label="EURO 37" class="euro">EURO 37</option>
+                  <option value="24" aria-label="EURO 38" class="euro">EURO 38</option>
+                  <option value="24.5" aria-label="EURO 39" class="euro">EURO 39</option>
+                  <option value="25" aria-label="EURO 40" class="euro">EURO 40</option>
+                  <option value="25.5" aria-label="EURO 40.5" class="euro">EURO 40.5</option>
+                  <option value="26" aria-label="EURO 41" class="euro">EURO 41</option>
+                  <option value="26.5" aria-label="EURO 41.5" class="euro">EURO 41.5</option>
+                  <option value="27" aria-label="EURO 42" class="euro">EURO 42</option>
+                  <option value="27.5" aria-label="EURO 42.5" class="euro">EURO 42.5</option>
+                  <option value="28" aria-label="EURO 43" class="euro">EURO 43</option>
+                  <option value="28.5" aria-label="EURO 44" class="euro">EURO 44</option>
+                  <option value="29" aria-label="EURO 44.5" class="euro">EURO 44.5</option>
+                  <option value="29.5" aria-label="EURO 45" class="euro">EURO 45</option>
+                  <option value="30" aria-label="EURO 45.5" class="euro">EURO 45.5</option>
+                  <option value="30.5" aria-label="EURO 46" class="euro">EURO 46</option>
+                  <option value="31" aria-label="EURO 47" class="euro">EURO 47</option>
+                  <option value="32" aria-label="EURO 48.5" class="euro">EURO 48.5</option>
+
+                  <option aria-label="Select UK boot size" class="uk placeholder" value="">Select boot size</option>
+                  <option value="21" aria-label="UK 2" class="uk">UK 2</option>
+                  <option value="21.5" aria-label="UK 2.5" class="uk">UK 2.5</option>
+                  <option value="22" aria-label="UK 3" class="uk">UK 3</option>
+                  <option value="22.5" aria-label="UK 3.5" class="uk">UK 3.5</option>
+                  <option value="23" aria-label="UK 4" class="uk">UK 4</option>
+                  <option value="23.5" aria-label="UK 4.5" class="uk">UK 4.5</option>
+                  <option value="24" aria-label="UK 5" class="uk">UK 5</option>
+                  <option value="24.5" aria-label="UK 5.5" class="uk">UK 5.5</option>
+                  <option value="25" aria-label="UK 6" class="uk">UK 6</option>
+                  <option value="25.5" aria-label="UK 6.5" class="uk">UK 6.5</option>
+                  <option value="26" aria-label="UK 7" class="uk">UK 7</option>
+                  <option value="26.5" aria-label="UK 7.5" class="uk">UK 7.5</option>
+                  <option value="27" aria-label="UK 8" class="uk">UK 8</option>
+                  <option value="27.5" aria-label="UK 8.5" class="uk">UK 8.5</option>
+                  <option value="28" aria-label="UK 9" class="uk">UK 9</option>
+                  <option value="28.5" aria-label="UK 9.5" class="uk">UK 9.5</option>
+                  <option value="29" aria-label="UK 10" class="uk">UK 10</option>
+                  <option value="29.5" aria-label="UK 10.5" class="uk">UK 10.5</option>
+                  <option value="30" aria-label="UK 11" class="uk">UK 11</option>
+                  <option value="30.5" aria-label="UK 11.5" class="uk">UK 11.5</option>
+                  <option value="31" aria-label="UK 13" class="uk">UK 12</option>
+                  <option value="32" aria-label="UK 14" class="uk">UK 13</option>
+
+                  <option aria-label="Select Mondo boot size" class="mondo placeholder" value="">Select boot size</option>
+                  <option value="21" aria-label="MONDO 2" class="mondo">MONDO 12</option>
+                  <option value="21.5" aria-label="MONDO 21.5" class="mondo">MONDO 21.5</option>
+                  <option value="22" aria-label="MONDO 3" class="mondo">MONDO 22</option>
+                  <option value="22.5" aria-label="MONDO 3.5" class="mondo">MONDO 22.5</option>
+                  <option value="23" aria-label="MONDO 4" class="mondo">MONDO 23</option>
+                  <option value="23.5" aria-label="MONDO 4.5" class="mondo">MONDO 23.5</option>
+                  <option value="24" aria-label="MONDO 24" class="mondo">MONDO 24</option>
+                  <option value="24.5" aria-label="MONDO 24.5" class="mondo">MONDO 24.5</option>
+                  <option value="25" aria-label="MONDO 25" class="mondo">MONDO 25</option>
+                  <option value="25.5" aria-label="MONDO 25.5" class="mondo">MONDO 25.5</option>
+                  <option value="26" aria-label="MONDO 26" class="mondo">MONDO 26</option>
+                  <option value="26.5" aria-label="MONDO 26.5" class="mondo">MONDO 26.5</option>
+                  <option value="27" aria-label="MONDO 27" class="mondo">MONDO 27</option>
+                  <option value="27.5" aria-label="MONDO 27.5" class="mondo">MONDO 27.5</option>
+                  <option value="28" aria-label="MONDO 28" class="mondo">MONDO 28</option>
+                  <option value="28.5" aria-label="MONDO 28.5" class="mondo">MONDO 28.5</option>
+                  <option value="29" aria-label="MONDO 29" class="mondo">MONDO 29</option>
+                  <option value="29.5" aria-label="MONDO 29.5" class="mondo">MONDO 29.5</option>
+                  <option value="30" aria-label="MONDO 30" class="mondo">MONDO 30</option>
+                  <option value="30.5" aria-label="MONDO 30.5" class="mondo">MONDO 30.5</option>
+                  <option value="31" aria-label="MONDO 31" class="mondo">MONDO 31</option>
+                  <option value="32" aria-label="MONDO 32" class="mondo">MONDO 32</option>
+              </select>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-12"><h4 class="pt-4 pb-0">Weight:</h4></div>
+              <div class="form-group col-12 col-md-4">
+              <label for="weight-units">Measurement</label>
+              <select id="weight-units" class="form-control">
+                  <option value="lbs">lbs</option>
+                  <option value="kgs">kg</option>
+              </select>
+              </div>
+              <div class="form-group col-12 col-md-8">
+              <label class="weight-value-label" for="weight-container-size">Weight in pounds</label>
+              <input id="weight-value" aria-required="true" class="form-control" type="number" pattern="^[0-9]*$" name="weight-value" min="0" required="" value="">
+              </div>
+          </div>
+
+          <div class="row mt-5">
+              <div class="col-6">
+              <button type="submit" class="btn btn-primary btn-size">What's my Size?</button>
+              </div>
+              <div class="col-6">
+                  <p class="reset-container"><a style="display: none;" class="size-reset" id="reset" href="javascript:;">Reset <i class="icon-e-17"></i></a></p>
+              </div>            
+          </div>
+
+          </form>
+
+          </div>
+          <div class="col-12 col-md-6 result result-size"></div>
+      </div>
+
+      {%- if section.settings.below_text != blank -%}
+      <div class="row">
+          <div class="col-12 mt-5">
+            <p class="mb-0">{{ section.settings.below_text }}</p>
+          </div>
+      </div>
+      {%- endif -%}
+
+    </div>
+</section>
+<script>
+
+    var waitForJQuery = setInterval(function () {
+      if (typeof $ != 'undefined') {
+        
+        // set size selects
+        $('#boot-size-units').on('change', function() {
+          var bootSizeUnit = $('#boot-size-units').val();
+            setBoot_Unit(bootSizeUnit);
+        });
+        $('#weight-units').on('change', function() {
+          var weightUnit = $('#weight-units').val();
+            setWeight_Unit(weightUnit);
+        });
+        
+        // 2s delay to set values after updating
+        setTimeout(update_DropDowns, 1000);
+        
+        clearInterval(waitForJQuery);
+      }
+    }, 100);
+     
+    function setBoot_Unit(sizeType) {
+      // show/hide
+      $('#boot-size-value option').attr('disabled', 'disabled').hide();
+      $('#boot-size-value option.'+sizeType).removeAttr('disabled').show();
+      // if selected is disabled, select first enabled
+      if ($("#boot-size-value option:selected").attr('disabled')) {
+        $('#boot-size-value').find('option:enabled:first').prop('selected',true);
+      }
+      // update label
+      $('.boot-size-value-label').html("Size ("+sizeType.toUpperCase()+")");
+    }
+    function setWeight_Unit(weightType) {
+      if (weightType == 'lbs') {
+        $('.weight-value-label').html("Weight in pounds");
+      } else {
+        $('.weight-value-label').html("Weight in kilograms");
+      }
+    }  
+    function update_DropDowns() {     
+      var bootSizeUnit = $('#boot-size-units').val();
+      setBoot_Unit(bootSizeUnit);
+      var weightUnit = $('#weight-units').val();
+      setWeight_Unit(weightUnit);
+    }
+    
+</script>
+
+{% schema %}
+{
+  "name": "LPS Board Size Finder App",
+  "tag": "section",
+  "class": "lps-board-finder-size-section",
+  "settings": [
+    {
+      	"type": "paragraph",
+        "content": "Displays board finder app. Results calculated from values held in variant metafields:"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.recommend-weight"
+    },
+    {
+      	"type": "paragraph",
+        "content": "global.recommend-boot"
+    },
+    {
+      	"type": "header",
+        "content": "Settings:"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "default": "Size Finder",
+      "label": "Heading Text"
+    },
+    {
+        "type": "checkbox",
+        "id": "include_product_title",
+        "default": true,
+        "label": "Include Product Title in Heading",
+        "info": "e.g. Halldor Pro Size Finder"
+    },
+    {
+      "type": "text",
+      "id": "intro_text",
+      "default": "Intro Text",
+      "label": "Intro Text",
+      "info": "Text below title"
+    },
+    {
+        "type": "text",
+        "id": "below_text",
+        "default": "Below Text",
+        "label": "Below Text",
+        "info": "Text below finder"
+    }
+],
+  "presets": [
+    {
+      "name": "LPS Board Size Finder App"
+    }
+  ]
+}
+{% endschema %}

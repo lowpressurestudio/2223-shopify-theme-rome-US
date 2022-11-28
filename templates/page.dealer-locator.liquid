@@ -1,0 +1,10 @@
+<div class="container-indent">
+  <div class="container pt-5 pb-5">
+    {{ page.content }}
+    <div class="row mt-5 mb-5 pt-5 pb-5">
+      <div class="col-12">
+        <iframe class="dealer-locator w-100" src="https://hub.ndk.group/widgets/map/rome?css=https:{{ 'theme-dealer-locator.css' | asset_url | url_encode }}" allow="geolocation"></iframe>
+      </div>
+    </div>
+  </div>
+</div>

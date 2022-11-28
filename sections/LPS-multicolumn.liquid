@@ -1,0 +1,381 @@
+{{ 'LPS-section-multicolumn.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px; 
+    }
+  }
+  .img-button-column h3 {
+    background-color: var(--white);
+    color: var(--black);
+    border-bottom: 4px solid var(--red);
+    display: inline-block;
+    padding: 0.3em 0.4em;
+    font-size: 1.2em;
+    margin-top: 5%;
+    margin-left: 5%;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .img-button-column .img-button-column-bg {
+    width: 100%;
+    aspect-ratio: 20 / 8;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .img-button-column .img-button-column-bg a {
+    z-index: 1;
+    opacity: 0;
+    display:block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  .img-button-column .img-button-column-bg a:hover {
+    opacity: 0.5;
+  }
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    .img-button-column .img-button-column-bg a {
+      transition: opacity 0.3s;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+  }
+</style>
+
+<div id="lps-multicolumn-{{ section.id }}" class="container-fluid lps-multicolumn section-{{ section.id }}-padding" style="background-color:{{ section.settings.multicol_bg_color }};">
+  <div class="container">
+    <div class="row justify-content-center" style="margin-left:-{{section.settings.block_spacing}}px;margin-right:-{{section.settings.block_spacing}}px;">
+  
+      {% if section.settings.title != blank %}
+      <div class="col-12">
+        <h2 style="color:{{ section.settings.multicol_title_color }};">{{ section.settings.title | escape }}</h2>
+      </div>
+      {% endif %}
+  
+      {%- assign block_count = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign block_count = block_count | plus: 1 -%}
+	    {%- endfor -%}
+      {%- assign col_classes = "col-12" -%}
+      {% case block_count %}
+      {%- when 1 -%}
+        {%- assign col_classes = "col-12" -%}
+      {%- when 2 -%}
+        {%- assign col_classes = "col-12 col-sm-6" -%}
+      {%- when 3 -%}
+        {%- assign col_classes = "col-12 col-sm-4" -%}
+      {%- when 4 -%}
+        {%- assign col_classes = "col-12 col-sm-2 col-md-3" -%}
+      {%- endcase -%}
+      
+      {%- for block in section.blocks -%}
+      {% case block.type %}
+      {%- when 'img_btn_column' -%}
+      <div class="{{ col_classes }} my-0 lps-multicolumn-block img-button-column" style="padding:{{section.settings.block_spacing}}px;">
+        <div class="img-button-column-bg" style="background-color: {{ block.settings.bg_color }};background-image: url({{ block.settings.bg_image | img_url: '1000x' }});">
+        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}"></a>{%- endif -%}
+        {%- if block.settings.title != blank -%}
+          <h3>{{ block.settings.title }}</h3>
+        {%- endif -%}
+        </div>
+      </div>
+      {%- when 'product_column' -%}      
+      <div class="{{ col_classes }} p-0 lps-multicolumn-block" style="padding:{{section.settings.block_spacing}}px;">
+        <a class="lps-multicolumn-block-link" href="{{ block.settings.selected_product.url }}"></a>
+        <div class="row m-0">
+          <div class="col-12 p-0">
+              <div class="lps-multicolumn-block-img" style="background-image: url('{{ block.settings.image | img_url: '800x' }}');"></div>
+          </div>
+        </div>
+        <div class="row m-0 lps-multicolumn-caption-row">
+          {%- if block.settings.selected_product != blank -%}
+          <div class="col-8 col-md-9 p-4 lps-multicolumn-caption-box">
+              <h3 class="m-0">{{ block.settings.selected_product.title | escape }}</h3>
+          </div>
+          <div class="col-4 col-md-3 p-4 lps-multicolumn-caption-box">
+             <h3 class="m-0">{{ block.settings.selected_product.price | money  }}</h3>
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- when 'icon_column' -%}      
+      <div class="{{ col_classes }} lps-multicolumn-block" style="padding:{{section.settings.block_spacing}};px">
+        <div class="icon-block mb-5 mb-md-0">
+          {%- if block.settings.icon_link != blank -%}<a href="{{ block.settings.icon_link }}">{%- endif -%}
+          {%- if block.settings.icon_image != blank -%}
+          <img style="max-height: {{ block.settings.icon_size }}px;" src="{{ block.settings.icon_image | image_url: width: 240 }}">
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+          <h3 style="color:{{ block.settings.icon_title_color }};">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.icon_text != blank -%}<div style="color:{{ block.settings.icon_text_color }};">{{ block.settings.icon_text }}</div>{%- endif -%}
+          {%- if block.settings.icon_link != blank -%}</a>{%- endif -%}
+        </div>
+      </div>
+      {%- when 'title_text_column' -%}      
+      <div class="{{ col_classes }} col-lg-3 my-2 lps-multicolumn-block" style="padding:{{section.settings.block_spacing}}px;">
+        {%- assign min = 1 -%}
+        {%- assign max = 10 -%}
+        {%- assign diff = max | minus: min -%}
+        {%- assign random_number = "now" | date: "%N" | modulo: diff | plus: min -%}
+        <div class="title-block mb-5 mb-md-0" style="background-position:{{ random_number | times: 10 }}% 100%;">
+        {%- if block.settings.title_text_link != blank -%}<a href="{{ block.settings.title_text_link }}">{%- endif -%}
+        {%- if block.settings.title != blank -%}
+          <h1>{{ block.settings.title }}</h1>
+        {%- endif -%}
+        {%- if block.settings.title_text_link != blank -%}</a>{%- endif -%}
+        </div>
+      </div>
+      {%- endcase -%}
+	    {%- endfor -%}
+  
+      {%- if section.settings.button_label != blank -%}
+      <div class="col-12 text-center">
+        <a style="display:inline-block;background-color: {{ section.settings.button_bg_color}};color: {{ section.settings.button_text_color}};" href="{{ section.settings.button_link }}" class="btn btn-default">{{ section.settings.button_label | escape }}</a>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LPS Multicolumn",
+  "class": "lps-multicolumn-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "multicol_bg_color",
+      "label": "BG Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "multicol_title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center",
+      "label": "Column Alignment"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button BG Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "paragraph",
+      "content": "Space above and below the section row."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Block padding"
+    },
+    {
+      "type": "paragraph",
+      "content": "Space between blocks."
+    },
+    {
+      "type": "range",
+      "id": "block_spacing",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Block Spacing",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "img_btn_column",
+      "name": "Image Button Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Title Text",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "BG Image"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "BG Color",
+          "default": "#DDDDDD"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }        
+      ]
+    },
+    {
+      "type": "title_text_column",
+      "name": "Title Text Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Title Text",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "title_text_link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "icon_column",
+      "name": "Icon Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "label": "Icon Width",
+          "default": 60
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Icon Title Text",
+          "label": "Icon Title"
+        },
+        {
+          "type": "color",
+          "id": "icon_title_color",
+          "label": "Icon Title Color",
+          "default": "#ea131e"
+        },
+        {
+          "type": "color",
+          "id": "icon_text_color",
+          "label": "Icon Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "richtext",
+          "id": "icon_text",
+          "default": "<p>Icon Text</p>",
+          "label": "Icon Text"
+        },
+        {
+          "type": "url",
+          "id": "icon_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Multicolumn",
+      "blocks": [
+        {
+          "type": "img_btn_column"
+        },
+        {
+          "type": "img_btn_column"
+        },
+        {
+          "type": "img_btn_column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

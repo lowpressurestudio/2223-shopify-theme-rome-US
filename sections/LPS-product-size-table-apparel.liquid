@@ -1,0 +1,167 @@
+{{ 'LPS-section-size-table.css' | asset_url | stylesheet_tag }}
+
+{% for tag in product.tags %}
+  {% assign tag_down = tag | downcase %}
+  {% if tag_down contains 'pant' %}  
+    {% assign show_table = "pants" %}
+  {% elsif tag_down contains 'top' %}  
+    {% assign show_table = "tops" %}
+  {% endif %}
+{% endfor %}
+   
+{% if show_table == 'pants' %}  
+<section id="lps-product-size-table-apparel-{{ section.id }}" class="lps-tabs lps-product-size-table-apparel container lps-size-table py-5">
+  <div id="size-table-anchor"></div>
+  <ul class="row nav nav-tabs card-header-tabs" style="margin-left: -7.5px; margin-right: -7.5px;" data-bs-tabs="tabs">
+    <li class="nav-item col-6 mb-3">
+      <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#sizechart">Pants Size Chart</a>
+    </li>
+    <li class="nav-item col-6 mb-3">
+      <a class="nav-link" data-bs-toggle="tab" href="#howtomeasure">How to Measure</a>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="col-12 tab-content mt-3">
+      <div class="tab-pane active" id="sizechart">
+        
+        <div class="lps-size-table-wrapper gray-rounded-block p-0">
+          <table>
+              <tr>
+                  <th>Size</th> 
+                  <td>S</td>
+                  <td>M</td>
+                  <td>L</td>
+                  <td>XL</td>
+              </tr>
+              <tr>
+                  <th>Natural Waist (cm)</th>
+                  <td>79-84</td>
+                  <td>84-89</td>
+                  <td>89-94</td>
+                  <td>94-102</td>
+              </tr>
+              <tr>
+                  <th>Natural Waist (in)</th>
+                  <td>31-33</td>
+                  <td>33-35</td>
+                  <td>35-37</td>
+                  <td>37-40</td>
+              </tr>
+              <tr>
+                  <th>Hip (cm)</th>
+                  <td>94-98</td>
+                  <td>98-103</td>
+                  <td>103-108</td>
+                  <td>108-116</td>
+              </tr>
+              <tr>
+                  <th>Hip (in)</th>
+                  <td>37-38.5</td>
+                  <td>38.5-40.5</td>
+                  <td>40.5-42.5</td>
+                  <td>42.5-45.5</td>
+              </tr>
+          </table>
+        </div> 
+           
+      </div>
+
+      <div class="tab-pane" id="howtomeasure">
+        <div class="gray-rounded-block">
+          <h1>how to measure here</h1>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+{% elsif show_table == 'tops' %}
+<section id="lps-product-size-table-apparel-{{ section.id }}" class="lps-tabs lps-product-size-table-apparel container lps-size-table py-5">
+  <div id="size-table-anchor"></div>
+  <ul class="row nav nav-tabs card-header-tabs" style="margin-left: -7.5px; margin-right: -7.5px;" data-bs-tabs="tabs">
+    <li class="nav-item col-6 mb-3">
+      <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#sizechart">Tops Size Chart</a>
+    </li>
+    <li class="nav-item col-6 mb-3">
+      <a class="nav-link" data-bs-toggle="tab" href="#howtomeasure">How to Measure</a>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="col-12 tab-content mt-3">
+      <div class="tab-pane active" id="sizechart">
+        
+        <div class="lps-size-table-wrapper gray-rounded-block p-0">
+          <table>
+              <tr>
+                  <th>Size</th> 
+                  <td>S</td>
+                  <td>M</td>
+                  <td>L</td>
+                  <td>XL</td>
+              </tr>
+              <tr>
+                  <th>Chest (cm)</th>
+                  <td>93-99</td>
+                  <td>99-104</td>
+                  <td>104-109</td>
+                  <td>109-117</td>
+              </tr>
+              <tr>
+                  <th>Chest (in)</th>
+                  <td>36.5-39</td>
+                  <td>39-41</td>
+                  <td>41-43</td>
+                  <td>43-46</td>
+              </tr>
+              <tr>
+                  <th>Hip (cm)</th>
+                  <td>94-98</td>
+                  <td>98-103</td>
+                  <td>103-108</td>
+                  <td>108-116</td>
+              </tr>
+              <tr>
+                  <th>Hip (in)</th>
+                  <td>37-38.5</td>
+                  <td>38.5-40.5</td>
+                  <td>40.5-42.5</td>
+                  <td>42.5-45.5</td>
+              </tr>
+          </table>
+        </div> 
+           
+      </div>
+
+      <div class="tab-pane" id="howtomeasure">
+        <div class="gray-rounded-block">
+          <h1>how to measure here</h1>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "LPS Size Table Apparel",
+  "tag": "section",
+  "class": "lps-apparel-size-table-section",
+  "settings": [
+    {
+    	"type": "header",
+      "content": "Apparel Size Chart"
+    },
+    {
+    	"type": "paragraph",
+      "content": "Displays the size table and how to measure table in tabs. Displays content depending on product tags: 'pants', 'tops' (and nothing if not tagged)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Size Table Apparel"
+    }
+  ]
+}
+{% endschema %}

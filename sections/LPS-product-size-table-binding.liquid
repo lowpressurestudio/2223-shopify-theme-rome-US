@@ -1,0 +1,365 @@
+{{ 'LPS-section-size-table.css' | asset_url | stylesheet_tag }}
+
+<section id="lps-product-size-table-binding-{{ section.id }}" class="lps-product-size-table-binding container lps-size-table py-5">
+  <div id="size-table-anchor"></div>
+  <div class="row justify-content-center lps-size-table-binding mb-3">
+    <div class="col-12">
+      <h2>{{ product.title }} Size Chart</h2>
+    </div>
+    <div class="col-12 lps-size-table-col">
+      <div class="lps-size-table-wrapper p-0">
+        {% if product.handle contains 'minishred' %}
+
+          <table class="kids">
+              <tr>
+                  <th>US Kids</th>
+                  <td>11C</td>
+                  <td>12C</td>
+                  <td>13C</td>
+                  <td>1K</td>
+                  <td>2K</td>
+                  <td>3K</td>
+                  <td>4K</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>/</td>
+                  <td>/</td>
+              </tr>
+              <tr>
+                  <th>EU</th>
+                  <td>28</td>
+                  <td>30</td>
+                  <td>31</td>
+                  <td>32</td>
+                  <td>33</td>
+                  <td>34</td>
+                  <td>36</td>
+                  <td>37</td>
+                  <td>38</td>
+                  <td>39</td>
+                  <td>40.5</td>
+                  <td>/</td>
+                  <td>/</td>
+              </tr>
+              <tr>
+                  <th>CM</th>
+                  <td>17</td>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>19.5</td>
+                  <td>20.5</td>
+                  <td>21.5</td>
+                  <td>22.5</td>
+                  <td>23.5</td>
+                  <td>24</td>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>/</td>
+                  <td>/</td>
+              </tr>
+            <tr>
+                <th></th>
+                <td class="size-span"></td>
+                <td class="size-span">XS</td>
+                <td class="size-span"></td>
+                <td class="size-span-fadeout">&#65290;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="size-span-fadein"></td>
+                <td class="size-span"></td>
+                <td class="size-span">SM</td>
+                <td class="size-span"></td>
+                <td class="size-span-fadeout-1">&#65290;</td>
+                <td class="size-span-fadeout-2">&#65290;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+          </table>
+          <p>NOTE: Ace boot not compatible with minishred binding.</p> 
+
+        {% elsif product.handle contains 'ace' %}
+
+          <table class="kids">
+              <tr>
+                  <th>US Kids</th>
+                  <td>11C</td>
+                  <td>12C</td>
+                  <td>13C</td>
+                  <td>1K</td>
+                  <td>2K</td>
+                  <td>3K</td>
+                  <td>4K</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>/</td>
+                  <td>/</td>
+              </tr>
+              <tr>
+                  <th>EU</th>
+                  <td>28</td>
+                  <td>30</td>
+                  <td>31</td>
+                  <td>32</td>
+                  <td>33</td>
+                  <td>34</td>
+                  <td>36</td>
+                  <td>37</td>
+                  <td>38</td>
+                  <td>39</td>
+                  <td>40.5</td>
+                  <td>/</td>
+                  <td>/</td>
+              </tr>
+              <tr>
+                  <th>CM</th>
+                  <td>17</td>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>19.5</td>
+                  <td>20.5</td>
+                  <td>21.5</td>
+                  <td>22.5</td>
+                  <td>23.5</td>
+                  <td>24</td>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>/</td>
+                  <td>/</td>
+              </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="size-span"></td>
+                <td class="size-span">S</td>
+                <td class="size-span"></td>
+                <td class="size-span-fadeout">&#65290;</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="size-span-fadein"></td>
+                <td class="size-span"></td>
+                <td class="size-span">M/L</td>
+                <td class="size-span"></td>
+            </tr>
+          </table>
+          <p>NOTE: Ace binding not compatible with minishred boot.</p> 
+
+          {% else %}
+
+          <table class="adults">
+            <tr>
+                <th>US Men</th>
+                <td>5</td>
+                <td>5.5</td>
+                <td>6</td>
+                <td>6.5</td>
+                <td>7</td>
+                <td>7.5</td>
+                <td>8</td>
+                <td>8.5</td>
+                <td>9</td>
+                <td>9.5</td>
+                <td>10</td>
+                <td>10.5</td>
+                <td>11</td>
+                <td>11.5</td>
+                <td>12</td>
+                <td>12.5</td>
+                <td>13</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <th>US Women</th>
+                <td>6.5</td>
+                <td>7</td>
+                <td>7.5</td>
+                <td>8</td>
+                <td>8.5</td>
+                <td>9</td>
+                <td>9.5</td>
+                <td>10</td>
+                <td>10.5</td>
+                <td>11</td>
+                <td>11.5</td>
+                <td>12</td>
+                <td>12.5</td>
+                <td>13</td>
+                <td>13.5</td>
+                <td>14</td>
+                <td>14.5</td>
+                <td>15.5</td>
+            </tr>
+            <tr>
+                <th>EU</th>
+                <td>36.5</td>
+                <td>37</td>
+                <td>38</td>
+                <td>38.5</td>
+                <td>39</td>
+                <td>40</td>
+                <td>40.5</td>
+                <td>41</td>
+                <td>42</td>
+                <td>42.5</td>
+                <td>43</td>
+                <td>44</td>
+                <td>44.5</td>
+                <td>45</td>
+                <td>45.5</td>
+                <td>46</td>
+                <td>47</td>
+                <td>48.5</td>
+            </tr>
+            <tr>
+                <th>CM</th>
+                <td>23</td>
+                <td>23.5</td>
+                <td>24</td>
+                <td>24.5</td>
+                <td>25</td>
+                <td>25.5</td>
+                <td>26</td>
+                <td>26.5</td>
+                <td>27</td>
+                <td>27.5</td>
+                <td>28</td>
+                <td>28.5</td>
+                <td>29</td>
+                <td>29.5</td>
+                <td>30</td>
+                <td>30.5</td>
+                <td>31</td>
+                <td>32</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td class="size-span"></td>
+                <td class="size-span"></td>
+                <td class="size-span">S</td>
+                <td class="size-span"></td>
+                <td class="size-span"></td>
+                <td class="size-span-fadeout-1">&#65290;</td>
+                <td class="size-span-fadeout-2">&#65290;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="size-span-fadein"></td>
+                <td class="size-span"></td>
+                <td class="size-span"></td>
+                <td class="size-span">M/L</td>
+                <td class="size-span"></td>
+                <td class="size-span"></td>
+                <td class="size-span"></td>
+                <td class="size-span-fadeout-1">&#65290;</td>
+                <td class="size-span-fadeout-2">&#65290;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="size-span-fadein"></td>
+                <td class="size-span"></td>
+                <td class="size-span"></td>
+                <td class="size-span">L/XL</td>
+                <td class="size-span"></td>
+                <td class="size-span"></td>
+                <td class="size-span-fadeout-1">&#65290;</td>
+                <td class="size-span-fadeout-2">&#65290;</td>
+            </tr>
+          </table>
+
+        {% endif %}
+      </div>    
+    </div>    
+    <div class="col-12">
+      <p class="mt-4 mb-0">&#65290; DEPENDS ON BOOT/BINDING STYLE AND/OR BRAND - SAFEST TO UPSIZE. ROME RECOMMENDS CHECKING THE BOOT TO BINDING FIT WITH AN ADJUSTED BINDING. THIS CHART SERVES AS A GUIDELINE ONLY. IF IN DOUBT, PLEASE <a href="/pages/contact">CONTACT US</a> FOR ADVICE.</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LPS Size Table Binding",
+  "tag": "section",
+  "class": "lps-binding-size-table-section",
+  "settings": [
+    {
+    	"type": "header",
+      "content": "Binding Size Chart"
+    },
+    {
+    	"type": "paragraph",
+      "content": "Displays the binding size table."
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Size Table Binding"
+    }
+  ]
+}
+{% endschema %}

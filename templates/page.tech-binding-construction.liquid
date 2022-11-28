@@ -1,0 +1,244 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="container-fluid page-tech">
+  <div class="container pt-5">
+    <div class="row gx-5">
+      <div class="col-9 col-md-10">
+        <h1>Binding Construction.</h1>
+      </div>
+      <div class="col-3 col-md-2 text-end">
+        <div class="tech-button"><a class="btn next" href="/pages/snowboard-binding-tech-auxtech">Next</a></div>
+      </div>
+    </div>
+
+    {% comment %} <div class="row gx-5">
+      <div class="col-12">
+        <div class="ratio ratio-16x9 mb-5">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EmSkn21yrag?rel=0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> {% endcomment %}
+
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 col-md-6 mb-5 d-flex flex-column">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">AsymWrap.</h2>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p>Our game changer of a chassis that revolutionized the idea of connected-comfort. The AsymWrap heelhoop features 3 connection points to the base allowing for a surfy ride, plenty of board feel, without sacrificing tweak or edge to edge response.<br>&nbsp;</p>
+        </div>
+        <div class="mt-auto mb-0" style="position:relative;outline:1px solid var(--white);">
+          <img style="position:absolute;top:0;left:0;width:100px;height:auto;" class="m-3 m-md-5" src="{{ '2223-tech-binding-asymwrap-logo.png' | asset_img_url: '500x' }}" />
+          <img style="" class="img-fluid p-5" src="{{ '2223-tech-binding-asymwrap-image.png' | asset_img_url: '1200x' }}" />
+        </div>
+        {% comment %} SHOW ON MOBILE {% endcomment %}
+        <div class="d-block d-md-none my-5 p-4 card-product-block" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'asymwrap-snowboard-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>        
+        </div>        
+      </div>
+      <div class="col-12 col-md-6 mb-5 d-flex flex-column">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">FullWrap.</h2>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p>Our bombproof platform, the FullWrap heelhoop chassis has 4 connection points to the baseplate for maximum energy transfer and pure connected power. Built with more lateral support than the Asym platform, FullWrap bindings are designed for advanced stability, durability and power.</p>
+        </div>
+        <div class="mt-auto mb-0" style="position:relative;outline:1px solid var(--white);">
+          <img style="position:absolute;top:0;right:0;width:110px;height:auto;" class="m-3 m-md-5" src="{{ '2223-tech-binding-fullwrap-logo.png' | asset_img_url: '500x' }}" /> 
+          <img style="" class="img-fluid p-5" src="{{ '2223-tech-binding-fullwrap-image.png' | asset_img_url: '1200x' }}" />
+        </div>
+        {% comment %} SHOW ON MOBILE {% endcomment %}
+        <div class="d-block d-md-none my-5 p-4 card-product-block" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'fullwrap-snowboard-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>        
+        </div>        
+      </div>
+    </div>
+    {% comment %} SHOW ON DESKTOP {% endcomment %}
+    <div class="row d-none d-md-flex gx-5 mb-5 card-product-block">
+      <div class="col-12 col-md-6 mb-5">
+        <div class="p-4" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'asymwrap-snowboard-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-5">
+        <div class="p-4" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'fullwrap-snowboard-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 col-md-6 mb-5 d-flex flex-column">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">AuxTech<span style="vertical-align:super;">&reg;</span>.<span class="ms-md-3">Hinged Patterns for Next<br>Level Connected-Comfort</span></h2>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p>Auxetic patterns are geometric patterns that become thicker perpendicularly when stretched. Think of them as a network of tiny hinges that when pressure is applied, they actually expand and open. This creates a more direct connection to the boot. Better surface area pressure distribution with an ergonomic shape means a better connection overall.</p>
+          <p>Better grip, increased durability and better connected-comfort, that’s AUXTECH&reg;.</p>
+        </div>
+        <div class="mt-auto mb-0" style="position:relative;outline:1px solid var(--white);">
+          <img style="position:absolute;top:0;right:0;width:170px;height:auto;" class="m-3 m-md-5" src="{{ '2223-tech-binding-auxtech-logo-red.png' | asset_img_url: '500x' }}" /> 
+          <img style="" class="img-fluid" src="{{ '2223-tech-binding-auxtech-image.jpg' | asset_img_url: '2000x' }}" />
+        </div>
+        {% comment %} SHOW ON MOBILE {% endcomment %}
+        <div class="d-block d-md-none my-5 p-4 card-product-block" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'auxtech-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>        
+        </div>        
+      </div>
+      <div class="col-12 col-md-6 mb-5 d-flex flex-column">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3">Duracush<span style="vertical-align:super;">&trade;</span>.<span class="ms-md-3">Futuristic Comfort<br>and Impact Absorption</span></h2>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p>DuraCush&trade; is an expanded thermoplastic polyurethane material, or E-TPU, used in our SubBase pads and on our footbeds to provide advanced chatter absorption and make our bindings as comfortable as possible.</p>
+          <p>Because of its unique thermo-expansion molding process, DuraCush&trade; is hyper-resistant to cold temperatures, whereas traditional materials often stiffen and negatively impact riding on the days when it matters most. No matter the temperature, DuraCushTM maintains its impact absorption properties for chatter-free riding, more efficient energy transfer and an overall smoother ride.</p>
+        </div>
+        <div class="mt-auto mb-0" style="position:relative;outline:1px solid var(--white);">
+          <img style="position:absolute;top:0;right:0;width:90px;height:auto;" class="m-3 m-md-5" src="{{ '2223-tech-binding-duracush-logo-red.png' | asset_img_url: '500x' }}" /> 
+          <img style="" class="img-fluid" src="{{ '2223-tech-binding-duracush-image.jpg' | asset_img_url: '2000x' }}" />
+        </div>
+        {% comment %} SHOW ON MOBILE {% endcomment %}
+        <div class="d-block d-md-none my-5 p-4 card-product-block" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'duracush-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>        
+        </div>        
+      </div>
+    </div>    
+    {% comment %} SHOW ON DESKTOP {% endcomment %}
+    <div class="row d-none d-md-flex gx-5 mb-5 card-product-block">
+      <div class="col-12 col-md-6 mb-5">
+        <div class="p-4" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'auxtech-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-5">
+        <div class="p-4" style="background-color: var(--img-bg);"> 
+          {% assign collection_handle = 'duracush-bindings' %}
+          <div class="row gx-5">
+          {% for product in collections[collection_handle].products %}
+            {% if product.vendor == '2223' %}
+                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                  <a href="{{ product.url }}">
+                    <img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+                    <h4 class="product-title">{{ product.title }}</h4>
+                  </a>
+                </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 col-md-6 mb-5">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3"><span class="new-new-new-tech-icon"></span>FastEntry.</h2>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p> New for this season, our bindings feature FastEntry Technology for super quick and easy entry into the binding. The pre-curved ladder on the ankle and toe straps are designed to pop open and help keep the straps out of your way while getting your boot into the binding.</p>
+          <p>Strap in faster and easier thanks to FastEntry!</p>
+        </div>
+        <div class="" style="position:relative;outline:1px solid var(--white);">
+          <img style="position:absolute;top:0;right:0;width:110px;height:auto;" class="m-3 m-md-5" src="{{ '2223-tech-binding-fast-entry-logo.png' | asset_img_url: '500x' }}" /> 
+          <img style="" class="img-fluid" src="{{ '2223-tech-binding-fast-entry-image.jpg' | asset_img_url: '1200x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-5">
+        <a id="board-tech-hotrods" style="position:absolute; top: -50px;"></a>
+        <h2 class="mb-3"><span class="new-new-new-tech-icon"></span>Bombproof Buckles.</h2>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p>New for this season, our BombProof Buckles are a one-piece forged aluminum construction for better grip and durability. Built with wider stance teeth area for more engagement, this makes for easier ratcheting and increased protection from wear and tear to your ladder straps.</p>
+          <p class="d-none d-md-block">&nbsp;</p>
+        </div>
+        <div class="py-5 p-md-0" style="position:relative;outline:1px solid var(--white);">
+          <img style="position:absolute;top:0;right:0;width:100px;height:auto;" class="m-3 m-md-5" src="{{ '2223-tech-binding-bomb-proof-buckles-logo.png' | asset_img_url: '500x' }}" /> 
+          <img style="" class="img-fluid" src="{{ '2223-tech-binding-bomb-proof-buckles-image.jpg' | asset_img_url: '1200x' }}" />
+        </div>
+      </div>
+    </div>    
+    
+  </div>
+</div>
+
+{% include 'tech-page-footer' %}
+
+

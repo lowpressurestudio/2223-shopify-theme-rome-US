@@ -1,0 +1,85 @@
+{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}
+
+<!-- <div class="nomargin nocontainer">
+	<div class="container-fluid-custom">
+		<div class="row">
+			<div class="col-12">
+				<div class="vw-instagram-slider-feed" data-id="9baf3e18658a48d8ae4534bc25d9a03b"></div>
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+<!-- <div class="nomargin nocontainer">
+	<div class="container-fluid-custom">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<img class="img-fluid" src="{{ 'Rome-Stale-Sandbech-Action-1.png' | asset_img_url: '800x' }}" alt="Ståle Sandbech flipping on his Rome SDS Snowboard" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Stale-Sandbech-Profile-2020-2021.png' | asset_img_url: '800x' }}" alt="Ståle Sandbech hiking with his Rome Stale Crewzer" />
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<img class="img-fluid" src="{{ 'Rome-Stale-Sandbech-Action-2.png' | asset_img_url: '800x' }}" alt="Ståle Sandbech riding his Rome SDS snowboard" />
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+<div class="container-indent team-content pt-2 pt-md-5">
+	<div class="container container-fluid-custom-mobile-padding ">
+		<div class="row">
+			<div class="col-md-12">
+                <div class="full-width-title mb-5">
+					<svg preserveAspectRatio="xMinYMin" viewBox="0 0 76 45.5">
+                    	<text x="0" y="31" style="fill: var(--white);">STÅLE SANDBECH</text>
+                    	<text x="0" y="45" style="fill: var(--white);">STÅLE SANDBECH</text>
+                    	<text x="0" y="17" style="fill: var(--red);">STÅLE SANDBECH</text>
+                  	</svg>
+                </div>
+				<h4>Who are you and where did you first start snowboarding?</h4>
+				<p>Dude from Rykkinn, Norway, who loves to snowboard and go on adventures in the mountains. I started snowboarding hiking up and down my local hill with my sister during a Christmas holiday when I was 8 years old.</p>
+
+				<div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/BgJGYdIzxWM" frameborder="0" allowfullscreen=""></iframe></div>
+
+				<h4>Why snowboarding? What drew you to it?</h4>
+				<p>It was just it for me. I did most activities and sports when I was a kid, but snowboarding just overtook all my time after that came in to my life. It was what I wanted to do all the time and it was where I felt like me and also where I met most of my friends.</p>
+
+				<h4>Would you rather: Grab method, Grab Japan or Grab Stalefish?</h4>
+				<p>Man! Hard to choose, but it would have to be a good old method.</p>
+
+				<h4>What does your dream boarding trip look like?</h4>
+				<p>Who’s coming and where are you going? RK1 crew goes heliboarding in AK? To be continued...</p>
+
+				<div class="ratio ratio-16x9 mb-5"><iframe src="https://www.youtube.com/embed/5k_s7B1cFOk" frameborder="0" allowfullscreen=""></iframe></div>
+
+				<h4>What are you listening to these days?</h4>
+				<p>A bit of everything to be honest. Depends on the day. But while snowboarding mostly hip hop and rock</p>
+
+				<h4>In your opinion, who is the greatest snowboarder of all-time?</h4>
+				<p>Too hard. Maybe Rene in 10 years??</p>  
+              
+        		{% assign collection_handle = 'stale-sandbech-collection' %}
+        		<div class="row gx-5 my-5">
+          		<div class="col-12 mb-3">
+            		<h3>Stale's Setup:</h3>
+          		</div>
+        		{% for product in collections[collection_handle].products %}
+          		<div class="col-6 col-md-3 col-lg-2 mb-3">
+            		<a href="{{ product.url }}">
+              		<img class="img-fluid" src="{{ product.featured_image.src | img_url: '600x' }}">
+              		<h4 class="product-title">{{ product.title }}</h4>
+            		</a>
+          		</div>
+        		{% endfor %}
+        		</div> 
+              
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ page.content }}
+
+

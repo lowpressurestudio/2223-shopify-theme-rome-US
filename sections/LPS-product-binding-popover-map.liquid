@@ -1,0 +1,159 @@
+{{ 'LPS-product-binding-popover-map.css' | asset_url | stylesheet_tag }}
+
+{% for media in product.media %}
+  {% if media.alt contains 'popover' %}
+    {% assign show_popover_map = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if show_popover_map == true %}
+
+<section id="lps-binding-popover-map-{{ section.id }}" class="lps-binding-popover-map container py-5">
+  <div class="row m-0">
+    <div class="col-12 gray-rounded-block">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 popover-map">
+          {% if product.metafields.global.feature-1 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-1 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-1}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-2 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-2 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-2}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-3 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-3 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-3}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-4 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-4 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-4}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-5 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-5 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-5}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-6 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-6 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-6}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-7 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-7 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-7}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-8 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-8 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-8}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-9 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-9 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-9}}"></div>
+          {% endif %}
+          {% if product.metafields.global.feature-10 != blank %}
+          <div class="pop-button {{ product.metafields.global.feature-10 | strip }}" data-bs-toggle="modal" data-bs-target="#modal_{{product.metafields.global.feature-10}}"></div>
+          {% endif %}
+          
+          {% for media in product.media %}
+            {% if media.alt contains 'popover' %}
+            {% assign bg_image_url = media.src %}
+            {% assign alt_array = media.alt | split: ' ' %}
+            {% for word in alt_array %}
+              {% if word contains 'popover' %}
+                {% assign bg_image_color = word | remove: 'popover' | replace: '-', ' ' | strip %}
+              {% endif %}
+            {% endfor %}
+    
+          <img data-popover-bg-color="{{ bg_image_color }}" class="img-fluid" src="{{ bg_image_url | image_url: width: 1000 }}" />
+            {% endif %}
+          {% endfor %}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section> 
+
+{% if product.metafields.global.feature-1 or
+product.metafields.global.feature-2 or
+product.metafields.global.feature-3 or
+product.metafields.global.feature-4 or
+product.metafields.global.feature-5 or
+product.metafields.global.feature-6 or
+product.metafields.global.feature-7 or
+product.metafields.global.feature-8 or
+product.metafields.global.feature-9 or
+product.metafields.global.feature-10 %}
+
+{% assign features = '' %}
+{% assign features = features | append: product.metafields.global.feature-1 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-2 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-3 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-4 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-5 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-6 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-7 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-8 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-9 %}
+{% assign features = features | append: ',' %}
+{% assign features = features | append: product.metafields.global.feature-10 %}
+{% assign features = features | split: ',' %}
+
+{% for feature in features %}
+  {% if feature != '' %}
+    {% assign feature_stripped = feature | strip %}
+    {% assign snippet_name = 'product-details-' | append: feature_stripped %}
+    {% capture snippet_content %}{% include snippet_name %}{% endcapture %}
+<!-- popover modal_{{ feature }} -->
+<div class="modal modal-binding-popover-map" id="modal_{{ feature_stripped }}" tabindex="-1" aria-labelledby="modal_{{ feature_stripped }}_label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content" style="">
+      <div class="modal-body">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        {% if snippet_content contains "Liquid error" %}
+          {{ '<div class="missing">Missing snippet: ' | append: snippet_name  | append: '</div>' }}
+        {% else %}              
+          {{ snippet_content }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+  {% endif %}
+{% endfor %}
+
+{% endif %}
+             
+{% endif %}               
+
+{% schema %}
+{
+  "name": "LPS Binding Popover Map",
+  "tag": "section",
+  "class": "lps-binding-popover-map",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Binding Popover Map"
+    },
+    {
+    	"type": "paragraph",
+      "content": "Displays binding popover map with overlaid hotspots that display feature snippets in modal popovers. Backgroudn image based on title e.g. 'blaster'. Feature snippets are set in metafields:"
+    },
+    {
+      	"type": "header",
+        "content": "Features Metafields:"
+    },
+    {
+      "type": "paragraph",
+      "content": "global.feature-1 (to 10)"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "LPS Binding Popover Map"
+    }
+  ]
+}
+{% endschema %}

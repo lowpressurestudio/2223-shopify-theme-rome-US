@@ -1,0 +1,62 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="container-fluid page-tech">
+  <div class="container pt-5">
+    <div class="row gx-5">
+      <div class="col-9 col-md-10">
+        <h1>Boot Liners.</h1>
+      </div>
+      <div class="col-3 col-md-2 text-end">
+        <div class="tech-button"><a class="btn next" href="/pages/snowboard-boot-tech-construction">Next</a></div>
+      </div>
+    </div>
+
+    <div class="row gx-5 mt-5 overline">
+      <div class="col-12 mb-5 pt-4 d-flex flex-column">
+        <a id="boot-tech-lacing" style="position:absolute; top: -50px;"></a>
+        <div class="bg-white p-3 pb-1 mb-5">
+          <p>We design our fully heat moldable liners for maximum comfort with locked-in hold and season long performance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-eq-height gx-5">
+      <div class="col-12 col-md-4 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>Ultralon F.I.T. Liner</h3>
+          <p>Our most plush and customizable liner for advanced fit that refuses to pack-out. Built with dual density Ultralon Foam for maximum performance and fit longevity, our SkateCuff 3D molded ankle support system and Ultra Footbeds with dual density foam for targeted heel and arch support</p>
+          <img style="max-width: 50%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-liner-ultralon-fit.jpg' | asset_img_url: '500x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>Pro F.I.T. Liner</h3>
+          <p>Fully heat moldable for maximum snug
+fit and dialed-in performance. Built with our SkateCuff 3D ankle support system, expandable toe box and Pro Footbeds for support and out-of-the-box comfort.</p>
+          <img style="max-width: 50%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-liner-pro-fit.jpg' | asset_img_url: '500x' }}" />
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-5">
+        <div class="d-flex flex-column h-100">
+          <h3>Rad F.I.T. Liner</h3>
+          <p>Plush and supportive, this fully heat moldable liner features SkateCuff 3D, an expandable toe box, TriZone lining and Rad Foambeds for comfort.</p>
+          <img style="max-width: 50%;margin-top: auto;" class="px-5 px-sm-0 pt-3 text-center" src="{{ '2223-tech-boot-liner-rad-fit.jpg' | asset_img_url: '500x' }}" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="row gx-5 mt-5">
+      <div class="col-12">
+        <h2 class="mb-3">Ultralon Foam.</h2>
+        <p>Ultralon Foam is a space-age material that provides advanced heat moldability with unprecedented levels of comfort and fit. Our Ultralon F.I.T. liners use a mixture of two different densities of Ultralon Foam to create a liner that is simultaneously resistant to packing out and insanely comfortable. The inner layer is plush and cozy, so your feet always feel snug. The second layer provides maximum support, heat moldable customization and performance to the boot.</p>
+        <img style="width: 250px;max-width: 40%;" class="py-4" src="{{ '2223-logo-ultralon.png' | asset_img_url: '500x' }}" />
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% include 'tech-page-footer' %}
+
+
+

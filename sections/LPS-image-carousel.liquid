@@ -1,0 +1,435 @@
+{% comment %} STYLES in LPS-custom.css (.lps-image-banner) {% endcomment %}
+
+<style>
+
+.lps-image-carousel {
+  aspect-ratio: {{ section.settings.container-ratio-mobile | replace: "_", " / " }};
+}
+@media (min-width: 750px) {
+  .lps-image-carousel {
+    aspect-ratio: {{ section.settings.container-ratio-desktop | replace: "_", " / " }};
+  }
+}
+
+</style>
+
+<div id="lps-image-carousel-section-{{ section.id }}" class="container-fluid p-0">
+  <div id="carouselImages" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="{{ section.settings.seconds | times: 1000 }}">
+    <div class="carousel-inner">
+  
+      {%- for block in section.blocks -%}
+      <style>
+        h2.heading-{{ block.id }}  {
+          font-size:{{ block.settings.heading_font_size | times: 0.8 | round }}px;
+        }
+        @media (min-width: 750px) {
+          h2.heading-{{ block.id }} {
+            font-size:{{ block.settings.heading_font_size | times: 0.9 | round }}px;
+          }
+        }
+        @media (min-width: 1200px) {
+          h2.heading-{{ block.id }} {
+            font-size:{{ block.settings.heading_font_size }}px;
+          }
+        }
+        a.btn-cta-{{ block.id }}  {
+          font-size:{{ block.settings.cta_font_size | times: 0.8 | round }}px;
+        }
+        @media (min-width: 750px) {
+          a.btn-cta-{{ block.id }} {
+            font-size:{{ block.settings.cta_font_size | times: 0.9 | round }}px;
+          }
+        }
+        @media (min-width: 1200px) {
+          a.btn-cta-{{ block.id }} {
+            font-size:{{ block.settings.cta_font_size }}px;
+          }
+        }
+        {%- if block.settings.bg_image_mobile != blank -%}
+        @media (max-width: 749.9px) {
+          .slide-{{ block.id }} {
+            background-image: url('{{ block.settings.bg_image_mobile | img_url: '800x' }}');
+          }
+        }
+        {%- elsif block.settings.bg_image != blank -%}
+        @media (max-width: 749.9px) {
+          .slide-{{ block.id }} {
+            background-image: url('{{ block.settings.bg_image | img_url: '1000x' }}');
+          }
+        }
+        {%- endif -%}
+        {%- if block.settings.bg_image != blank -%}
+        @media (min-width: 750px) {
+          .slide-{{ block.id }} {
+            background-image: url('{{ block.settings.bg_image | img_url: '1600x' }}');
+          }
+        }  
+        {%- endif -%}
+        @media (max-width: 749.9px) {
+          .slide-{{ block.id }} .align-items-start,
+          .slide-{{ block.id }} .align-items-center {
+            align-items: flex-end!important;
+          }
+        }
+      </style>
+        
+      <div class="carousel-item {% if forloop.index == 1 %}active{% endif %}" id="#lps-image-carousel-block-{{ block.id }}">
+        <div class="lps-image-carousel lps-image-banner d-flex slide-{{ block.id }}" style="background-position: {{ block.settings.bg_alignment }};background-color:{{ block.settings.bg_color }};">
+          
+          {%- if block.settings.heading_alignment contains 'top' -%}
+          {%- assign vert_align = 'align-items-start' -%}
+          {%- endif -%}
+          {%- if block.settings.heading_alignment contains 'center' -%}
+          {%- assign vert_align = 'align-items-center' -%}
+          {%- endif -%}
+          {%- if block.settings.heading_alignment contains 'bottom' -%}
+          {%- assign vert_align = 'align-items-end' -%}
+          {%- endif -%}
+          <div class="container">
+            <div class="row justify-content-center h-100 {{ vert_align }}" style="position: relative;">
+              <div class="line-top"></div>
+              <div class="line-bottom"></div>
+              <div class="logo-bottom"></div>
+              <div class="block-wrapper col-10 col-md-12">
+                <div class="row justify-content-center">
+                  {% assign cta_count = 0 %}
+                  {% if block.settings.cta_1 != blank and block.settings.cta_1_link != blank %}
+                    {% assign cta_count = cta_count | plus: 1 %}
+                  {%- endif -%}
+                  {% if block.settings.cta_2 != blank and block.settings.cta_2_link != blank %}
+                    {% assign cta_count = cta_count | plus: 1 %}
+                  {%- endif -%}
+                  {% if block.settings.cta_3 != blank and block.settings.cta_3_link != blank %}
+                    {% assign cta_count = cta_count | plus: 1 %}
+                  {%- endif -%}
+                  {%- if block.settings.title != blank -%}
+                  
+                  {%- if block.settings.heading_alignment contains 'right' -%}
+                  <div class="col-12 col-md-4"></div>
+                  {%- endif -%}
+                  
+                  <div class="col-12 col-md-4">
+                    <div class="d-flex align-items-center" style="margin-top: -0.1em;margin-bottom: -0.1em;">
+                      <div class="lined-title">
+                        <h2 class="heading-{{ block.id }}"><span>{{ block.settings.title }}</span></h2>
+                      </div>
+                    </div>
+                    {% if cta_count > 0 %}
+                    <div class="row flex-row btns-right mt-4">
+                    {% case cta_count %}
+                    {% when 1 %}
+                      <div class="col-12">
+                      {% if block.settings.cta_1 != blank and block.settings.cta_1_link != blank %}
+                        <a href="{{ block.settings.cta_1_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_1 }}</a>
+                      {%- endif -%}
+                      {% if block.settings.cta_2 != blank and block.settings.cta_2_link != blank %}
+                        <a href="{{ block.settings.cta_2_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_2 }}</a>
+                      {%- endif -%}
+                      {% if block.settings.cta_3 != blank and block.settings.cta_3_link != blank %}
+                        <a href="{{ block.settings.cta_3_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_3 }}</a>
+                      {%- endif -%}
+                      </div>
+                    {% when 2 %}
+                      {% if block.settings.cta_1 != blank and block.settings.cta_1_link != blank %}
+                        <div class="col-6">
+                           <a href="{{ block.settings.cta_1_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_1 }}</a>
+                        </div>
+                      {%- endif -%}
+                      {% if block.settings.cta_2 != blank and block.settings.cta_2_link != blank %}
+                        <div class="col-6">
+                           <a href="{{ block.settings.cta_2_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_2 }}</a>
+                        </div>
+                      {%- endif -%}
+                      {% if block.settings.cta_3 != blank and block.settings.cta_3_link != blank %}
+                        <div class="col-6">
+                           <a href="{{ block.settings.cta_3_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_3 }}</a>
+                        </div>
+                      {%- endif -%}
+                    {% when 3 %}
+                      <div class="col-4">
+                         <a href="{{ block.settings.cta_1_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_1 }}</a>
+                      </div>
+                      <div class="col-4">
+                         <a href="{{ block.settings.cta_2_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_2 }}</a>
+                      </div>
+                      <div class="col-4">
+                         <a href="{{ block.settings.cta_3_link }}" class="btn btn-cta btn-cta-{{ block.id }}">{{ block.settings.cta_3 }}</a>
+                      </div>
+                    {%- endcase -%}
+                    </div>
+                    {%- endif -%}
+                  </div>
+                  
+                  {%- if block.settings.heading_alignment contains 'left' -%}
+                  <div class="col-12 col-md-4"></div>
+                  {%- endif -%}
+                  
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      {%- endfor -%}
+  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+  
+</div>
+
+{% schema %}
+{
+  "name": "LPS Image Carousel",
+  "tag": "section",
+  "class": "lps-image-carousel-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Container"
+    },
+    {
+      "type": "select",
+      "id": "container-ratio-desktop",
+      "options": [
+        {
+          "value": "26_9",
+          "label": "26 / 9"
+        },
+        {
+          "value": "21_9",
+          "label": "21 / 9"
+        },
+        {
+          "value": "18_9",
+          "label": "18 / 9"
+        },
+        {
+          "value": "16_9",
+          "label": "16 / 9"
+        }
+      ],
+      "default": "21_9",
+      "label": "Desktop Aspect Ratio"
+    },    
+    {
+      "type": "select",
+      "id": "container-ratio-mobile",
+      "options": [
+        {
+          "value": "4_6",
+          "label": "4 / 6"
+        },
+        {
+          "value": "4_5",
+          "label": "4 / 5"
+        },
+        {
+          "value": "1_1",
+          "label": "1 / 1"
+        }
+      ],
+      "default": "4_5",
+      "label": "Mobile Aspect Ratio"
+    },
+    {
+      "type": "range",
+      "id": "seconds",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "label": "Slide delay",
+      "default": 5
+    },
+    {
+    	"type": "paragraph",
+      "content": "Delay in seconds between each carousel slide change."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "img_btn_column",
+      "name": "Carousel Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Heading Text",
+          "label": "Heading Text"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "min": 24,
+          "max": 52,
+          "step": 1,
+          "unit": "px",
+          "label": "Heading Font Size",
+          "default": 32
+        },
+        {
+          "type": "select",
+          "id": "heading_alignment",
+          "options": [
+            {
+              "value": "left top",
+              "label": "Left Top"
+            },
+            {
+              "value": "left center",
+              "label": "Left Center"
+            },
+            {
+              "value": "left bottom",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "right top",
+              "label": "Right Top"
+            },
+            {
+              "value": "right center",
+              "label": "Right Center"
+            },
+            {
+              "value": "right bottom",
+              "label": "Right Bottom"
+            }
+          ],
+          "default": "left bottom",
+          "label": "Heading Alignment"
+        },
+        {
+          "type": "header",
+          "content": "CTA Buttons"
+        },
+        {
+          "type": "text",
+          "id": "cta_1",
+          "label": "CTA Button 1 Text",
+          "info": "Leave blank for no button"
+        },
+        {
+          "type": "url",
+          "id": "cta_1_link",
+          "label": "CTA Button 1 Link",
+          "info": "Leave blank for no button"
+        },
+        {
+          "type": "text",
+          "id": "cta_2",
+          "label": "CTA Button 2 Text",
+          "info": "Leave blank for no button"
+        },
+        {
+          "type": "url",
+          "id": "cta_2_link",
+          "label": "CTA Button 2 Link",
+          "info": "Leave blank for no button"
+        },
+        {
+          "type": "text",
+          "id": "cta_3",
+          "label": "CTA Button 3 Text",
+          "info": "Leave blank for no button"
+        },
+        {
+          "type": "url",
+          "id": "cta_3_link",
+          "label": "CTA Button 3 Link",
+          "info": "Leave blank for no button"
+        },
+        {
+          "type": "range",
+          "id": "cta_font_size",
+          "min": 10,
+          "max": 36,
+          "step": 1,
+          "unit": "px",
+          "label": "CTA Button Font Size",
+          "default": 18
+        },
+        {
+          "type": "header",
+          "content": "Backgrounds"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image_mobile",
+          "label": "Mobile Background Image"
+        },
+        {
+          "type": "select",
+          "id": "bg_alignment",
+          "options": [
+            {
+              "value": "left top",
+              "label": "Left Top"
+            },
+            {
+              "value": "left center",
+              "label": "Left Center"
+            },
+            {
+              "value": "left bottom",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "right top",
+              "label": "Right Top"
+            },
+            {
+              "value": "right center",
+              "label": "Right Center"
+            },
+            {
+              "value": "right bottom",
+              "label": "Right Bottom"
+            },
+            {
+              "value": "center top",
+              "label": "Center Top"
+            },
+            {
+              "value": "center center",
+              "label": "Center Center"
+            },
+            {
+              "value": "center bottom",
+              "label": "Center Bottom"
+            }
+          ],
+          "default": "center center",
+          "label": "Background Alignment"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "BG Color",
+          "default": "#F0F0F0"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Image Carousel"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,278 @@
+{{ 'LPS-section-size-table.css' | asset_url | stylesheet_tag }}
+
+<section id="lps-product-size-table-snowboard-{{ section.id }}" class="lps-product-size-table-snowboard container lps-size-table py-5">
+  <div id="size-table-anchor"></div>
+  <div class="row justify-content-center lps-size-table-snowboard mb-3">
+    <div class="col-12">
+      <h2>{{ product.title }} Size Chart</h2>
+    </div>
+    <div class="col-12 lps-size-table-col">
+      <div class="lps-size-table-wrapper p-0">
+        <table class="snowboard">
+          <tbody>
+            <tr>    			
+              <th>Length (cm)</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{variant.option1}}</p></td>{% endfor %}
+            </tr>
+            {% if product.variants.first.metafields.global.sizetable-contact-length-cm %}
+            <tr>    			
+              <th>Contact Length (cm)</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{ variant.metafields.global.sizetable-contact-length-cm }}</p></td>{% endfor %}  			
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.sizetable-effective-edge-cm %}
+            <tr>    			
+              <th>Effective Edge (cm)</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{ variant.metafields.global.sizetable-effective-edge-cm }}</p></td>{% endfor %}  			
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.waist-width %}
+            <tr>    			
+              <th>Waist Width (cm)</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{ variant.metafields.global.waist-width }}</p></td>{% endfor %}  			
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.sizetable-tip-width-cm %}
+            <tr>    			
+              <th>Tip/Tail Width (cm)</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{ variant.metafields.global.sizetable-tip-width-cm }} / {{ variant.metafields.global.sizetable-tail-width-cm }}</p></td>{% endfor %}  			
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.sizetable-sidecut-radius-m %}
+            <tr>    			
+              <th>Sidecut Radius (m)</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{ variant.metafields.global.sizetable-sidecut-radius-m }}</p></td>{% endfor %}  			
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.sizetable-setback-cm %}
+            <tr>    			
+              <th>Setback (cm)</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{ variant.metafields.global.sizetable-setback-cm }}</p></td>{% endfor %}  			
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.sizetable-inserts %}
+            <tr>    			
+              <th>Inserts</th>
+              {% for variant in product.variants %}<td class="text-end"><p>{{ variant.metafields.global.sizetable-inserts }}</p></td>{% endfor %}  			
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.sizetable-min-stance-cm and product.variants.first.metafields.global.sizetable-max-stance-cm %}
+            <tr>    			
+              <th>Min/Max Stance (in)</th>
+              {% for variant in product.variants %}
+              {% assign stancemin = variant.metafields.global.sizetable-min-stance-cm %}
+              {% assign stancemax = variant.metafields.global.sizetable-max-stance-cm %}
+              {% assign stanceminin = stancemin | divided_by: 2.54 | round: 1 %}
+              {% assign stancemaxin = stancemax | divided_by: 2.54 | round: 1 %}
+              <td class="text-end">
+                <p>{{ stanceminin }}-{{ stancemaxin }}</p>
+              </td>
+              {% endfor %}		
+            </tr>
+            <tr>    			
+              <th>Min/Max Stance (cm)</th>
+              {% for variant in product.variants %}
+              {% assign stancemin = variant.metafields.global.sizetable-min-stance-cm %}
+              {% assign stancemax = variant.metafields.global.sizetable-max-stance-cm %}
+              <td class="text-end">
+                <p>{{ stancemin }}-{{ stancemax }}</span></p>
+              </td>
+              {% endfor %}		
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.sizetable-float-ratio %}
+            <tr>    			
+              <th>Float Rating</th>
+              {% for variant in product.variants %}<td><p>{{ variant.metafields.global.sizetable-float-ratio }}</p></td>{% endfor %}		
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.recommend-weight %}
+            <tr>    			
+              <th>Weight Recommendation (Lbs)</th>
+              {% for variant in product.variants %}
+              {% assign weightmin = variant.metafields.global.recommend-weight | minus: 10 %}
+              {% assign weightmax = variant.metafields.global.recommend-weight | plus: 10 %}
+              {% assign weightminlbs = weightmin | times: 2.2 | round %}
+              {% assign weightmaxlbs = weightmax | times: 2.2 | round %}
+              <td class="text-end">
+                <p>{{ weightminlbs }}-{{ weightmaxlbs }}</p>
+              </td>
+              {% endfor %}		
+            </tr>
+            <tr>    			
+              <th>Weight Recommendation (Kg)</th>
+              {% for variant in product.variants %}
+              {% assign weightmin = variant.metafields.global.recommend-weight | minus: 10 %}
+              {% assign weightmax = variant.metafields.global.recommend-weight | plus: 10 %}
+              <td class="text-end">
+                <p>{{ weightmin }}-{{ weightmax }}</p>
+              </td>
+              {% endfor %}		
+            </tr>
+            {% endif %}
+            {% if product.variants.first.metafields.global.recommend-boot %}
+            <tr>    			
+              <th>Boot Size (us/uk)</th>
+              {% for variant in product.variants %}
+              {% assign bootmin = variant.metafields.global.recommend-boot | minus: 1 %}
+              {% assign bootmax = variant.metafields.global.recommend-boot | plus: 2 %}
+              {% assign bootminus = bootmin | plus: 1.694 | divided_by: 0.847 | minus: 25 | round %}
+              {% assign bootmaxus = bootmax | plus: 1.694 | divided_by: 0.847 | minus: 25 | round %}
+              {% assign bootminuk = bootminus | minus: 1 %}
+              {% assign bootmaxuk = bootmaxus | minus: 1 %}
+              <td class="text-end">
+                <p>{{ bootminus }}-{{ bootmaxus }} / {{ bootminuk }}-{{ bootmaxuk }}</p>
+              </td>
+              {% endfor %}		
+            </tr>
+            <tr>    			
+              <th>Boot Size (eu/cm)</th>
+              {% for variant in product.variants %}
+              {% assign bootmin = variant.metafields.global.recommend-boot | minus: 1 %}
+              {% assign bootmax = variant.metafields.global.recommend-boot | plus: 2 %}
+              {% assign bootmineu = bootmin | plus: 1.334 | divided_by: 0.667 | round %}
+              {% assign bootmaxeu = bootmax | plus: 1.334 | divided_by: 0.667 | round %}
+              <td class="text-end">
+                <p>{{ bootmineu }}-{{ bootmaxeu }} / {{ bootmin }}-{{ bootmax }} </p>
+              </td>
+              {% endfor %}		
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>    
+    </div>    
+    {%- if section.settings.note_text_sizing != blank -%}
+    <div class="col-12 mt-5">
+      <p class="mb-0">{{ section.settings.note_text_sizing }}</p>
+    </div>
+    {%- endif -%}
+  </div>
+
+</section>
+
+<script>
+
+    var waitForJQuery = setInterval(function () {
+      if (typeof $ != 'undefined') {
+        
+        // set size selects
+        $('#boot-size-units').on('change', function() {
+          var bootSizeUnit = $('#boot-size-units').val();
+            setBoot_Unit(bootSizeUnit);
+        });
+        $('#weight-units').on('change', function() {
+          var weightUnit = $('#weight-units').val();
+            setWeight_Unit(weightUnit);
+        });
+        
+        // 2s delay to set values after updating
+        setTimeout(update_DropDowns, 1000);
+        
+        clearInterval(waitForJQuery);
+      }
+    }, 100);
+     
+    function setBoot_Unit(sizeType) {
+      // show/hide
+      $('#boot-size-value option').attr('disabled', 'disabled').hide();
+      $('#boot-size-value option.'+sizeType).removeAttr('disabled').show();
+      // if selected is disabled, select first enabled
+      if ($("#boot-size-value option:selected").attr('disabled')) {
+        $('#boot-size-value').find('option:enabled:first').prop('selected',true);
+      }
+      // update label
+      $('.boot-size-value-label').html("Size ("+sizeType.toUpperCase()+")");
+    }
+    function setWeight_Unit(weightType) {
+      if (weightType == 'lbs') {
+        $('.weight-value-label').html("Weight in pounds");
+      } else {
+        $('.weight-value-label').html("Weight in kilograms");
+      }
+    }  
+    function update_DropDowns() {     
+      var bootSizeUnit = $('#boot-size-units').val();
+      setBoot_Unit(bootSizeUnit);
+      var weightUnit = $('#weight-units').val();
+      setWeight_Unit(weightUnit);
+    }
+    
+</script>
+
+{% schema %}
+{
+  "name": "LPS Size Table Snowboard",
+  "tag": "section",
+  "class": "lps-size-table-snowboard",
+  "settings": [
+    {
+    	"type": "header",
+      "content": "Size Table"
+    },
+    {
+    	"type": "paragraph",
+      "content": "Displays size table from values held in variant metafields:"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-contact-length-cm"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-effective-edge-cm"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.waist-width"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-tip-width-cm"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-sidecut-radius-m"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-setback-cm"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-inserts"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-min-stance-cm"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-max-stance-cm"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.sizetable-float-ratio"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.recommend-weight"
+    },
+    {
+    	"type": "paragraph",
+      "content": "global.recommend-boot"
+    },
+     {
+      "type": "text",
+      "id": "note_text_sizing",
+      "label": "Size Table Note",
+      "info": "Text below sizing table"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Size Table Snowboard"
+    }
+  ]
+}
+{% endschema %}

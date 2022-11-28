@@ -1,0 +1,93 @@
+<style>
+  .lps-team-block a {
+    text-decoration: none;
+  }
+  .lps-team-block a:hover div.lps-team-img {
+    opacity: 0.8;
+  }
+  .lps-team-block h3 {
+    text-transform: uppercase;
+    line-height: 4rem;
+    text-align: center;
+  }
+  .lps-team-img {
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    background-size: cover;
+  }
+</style>
+
+<div id="lps-product-details-{{ section.id }}" class="container-indent">
+  <div class="container">
+    <div class="row justify-content-center pt-5">
+      {% if section.settings.title != blank %}
+      <div class="col-12 mb-3">
+        <h1>{{ section.settings.title | escape }}</h1>
+      </div>
+      {% endif %}
+      {%- for block in section.blocks -%}
+      <div class="col-12 col-sm-6 col-md-4 lps-team-block mb-5">
+        {%- if block.settings.team_link != blank -%}<a href="{{ block.settings.team_link }}">{%- endif -%}
+        {%- if block.settings.image != blank -%}
+        <div class="lps-team-img" style="background-image: url('{{ block.settings.image | img_url: '800x' }}');"></div>
+        {%- endif -%}
+        {%- if block.settings.title != blank -%}
+        <h3>{{ block.settings.title }}</h3>
+        {%- else -%}
+        <h2>&nbsp;</h2>
+        {%- endif -%}
+        {%- if block.settings.team_link != blank -%}</a>{%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LPS Team Pro",
+  "class": "lps-team-pro-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Pro Team",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name"
+        },
+        {
+          "type": "url",
+          "id": "team_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Team Pro",
+      "blocks": [
+        {
+          "type": "team"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
