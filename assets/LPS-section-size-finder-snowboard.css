@@ -1,0 +1,62 @@
+/* recommend app */
+
+.board-finder a {
+    text-decoration: underline;
+}
+.board-finder .form-group label {
+  font-size: 1.2rem;
+  color: #000;
+}
+.board-finder .form-group input,
+.board-finder .form-group select {
+  padding: 1rem 1rem 0.7rem 1rem; 
+}
+.board-finder .reset-container {
+  display: inline-block;
+  margin-top: 8px;
+}
+.board-finder .board-reset,
+.board-finder .size-reset {
+  position: relative;
+  padding-right: 22px;
+}
+.board-finder .board-reset i,
+.board-finder .size-reset i {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -11px;
+  line-height: 20px;
+  font-size: 20px;
+}
+.board-finder .result .product-page-add-to-cart {
+  margin-top: 2rem;
+}
+.board-finder .result .product-page-add-to-cart p {
+  display: inline-block;
+  margin: 0;
+  padding: 1rem 1.5rem 0 0;
+  line-height: 3rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  vertical-align:top;
+}
+.board-finder .result .product-page-add-to-cart .btn-addtocart {
+  text-decoration: none;
+  display: inline-block;
+  height: 4rem;
+  line-height: 3rem;
+  padding: 0.6rem 1.5rem 0.4rem 1.5rem;
+  vertical-align:top;
+  border: 1px solid #000;
+}  
+
+.board-finder .result h3 {
+  font-size: 2.5rem;
+}
+.board-finder .result h4 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* end recommend app */

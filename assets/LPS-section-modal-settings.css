@@ -1,0 +1,70 @@
+
+.modal.modal-settings {
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #fff;
+}
+.modal.modal-settings .modal-content {
+	border: none;
+	background: none;
+  	opacity: 0;
+  	transform: scale(0.7);
+  	transition: all 0.3s;
+}
+.modal.show.modal-settings .modal-content {
+  	opacity: 1;
+  	transform: scale(1);
+}
+.lps-modal-settings-block h4 {
+	font-size: 1.6rem;
+	color: #fff;
+	text-transform: uppercase;
+}
+.lps-modal-settings-block ul {
+	list-style: none;
+	padding: 0;
+}
+.lps-modal-settings-block ul li {
+	padding: 0.3rem 0;
+	font-weight: bold;
+	color: var(--red);
+	text-transform: uppercase;
+}
+.lps-modal-settings-block ul li a {
+	text-decoration: none;
+	display: block;
+	padding: 0;
+	color: var(--grey);
+}
+.lps-modal-settings-block ul li a:hover {
+	color: var(--white);
+}
+.modal.modal-settings .btn-close {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+    opacity: .5;
+	position: relative;
+	background: none;
+}
+.modal.modal-settings .btn-close:before,
+.modal.modal-settings .btn-close:after {
+	display: block;
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -0.7em;
+	width: 100%;
+	height: 2px;
+	background-color: #fff;
+}
+.modal.modal-settings .btn-close:before {
+	transform: rotate(-45deg);
+}
+.modal.modal-settings .btn-close:after {
+	transform: rotate(45deg);
+}

@@ -1,0 +1,78 @@
+.icon-block {
+  text-align: center;
+}
+.icon-block a {
+  display: block;
+  text-decoration: none;
+}
+.icon-block h3,
+.icon-block p {
+  text-align: center;
+  text-decoration: none;
+}
+.icon-block img {
+  margin-bottom: 1.5rem;
+}
+.icon-block a img {
+  transform: scale(1);
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in;
+}
+.icon-block a:hover img {
+  transform: scale(1.15);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.title-block a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in;
+}
+.title-block a:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+.title-block h1 {
+  min-width: 100%;
+  text-align: center;
+  font-size: inherit;
+  padding: 0.5em 0;
+  margin: 0;
+  text-shadow: 0 -0.9em 0 var(--black), 0 0.9em 0 var(--black);
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+.title-block {
+  position: relative;
+  overflow: hidden;
+  height: 1.9em;
+  font-size: 6.2em;
+  background-image: url('2223-header-bg-rough.png');
+  background-position: center bottom;
+  background-color: var(--red);
+  background-repeat: no-repeat;
+}
+@media (min-width: 576px) {
+  .title-block { font-size: 3em; }
+}
+@media (min-width: 768px) {
+  .title-block { font-size: 3em; }
+}
+@media (min-width: 992px) {
+  .title-block { font-size: 4.2em; }
+}
+@media (min-width: 1200px) {
+  .title-block { font-size: 5.7em; }
+}
+

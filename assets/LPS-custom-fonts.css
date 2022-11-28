@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Gibson';
+    src: url('//cdn.shopify.com/s/files/1/0370/4055/4115/t/12/assets/gibson-webfont.woff2?v=127591013617892067171662109651') format('woff2'),
+         url('//cdn.shopify.com/s/files/1/0370/4055/4115/t/12/assets/gibson-webfont.woff?v=88326528425103729831662109651') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GibsonSemibold';
+    src: url('//cdn.shopify.com/s/files/1/0370/4055/4115/t/12/assets/gibson-semibold-webfont.woff2?v=180660677258182598521662109647') format('woff2'),
+         url('//cdn.shopify.com/s/files/1/0370/4055/4115/t/12/assets/gibson-semibold-webfont.woff?v=141848767901588644891662109677') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PressGothic';
+    src: url('//cdn.shopify.com/s/files/1/0370/4055/4115/t/12/assets/PressGothicPro.ttf?v=161426044395330546141662109646') format('ttf'),
+         url('//cdn.shopify.com/s/files/1/0370/4055/4115/t/12/assets/PressGothicPro.woff2?v=75483805142070895291662109652') format('woff2'),
+         url('//cdn.shopify.com/s/files/1/0370/4055/4115/t/12/assets/PressGothicPro.woff?v=96315333888488096731662109647') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
