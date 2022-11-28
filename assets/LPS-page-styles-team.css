@@ -1,0 +1,45 @@
+/* TEAM PAGES */
+
+/* bg colour */
+#MainContent {
+   background: var(--black);
+}
+.full-width-title svg {
+  width: 100%;
+}
+.full-width-title svg tspan,
+.full-width-title svg textPath,
+.full-width-title svg text {
+  font-family: "PressGothic" !important;
+  letter-spacing: normal;
+}
+.team-content {
+  margin-top: 0 !important;
+  background-color: #000;
+  color: #fff;
+}
+.team-content h3 {
+  color: #ea131e;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.team-content h4 {
+  color: #fff;
+  padding: 0 !important;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 16px !important;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.team-content p {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom:40px;
+} 
+.team-content .embed-responsive  {
+  margin-top: 40px;
+  margin-bottom:40px;
+} 
+
+/* END TEAM PAGES */
