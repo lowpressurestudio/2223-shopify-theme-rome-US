@@ -1,0 +1,101 @@
+/* LPS-product-binding-popover-map */
+
+  	.popover-map {
+    	position: relative;
+  	}
+  	.pop-button {
+    	position: absolute;
+    	display: block !important;
+    	top: 0;
+    	left: 0;
+    	width: 2.4rem;
+    	height: 2.4rem;
+    	margin: -1.2rem 0 0 -1.2rem;
+    	background-color: rgb(255,255,0);
+    	border-radius: 6px;
+    	border: 1px solid #000;
+		transition: all 0.15s ease-in-out;
+  	}
+  	.pop-button:before,
+  	.pop-button:after {
+    	display: block;
+    	content: '';
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	background-color: #000;
+    	transform: translate(-50%, -50%);
+  	}
+  	.pop-button:after {
+    	width: 1.5rem;
+    	height: 3px;
+  	}
+  	.pop-button:before {
+    	width: 3px;
+    	height: 1.5rem;
+  	}
+	@media (min-width: 991px) {
+		.pop-button {
+			width: 3.4rem;
+			height: 3.4rem;
+			margin: -1.7rem 0 0 -1.7rem;
+		}
+  		.pop-button:after {
+    		width: 2rem;
+  		}
+  		.pop-button:before {
+    		height: 2rem;
+  		}
+	}
+  	.pop-button:hover {
+		cursor: pointer;
+    	width: 4rem;
+    	height: 4rem;
+    	margin: -2rem 0 0 -2rem;
+		box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+		transform: scale(1.05);
+	}
+  	
+  	/* popover button positions */
+  	.pop-button.chassis-fullwrap-chassis 			{ left: 50%; top: 75%; }
+  	.pop-button.chassis-size-adjustable-base		{ left: 30%; top: 87%; }
+  	.pop-button.chassis-carbon-infused-baseplate	{ left: 62%; top: 90%; }
+  	.pop-button.chassis-adjustable-padding			{ left: 89%; top: 87%; }
+  	.pop-button.chassis-canted-footbed				{ left: 17%; top: 89%; }
+  	.pop-button.straps-infinity-ankle-strap			{ left: 58%; top: 52%; }
+  	.pop-button.straps-auxtech						{ left: 86%; top: 63%; }
+  	.pop-button.straps-bulletproof-buckles			{ left: 42%; top: 55%; }
+  	.pop-button.straps-fast-entry-ladders			{ left: 26%; top: 67%; }
+	.pop-button.highbacks-highback-rotation			{ left: 33%; top: 71%; }
+	.pop-button.highbacks-quaterback				{ left: 13%; top: 37%; }
+	.pop-button.highbacks-fullbacks					{ left: 13%; top: 37%; }
+	.pop-button.straps-wrap-ankle-strap				{ left: 58%; top: 52%; }
+  	.pop-button.chassis-dualdensity-footpad			{ left: 85%; top: 92%; }
+	.pop-button.chassis-cushioning-subbasepad		{ left: 50%; top: 92%; }
+	.pop-button.straps-twostep-toeladder			{ left: 74%; top: 85%; }
+	  /* TO DO */
+	
+	.modal.modal-binding-popover-map {
+		background-color: rgba(255, 255, 255, 0.95);
+	}
+	.modal.modal-binding-popover-map .modal-content {
+		border: none;
+		background: none;
+    	opacity: 0;
+    	transform: scale(0.7);
+    	transition: all 0.3s;
+	}
+	.modal.show.modal-binding-popover-map .modal-content {
+    	opacity: 1;
+    	transform: scale(1);
+	}
+	.modal.modal-binding-popover-map .modal-body button {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+	
+	
+	
+	
+		

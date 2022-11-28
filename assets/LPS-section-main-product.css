@@ -1,0 +1,95 @@
+
+/* carry over styles from .product--thumbnail */
+
+@media screen and (min-width: 750px) {
+  .product--lps_vert_thumbnail .product__media-gallery {
+    display: block;
+    position: sticky;
+    top: 3rem;
+    z-index: 2;
+  }
+  .product--lps_vert_thumbnail .thumbnail-list {
+    padding-right: var(--media-shadow-horizontal-offset);
+  }
+  .product--lps_vert_thumbnail .product__media-list {
+    padding-bottom: var(--media-shadow-vertical-offset);
+  }
+  .product--lps_vert_thumbnail .product__media-item:not(.is-active) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .product--lps_vert_thumbnail .is-active > .product__modal-opener:not(.product__modal-opener--image) {
+    display: none;
+  }
+  .product--lps_vert_thumbnail .is-active .deferred-media {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* adjusted layout styles */
+@media screen and (min-width: 750px) {
+	/* CONTAINER */
+	.product--lps_vert_thumbnail media-gallery[id*='MediaGallery-template'] {
+		display: flex;
+		flex-flow: row-reverse nowrap;
+	}
+	/* MAIN IMAGE */
+	.product--lps_vert_thumbnail slider-component[id*='GalleryViewer-template'] {
+		display: flex;
+		flex-grow: 1;
+	}
+	.product--lps_vert_thumbnail slider-component[id*='GalleryViewer-template'] ul {
+		width: 100%;
+	}
+	.product--lps_vert_thumbnail slider-component[id*='GalleryViewer-template'] ul li {
+		overflow: hidden;
+	}
+
+	/* THUMBNAILS */
+	.product--lps_vert_thumbnail slider-component[id*='GalleryThumbnails-template'] {
+		display: flex;
+		width: 120px;
+	}
+	.product--lps_vert_thumbnail slider-component[id*='GalleryThumbnails-template'] ul.thumbnail-list {
+		display: block;
+		width: 100%;
+	}
+	.product--lps_vert_thumbnail slider-component[id*='GalleryThumbnails-template'] ul.thumbnail-list li {
+		aspect-ratio: 4/5;
+		margin-right: 16px;
+		margin-bottom: 4px;
+		background: var(--img-bg);
+	}
+	.product--lps_vert_thumbnail slider-component[id*='GalleryThumbnails-template'] ul.thumbnail-list li button.thumbnail {
+		width: 100%;
+	}
+	.product--lps_vert_thumbnail slider-component[id*='GalleryThumbnails-template'] ul.thumbnail-list li button.thumbnail img {
+		object-fit: contain;
+	}
+	.product--lps_vert_thumbnail slider-component[id*='GalleryThumbnails-template'] ul.thumbnail-list li .thumbnail__badge {
+		top: 50%;
+		left: 50%;
+		margin-left: -1.5rem;
+		margin-top: -1.5rem;
+	}
+}
+
+ul.product__media-list li {
+	background-color: #efefef;
+}
+
+/* @media screen and (min-width: 990px) {
+  .product__media-list .product__media-item:first-child,
+  .product__media-list .product__media-item--full {
+  	width: auto; // CHANGE FIRST GALLERY IMAGE TO HALF WIDTH ON WODE SCREENS
+    max-width: 100%;
+  }
+} */
+
+
+
+
+

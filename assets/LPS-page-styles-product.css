@@ -1,0 +1,154 @@
+/* PRODUCT PAGE */
+
+/* add to cart button */
+.product-form__submit {
+  background-color: var(--red);
+}
+.product-form__submit:after {
+  box-shadow: none;
+}
+.product-form__submit,
+.shopify-payment-button__button--unbranded {
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+/* title effect */
+.product__title {
+  font-size: 7rem;
+  line-height: 1;
+  overflow: hidden;
+  color: var(--black);
+  position: relative;
+  padding-bottom: 2.2rem;
+  margin-bottom: 0;
+}
+.product__title:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0.8rem;
+  width: 100%;
+  height: 5px;
+  background-color: var(--red);
+}
+.product__title.small-title {
+  font-size: 5rem;
+  padding-bottom: 2.2rem;
+  text-shadow: none;
+  padding-top: 0;
+}
+.product__info-container > .product__text {
+    margin: 0;
+}
+.product__text.subtitle {
+  margin: 0 0 5rem 0;
+  color: var(--black);
+  line-height: 1;
+  text-transform: capitalize;
+}
+@media screen and (min-width: 768px) {
+  .product__text.subtitle {
+    color: var(--white);
+  }
+  .product__title {
+    color: var(--white);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .product__title {
+    padding-top: 4rem;
+    text-shadow: 0 -7rem 0 var(--white);
+  }
+}
+/* long titles */
+h1.product__title span {
+  text-transform: none;
+  font-size: 2.3rem;
+}
+
+/* bg texture */
+#MainContent {
+   background: url('bg-top-grey-texture.jpg') repeat-x center top;
+ }
+
+/* gallery */
+.round-corners {
+  overflow: hidden;
+}
+.gallery-wrapper {
+  list-style: none;
+  padding-left: 0;
+}
+@media (min-width: 750px) {
+	.gallery-wrapper {
+  	margin-left: -1em;
+	}
+	.gallery-block {
+  	margin-left: 1em;
+  	margin-bottom: 1em;
+	}
+  .product__media-wrapper {
+    margin-top: 0;
+  }
+}
+.product__media-wrapper .product__media-list .product__modal-opener {
+  border: none;
+}
+
+.badge-message {
+  color: var(--white);
+  background-color: var(--black);
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+
+/* end gallery */
+
+/* .specs_finder_block a {
+  color: var(--black);
+  display: inline-block;
+  margin-right: 2rem;
+}
+.shipping_warranty_block a {
+  text-decoration: none;
+  color: var(--black);
+}
+@media (min-width: 750px) {
+  .shipping_warranty_block p {
+    display: inline-block;
+    width: 49%;
+  }
+}
+.specs_finder_block a span,
+.shipping_warranty_block a span {
+  display:inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-size: cover;
+  margin-bottom: -0.4rem;
+  margin-right: 0.5rem;
+}
+.shipping_warranty_block a span {
+  margin-right: 0.7rem;
+}
+.size-table-link span {
+  background-image: url(icon-size-table.png);
+}
+.board-finder-link span {
+  background-image: url(icon-size-table.png);
+}
+.ship-warr-shipping-info-link span {
+  background-image: url(icon-shipping-info.png);
+}
+.ship-warr-2-plus-1-warranty-link span {
+  background-image: url(icon-2-plus-1-warranty.png);
+}
+.ship-warr-free-shipping-link span {
+  background-image: url(icon-free-shipping.png);
+}
+.ship-warr-45-day-returns-link span {
+  background-image: url(icon-45-day-returns.png);
+} */
+
+/* END PRODUCT PAGE */

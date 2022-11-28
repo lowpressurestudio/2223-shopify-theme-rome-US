@@ -1,0 +1,125 @@
+.lps-image-banner {
+  width: 100%;
+  background-size: cover;
+  position: relative;
+}
+.lps-image-banner .bg-white {
+  background-color: var-(--white);
+}
+.lps-image-banner .line-top {
+  height: 5px;
+  background-color: var(--red);
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 45px;
+  width: auto;
+  padding: 0;
+  width: auto;
+}
+.lps-image-banner .line-bottom {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  height: 45px;
+  border-top: 5px solid var(--red);
+  background-color: #808080;
+  background-image: url('2223-speckle-top.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  width: auto;
+}
+.lps-image-banner .logo-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -18px;
+  width: 36px;
+  height: 70px;
+  background-color: var(--red);
+  background-image: url('2223-password-logo-three-stars.jpg');
+  background-size: cover;
+  background-position: center top;
+}
+@media (min-width: 750px) {
+  .lps-image-banner .line-top,
+  .lps-image-banner .line-bottom {
+    left: 10px;
+    right: 10px;
+  }
+}
+.lps-image-banner .block-wrapper {
+  margin-bottom: 85px;
+}
+.lps-image-banner .lined-title {
+  width: 100%;
+  position: relative;
+}
+.lps-image-banner .cta-wrapper-col {
+  margin: 1em;
+  margin-block: 1em;  
+}
+@media (min-width: 750px) {
+  .lps-image-banner .cta-wrapper-col {
+    margin: 0.5em 1em;
+    margin-block: 0.5em 1em 0.5em 1em;  
+  }
+}
+.lps-image-banner .block-wrapper h1 {
+  margin: 0;
+  margin-block: 0;
+}
+.lps-image-banner .block-wrapper h2 {
+  margin: 0;
+  margin-block: 0;
+  display: block;
+  letter-spacing: -0.03em;
+}
+.lps-image-banner .lined-title h2 {
+  padding: 0;
+}
+.lps-image-banner .lined-title h2 span {
+  font-family: GibsonSemibold, monospace, sans-serif !important;
+  position: relative;
+  display: block;
+  line-height: 1.27em;
+  padding: 0 0.2em;
+  margin-left: 0.3em;
+  background: repeating-linear-gradient(#fff 0.1em, #fff 1.2em, rgba(255,255,255,0) 1.2em, rgba(255,255,255,0) 1.4em);
+  z-index: 3;
+}
+.lps-image-banner .lined-title h2:after {
+  display: block;
+  content:'';
+  position: absolute;
+  left: 0;
+  top: 0.125em;
+  bottom: 0.018em;
+  width: 1em;
+  background-color: var(--red);
+  z-index: 2;
+}
+.lps-image-banner .btn.btn-cta {
+  font-family: GibsonSemibold, monospace, sans-serif !important;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0.5em;
+}
+.lps-image-banner h1,
+.lps-image-banner h2 {
+  line-height: 1;
+}
+.lps-image-banner .btns-right .btn.btn-cta {
+  background-color: var(--white);
+  color: var(--black);
+  border-bottom: 4px solid var(--red);
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}

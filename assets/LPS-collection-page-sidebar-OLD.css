@@ -1,0 +1,161 @@
+/* COLLECTION FILTER */
+
+.lps-filter {
+  margin-top: 0 !important;
+  padding: 0 7.5px;
+}
+.collection-filters {
+  /* background-color: #F7F8F8;
+  padding: 16px; */
+}
+.collection-filters label {
+  display: block;
+  text-transform: capitalize;
+}
+.collection-filters input {
+  display: none;
+}
+.filter-title {
+  position: relative;
+  padding-bottom: 0 !important;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  line-height: 21px;
+}
+.filter-title b {
+  position:absolute;
+  display: block;
+  left: 0;
+  top: 50%;
+  margin-top: -12px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+}
+.filter-title b:after,
+.filter-title b:before {
+  position:absolute;
+  display: block;
+  content: "";
+  background-color: var(--black);
+}
+.filter-title b:before {
+  top: 4px;
+  left: 11px;
+  width: 1px;
+  height: 16px;
+}
+.filter-title b:after {
+  top: 11px;
+  left: 4px;
+  width: 16px;
+  height: 1px;
+}
+.filter-group {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--black);
+}
+.filter-group:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+@media (min-width: 791px) {
+  .filter-group:first-child {
+    padding-top: 15px;
+  }
+}
+.filter-group h5 {
+	font-size: 1.3em;
+	padding-top: 0;
+}
+.tt-item.active .filter-title b:before {
+  display: none;
+}
+.form-group label {
+  position: relative;
+  padding: 3px 0;
+  margin-bottom: 3px;
+  color: #ddd;
+}
+.form-group label:hover {
+  color: #777;
+  background-color: #efefef;
+  cursor: pointer;
+}
+.form-group input:checked + label {
+  color: var(--black);
+}
+.form-group input:checked + label b {
+  display:block;
+  position: absolute;
+  top: 3px;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid var(--black);
+}
+.form-group input:checked + label b:after,
+.form-group input:checked + label b:before {
+  display: block;
+  content: '';
+  position: absolute;
+  height: 2px;
+  background-color: var(--black);
+}
+.form-group input:checked + label b:before {
+  width: 6px;
+  transform: rotate(45deg);
+  top: 13px;
+  left: 3px;
+}
+.form-group input:checked + label b:after {
+  width: 16px;
+  transform: rotate(-45deg);
+  top: 10px;
+  left: 5px;
+}
+.filter-group-size {
+	margin-top: 10px;	
+}
+.filter-group-size .form-group input {
+  display: none;
+}
+.filter-group-size .form-group {
+  display: inline-block;
+  margin: 0 0 6px 1px;
+}
+.filter-group-size .form-group label {
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  width: 54px;
+  background-color: #efefef;
+  padding: 3px 0;
+}
+.filter-group-size .form-group label:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+.filter-group-size input:checked + label {
+  color: var(--black);
+  background-color: #fff;
+  border: 1px solid var(--black);
+}
+.re-select-all {
+  position: absolute;
+  right: 0;
+  top: 14px;
+  line-height: 24px;
+  padding-top: 6px;
+  font-size: 14px;
+  display: none;
+  z-index: 2;
+}
+/* hide old mobile filter */
+.tt-filters-options .tt-btn-toggle {
+  display: none;
+}
+
+/* END COLLECTION PAGE */
