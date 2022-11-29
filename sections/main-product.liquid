@@ -255,6 +255,12 @@
             <h1 class="product__title {{ title_class }}" {{ block.shopify_attributes }}>
               {{ new_title }}
             </h1>
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  <div class="product__text">
+    {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %}
+  </div>
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+
           {%- when 'price' -%}
             <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
@@ -600,6 +606,10 @@
     </modal-dialog>
   {%- endfor -%}
 
+
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}
 </section>
 
 {% javascript %}
