@@ -2,10 +2,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-<!-- KLAVIYO WEBTRACKING -->
-<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Umftm4"></script>
-<!-- END KLAVIYO WEBTRACKING -->
-
 {%- if template.name contains 'product' -%}{{ 'LPS-page-styles-product.css' | asset_url | stylesheet_tag }}{%- endif -%}
 {%- if page.handle contains '-tech-' -%}{{ 'LPS-page-styles-tech.css' | asset_url | stylesheet_tag }}{%- endif -%}
 {%- if page.handle contains 'team-' -%}{{ 'LPS-page-styles-team.css' | asset_url | stylesheet_tag }}{%- endif -%}
