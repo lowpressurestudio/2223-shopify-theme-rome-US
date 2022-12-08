@@ -74,7 +74,7 @@ body {
   text-decoration: none !important;
   color: currentColor;
 }
-a {
+a, .rte a {
   color: var(--red);
 }
 a:hover{
