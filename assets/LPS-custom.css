@@ -74,8 +74,11 @@ body {
   text-decoration: none !important;
   color: currentColor;
 }
-a, .rte a {
+a {
   color: var(--red);
+}
+.rte a {
+  color: var(--red) !important;
 }
 a:hover{
   color: var(--dark-grey);
