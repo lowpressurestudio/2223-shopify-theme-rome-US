@@ -99,7 +99,7 @@ a:hover{
 /* NAV */
 
 .cart-notification__heading.text-body {
-  color: var(--white);
+  color: var(--white); 
 }
 /* center desktop menu */
 @media screen and (min-width: 990px){
