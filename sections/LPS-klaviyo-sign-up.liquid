@@ -42,11 +42,8 @@
     <div class="container pb-5">
       <div class="bg-klaviyo">
         <div class="row justify-content-center h-100 align-items-end">
-          <div class="col-11 col-lg-8 pt-3 mt-4 mb-5" style="background-color: #fff;">
-            {%- if section.settings.title != blank -%}
-            <h3 class="klaviyo-title mx-5 pb-3 pt-0">{{ section.settings.title }}</h3>
-            {%- endif -%}
-            <div class="klaviyo-form p-3 pb-0">
+          <div class="col-11 col-lg-8 col-xl-6 p-0 mt-4 mb-4" style="background-color: #fff;">
+            <div class="klaviyo-form p-0">
               {%- if cart.currency.iso_code == "EUR" -%}
                 {%- if settings.klaviyo_newsletter_code_eu != blank -%}
                 {{ settings.klaviyo_newsletter_code_eu }}
@@ -81,12 +78,6 @@
   "tag": "section",
   "class": "lps-klaviyo-sign-up",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "default": "Title Text",
-      "label": "Title Text"
-    },
     {
       "type": "color",
       "id": "bg_color",
