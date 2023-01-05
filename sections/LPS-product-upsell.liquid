@@ -1,0 +1,35 @@
+
+<section id="lps-product-upsell-{{ section.id }}" class="lps-product-upsell page-width my-5">
+  <style>
+    #lps-product-upsell-{{ section.id }} .lps-product-upsell .ufe-widget:before {
+      content: '{{ section.settings.title }}';
+    }
+  </style>
+  <div class="lps-upsell"></div>
+</section>
+
+{% schema %}
+{
+  "name": "LPS Product Upsell",
+  "tag": "section",
+  "class": "lps-product-upsell-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Perfect Match"
+    },
+    {
+      "type": "paragraph",
+      "content": "Displays the UFE upsell if set. The 'position' setting in the upsell app should be '.lps-upsell'"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LPS Product Upsell"
+    }
+  ]
+}
+{% endschema %}
