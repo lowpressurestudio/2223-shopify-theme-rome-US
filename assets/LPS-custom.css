@@ -811,6 +811,369 @@ h1.collection-hero__title {
 
 /* END UFE UPSELL WIDGET */
 
+/* UFE UPSELL */
+
+.lps-product-upsell .ufe-widget {
+  background-color: var(--light-grey);
+  padding: 2rem 3rem;
+  position: relative;
+}
+.lps-product-upsell .ufe-trigger-product {
+  display: none;
+}
+.lps-product-upsell .ufe-style-inpage {
+  margin: 0;
+}
+.lps-product-upsell .ufe-style-inpage .ufe-wrap {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+.lps-product-upsell .ufe-offer .upsellBody,
+.lps-product-upsell .ufe-variant-selection-item,
+.lps-product-upsell .ufe-volume-discount-main {
+	display: flex;
+	align-items: center;
+}
+.lps-product-upsell .ufe-offer .upsellWrapper.ufe-normal .upsellBody {
+  flex-direction: row;
+}
+.lps-product-upsell .ufe-offer.o2o .upsellWrapper.ufe-normal .upsellImg {
+	width: 50% !important;
+	display: flex;
+}
+.lps-product-upsell .ufe-offer.o2o .upsellWrapper.ufe-normal .upsellContent {
+	width: 50% !important;
+}
+.lps-product-upsell .ufe-widget:before {
+  content: 'Perfect Match';
+  display: block;
+  width: 100%;
+  /* font-family: "HaasMedium", monospace, sans-serif !important; */
+  color: var(--black);
+	text-align: start;
+	font-size: 3rem;
+	padding: 0; 
+  margin: 0;
+}
+.lps-product-upsell .ufe-core .popTitle {
+  padding: 0 !important;
+}
+.lps-product-upsell .ufe-widget .o2o .upsellTitle span {
+	font-size: 2rem;
+}
+.lps-product-upsell .ufe-wrap .ufe-options .upsellTitle {
+  margin-bottom: 0.75rem !important;
+}
+.lps-product-upsell .upsellTitle,
+.lps-product-upsell .o2o .upsellContent {
+	padding: 0;
+  border-radius: 0 !important;
+}
+.lps-product-upsell .ufe-style-inpage .ufe-footer .ufe-checkout-btns {
+	margin: 1rem auto;
+}
+.lps-product-upsell .ufe-core .chkout.ufe-btn {
+	background: var(--red) !important;
+}
+.lps-product-upsell .ufe-core .chkout span {
+  color: var(--black);
+}
+.lps-product-upsell .ufe-core .chkout:not(.uloader):before {
+  display: none;
+}
+
+.lps-product-upsell .ufe-widget .o2o .upsellContent .ufe-options {
+	justify-content: initial;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+.lps-product-upsell .ufe-wrap .ufe-options>:first-child {
+	grid-column: 1 / span 2;
+	text-align: start;
+}
+.lps-product-upsell .udiscount_unitPrice_wrapper {
+	display: none;
+}
+.lps-product-upsell .ufe-wrap .o2o .upsellWrapper .ufe-variants-wrap {
+	align-items: end;
+	grid-area: 2/2;
+}
+.lps-product-upsell .ufe-widget .o2o .upsellPrice.ufe-price {
+	justify-content: start;
+	align-items: center;
+}
+.lps-product-upsell .ufe-widget .o2o .upsellPrice #ufe-comparePrice {
+  color: var(--dark-grey) !important;
+}
+.lps-product-upsell .ufe-widget .o2o .upsellPrice #uprice {
+  color: var(--black) !important;
+}
+.lps-product-upsell .ufe-style-inpage .upsellWrapper {
+	box-shadow: none;
+	border: none !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+.lps-product-upsell .o2o .upsellImg span {
+  width: 100% !important;
+  height: 0;
+  padding-bottom: 100%;
+}
+.lps-product-upsell .ufe-widget .o2o .upsellPrice.ufe-price {
+	flex-direction: row-reverse;
+}
+/* mobile background */
+.lps-product-upsell .ufe-core .bundleWrapper:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 55%;
+  margin-bottom: 1rem;
+	/* background-image: url(https://cdn.shopify.com/s/files/1/0523/1597/9927/files/upsell-test.png?v=1664446479); */
+	background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.lps-product-upsell .ufe-trigger-product {
+  margin-top: 1em;
+}
+
+@media (min-width: 991px) {
+  .lps-product-upsell .ufe-widget {
+    padding: 0 3rem;
+  }
+  .lps-product-upsell .ufe-widget:before {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+  }
+  /* hide mobile background */
+  .lps-product-upsell .ufe-core .bundleWrapper:after {
+    display: none;
+  }
+  .lps-product-upsell .ufe-style-inpage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .lps-product-upsell .ufe-style-inpage:before {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 0;
+    padding-bottom: 25%;
+		/* background-image: url(https://cdn.shopify.com/s/files/1/0523/1597/9927/files/upsell-test.png?v=1664446479); */
+		background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+  }
+	.lps-product-upsell .ufe-style-inpage .ufe-wrap {
+    width: 40%;
+    max-width: 40%;
+	}
+}
+
+/* snowboard bundle (not set) upsell */
+
+/* temp — dev only */
+.lps-product-upsell .cbtns-bg div:last-child {
+  display: none !important;
+}
+/* END temp — dev only */
+.lps-product-upsell .bundleWrapper {
+  /* padding-top: 20px; */
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper .upsellBody {
+  background: none !important;
+  display: inline-block !important;
+  vertical-align: middle; 
+  width: 100% !important;
+  text-align: left !important;
+}  
+.lps-product-upsell .upsellWrapper .bundleWrapper .offerOptionsWrap {
+  display: inline-block !important;
+  width: 8% !important;
+  margin: 20px 0;
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper  .upsellBody .upsellImg,
+.lps-product-upsell .upsellWrapper .bundleWrapper  .upsellBody .upsellContent {
+  display: inline-block !important;
+  vertical-align: middle; 
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper  .upsellBody .upsellImg {
+  width: 40% !important;
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper  .upsellBody .upsellContent {
+  width: calc(60% - 12px) !important;
+}
+@media (min-width: 991px) {
+  .lps-product-upsell .upsellWrapper .bundleWrapper .upsellBody {
+    width: 46% !important;
+  }
+  .lps-product-upsell .upsellWrapper .bundleWrapper .offerOptionsWrap {
+    width: 8% !important;
+  }
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper .offerOptionsWrap .bundle-icon {
+  background-color: var(--dark-grey) !important;
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper  .upsellBody .upsellImg span {
+  width: 100% !important;
+  aspect-ratio: 1 / 1;
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper  .upsellBody .upsellContent .upsellTitle {
+  margin-bottom: 0 !important;
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper  .upsellBody .upsellContent .ufe-select {
+  margin-left: 0 !important;
+}
+.lps-product-upsell .offerOptionsWrap .uline,
+.lps-product-upsell .offerOptionsWrap .ubadges {
+  display: none;
+}
+.lps-product-upsell .upsellWrapper.ubundle .offerOptionsWrap .bundle-icon {
+  margin: 0 auto;
+}
+.lps-product-upsell .buyButtonsWrap.utotal {
+  wdith: 100% !important;
+}
+.lps-product-upsell .buyButtonsWrap .upsellPrice #uprice {
+  color: var(--dark-grey) !important;
+  font-size: 22px;
+}
+.lps-product-upsell .buyButtonsWrap .upsellPrice #ufe-comparePrice {
+  color: var(--dark-grey) !important; 
+}
+.lps-product-upsell .upsellWrapper .bundleWrapper .buyButtonsWrap {
+  border-top: none !important;
+  justify-content: center;
+}
+
+/* cart notification upsell */
+
+.cart-notification .o2o .upsellWrapper {
+  border: none !important;
+}
+.cart-notification .o2o .upsellImg {
+  width: 70px !important;
+  min-height: 88px;
+}
+.cart-notification .o2o .upsellContent {
+  width: calc(100% - 70px) !important;
+  padding: 0 1em !important;
+}
+.cart-notification .o2o .upsellImg span {
+  box-shadow: 0 0 0.5em rgb(0,0,0,0.04);
+}
+.cart-notification .o2o .ufe-options {
+  justify-content: flex-start !important;
+  align-items: start !important;
+}
+.cart-notification .o2o .ufe-options .upsellTitle {
+  padding-bottom: 0;
+}
+.cart-notification .o2o .ufe-options .upsellTitle span {
+  font-size: 1em;
+  line-height: 1.1 !important;
+}
+.cart-notification .o2o .ufe-options .upsellPrice {
+  padding-bottom: 0.5em !important;
+}
+.cart-notification .o2o .ufe-options .upsellPrice span {
+  font-size: 0.9em !important;
+}
+.cart-notification .ufe-checkout-btns button {
+  background-color: var(--red) !important;
+  border: 1px solid var(--black);
+  color: var(--black);
+}
+.cart-notification .ufe-checkout-btns button span {
+  color: var(--black);
+}
+.cart-notification .ufe-core .chkout:not(.uloader):before {
+  display: none;
+}
+
+/* snowboard set upsell */
+.set-upsell-wrapper .ufe-trigger-product,
+.set-upsell-wrapper .upsellImg,
+.set-upsell-wrapper .upsellTitle,
+.set-upsell-wrapper .upsellPrice.ufe-price,
+.set-upsell-wrapper .ufe-core .chkout:not(.uloader):before {
+  display: none !important;
+}
+
+.set-upsell-wrapper .ufe-widget {
+  margin-bottom: 3rem;
+}
+.set-upsell-wrapper .ufe-widget .o2o .upsellContent {
+  padding: 0;
+  border-radius: 0 !important;
+}
+.set-upsell-wrapper .ufe-widget .o2o .upsellContent .ufe-options {
+  align-items: start;
+}
+.set-upsell-wrapper .ufe-style-inpage .upsellWrapper {
+  border: none !important;
+}
+.set-upsell-wrapper .ufe-style-inpage .ufe-wrap .upsellWrapper .ufe-select {
+  max-width: 99rem !important;
+}
+.set-upsell-wrapper .ufe-wrap .o2o .upsellWrapper .ufe-variants-wrap {
+  align-items: start;
+}
+.set-upsell-wrapper .ufe-wrap .o2o .upsellWrapper .ufe-variants-wrap:before {
+  content: 'Select Binding Size:';
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  width: 100%;
+}
+.set-upsell-wrapper .udiscount_unitPrice_wrapper {
+  margin: 2rem 0 0 0;
+  width: 100%;
+}
+.set-upsell-wrapper .udiscount.ubadge {
+  display: block;
+  border: none;
+  font-size: 1.6rem;
+  margin: 0 !important;
+  padding-top: 1.2rem !important;
+  padding-bottom: 1.2rem !important;
+  width: 100%;
+  color: var(--black);
+  background-color: var(--light-grey) !important;
+}
+.set-upsell-wrapper .ufe-checkout-btns button {
+  background-color: var(--red) !important;
+  border: none;
+  color: var(--black);
+  position: relative;
+}
+.set-upsell-wrapper .ufe-wrap,
+.set-upsell-wrapper .ufe-footer {
+  overflow: visible !important;
+}
+.set-upsell-wrapper .ufe-checkout-btns {
+  margin-top: 1rem !important;
+}
+.set-upsell-wrapper .ufe-checkout-btns button:after {
+  content: "";
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  box-shadow: rgba(0,0,0,0.15) 2px 2px 5px 0px;
+}
+.set-upsell-wrapper .ufe-checkout-btns button span {
+  color: var(--black);
+}
+
+/* END UFE UPSELL */
+
 /* dealer locator iframe (iframe content in separate stylesheet ) */
 
 .dealer-locator {
