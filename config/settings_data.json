@@ -209,6 +209,12 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "10112818894266855621": {
+        "type": "shopify:\/\/apps\/ufe-cross-sell-upsell-bundle\/blocks\/app-embed\/588d2ac5-62f3-4ccd-8638-da98ec61fa90",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   },
