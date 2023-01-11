@@ -51,12 +51,14 @@
 }
 ;
 
-      if (config.event_config.save_order_notes) {
-        await window.ElevarGtmSuite.handlers.cartAttributesReconcile(cartData, config.consent_enabled);
-      }
+      await window.ElevarGtmSuite.handlers.cartAttributesReconcile(
+        cartData,
+        config.event_config.save_order_notes,
+        config.consent_enabled
+      );
 
       if (config.event_config.user) {
-        window.ElevarGtmSuite.handlers.user({
+        const data = {
   {%- if checkout -%}
     cartTotal: "{{- checkout.total_price | times: 0.01 | json -}}",
     currencyCode: {{- checkout.currency | json -}},
@@ -83,24 +85,82 @@
       tags: {{- customer.tags | join: ', ' | json -}}
     }
   {%- endif -%}
-});
+};
+        window.ElevarGtmSuite.handlers.user(data);
       }
 
       {%- if checkout -%}
-        {%- if checkout.attributes == empty -%}
-          if (config.event_config.save_order_notes) {
-            window.ElevarGtmSuite.handlers.storeOrderNotesOffsite({%- if checkout -%}
+      const step = Shopify?.Checkout?.step;
+      const page = Shopify?.Checkout?.page;
+      const isOnBeginCheckout = step === "contact_information";
+      const isOnThankYouPage = page?.includes("thank_you");
+
+      {%- if checkout.attributes["_elevar_visitor_info"] == blank -%}
+      if (config.event_config.save_order_notes && Shopify?.Checkout?.token) {
+        if (isOnBeginCheckout) {
+          const data = {%- if checkout -%}
+  {
+    token: Shopify?.Checkout?.token,
+    currency: {{- checkout.currency | json -}},
+    {%- if customer -%}
+      customer: { email: {{- customer.email | json -}} },
+    {%- else -%}
+      customer: {},
+    {%- endif -%}
+    line_items: [
+      {%- for line_item in checkout.line_items -%}
+        {
+          id: {{- line_item.id | json -}},
+          quantity: {{- line_item.quantity | json -}},
+          title: {{- line_item.title | json -}},
+          variant: {
+            id: {{- line_item.variant.id | json -}},
+            price: {{- line_item.variant.price | json -}},
+            sku: {{- line_item.variant.sku | json -}},
+            title: {{- line_item.variant.title | json -}},
+            product: {
+              id: {{- line_item.variant.product.id | json -}},
+              title: {{- line_item.variant.product.title | json -}},
+              vendor: {{- line_item.variant.product.vendor | json -}}
+            }
+          }
+        },
+      {%- endfor -%}
+    ],
+    {%- if checkout.shipping_address -%}
+      shipping_address: {
+        city: {{- checkout.shipping_address.city | json -}},
+        country: {{- checkout.shipping_address.country | json -}},
+        country_code: {{- checkout.shipping_address.country_code | json -}},
+        phone: {{- checkout.shipping_address.phone | json -}},
+        province: {{- checkout.shipping_address.province | json -}},
+        province_code: {{- checkout.shipping_address.province_code | json -}}
+      },
+    {%- else -%}
+      shipping_address: {},
+    {%- endif -%}
+    shipping_price: {{- checkout.shipping_price | json -}},
+    subtotal_price: {{- checkout.order.subtotal_price | json -}},
+    total_price: {{- checkout.total_price | json -}},
+    total_tax: {{- checkout.tax_price | json -}}
+  }
+{%- endif -%}
+;
+          window.ElevarGtmSuite.handlers.storeOrderNotesOffsite(data);
+        } else {
+          const data = {%- if checkout -%}
   {
     checkoutId: {{- checkout.id | json -}}
   }
 {%- endif -%}
-);
-          }
-        {%- endif -%}
-
-        {% if request.path contains "thank_you" %}
-          if (config.event_config.checkout_complete && Shopify?.Checkout?.page?.includes("thank_you")) {
-            window.ElevarGtmSuite.handlers.checkoutComplete({%- if checkout -%}
+;
+          window.ElevarGtmSuite.handlers.storeOrderNotesOffsite(data);
+        }
+      }
+      {%- endif -%}
+      {% if request.path contains "thank_you" %}
+      if (config.event_config.checkout_complete && isOnThankYouPage) {
+        const data = {%- if checkout -%}
   {
     currencyCode: {{- checkout.currency | json -}},
     actionField: {
@@ -171,12 +231,13 @@
     landingSite: {{- checkout.landing_site | json -}}
   }
 {%- endif -%}
-);
-          }
-        {%- endif -%}
+;
+        window.ElevarGtmSuite.handlers.checkoutComplete(data);
+      }
+      {%- endif -%}
 
-        if (Shopify?.Checkout && !Shopify.Checkout.page?.includes("thank_you")) {
-          const checkoutStep = {%- if checkout -%}
+      if (Shopify?.Checkout && !isOnThankYouPage) {
+        const data = {%- if checkout -%}
   {
     currencyCode: {{- checkout.currency | json -}},
     items: [
@@ -200,13 +261,13 @@
 {%- endif -%}
 ;
 
-          if (config.event_config.cart_reconcile) {
-            window.ElevarGtmSuite.handlers.cartItemsReconcile(checkoutStep);
-          }
-          if (config.event_config.checkout_step) {
-            window.ElevarGtmSuite.handlers.checkoutStep(checkoutStep);
-          }
+        if (config.event_config.cart_reconcile) {
+          window.ElevarGtmSuite.handlers.cartItemsReconcile(data);
         }
+        if (config.event_config.checkout_step) {
+          window.ElevarGtmSuite.handlers.checkoutStep(data);
+        }
+      }
       {%- endif -%}
     };
 
@@ -218,4 +279,6 @@
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4TWXZ7" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+
 
