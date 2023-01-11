@@ -1237,6 +1237,7 @@ h1.collection-hero__title {
   font-weight: normal !important;
   font-style: normal;
   font-display: swap;
+  text-transform: uppercase;
 }
 .footer .multicolumn {
   border-top: 1px solid var(--black);
