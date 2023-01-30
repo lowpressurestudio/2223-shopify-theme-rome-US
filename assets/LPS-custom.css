@@ -714,108 +714,6 @@ h1.collection-hero__title {
   color: var(--white) !important;
 }
 
-/* UFE UPSELL WIDGET */
-
-/* .ufe-widget {
-  position : relative;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-.ufe-widget:before,
-.ufe-widget:after {
-  content: '' !important;
-  margin: 0 !important;
-  display: block;
-  position : absolute;
-  height: 2px;
-  background: var(--black);
-  left: -3rem;
-  right: -3rem;
-  width: auto !important;
-}
-.ufe-widget:before {
-  top: 0;
-}
-.ufe-widget:after {
-  bottom: 0;
-}
-.ufe-widget::after {
-  display:block;
-  width: 100%;
-  content:'Buy item only:';
-  font-size: 23px;
-  line-height: 150%;
-  margin-top: 45px;
-  margin-bottom: -20px;
-}
-.ufe-core .popTitle {
-  text-align: left !important;
-  font-weight: 300 !important;
-  color: var(--black) !important;
-}
-.ufe-checkout-btns button {
-  background-color: var(--red) !important;
-  font-size: 18px;
-  color: var(--black);
-}
-.ufe-checkout-btns button::before {
-  display: none !important;
-}
-.upsellPrice #uprice {
-  color: var(--red) !important;
-}
-.ufe-offer:not(.o2o) .upsellWrapper,
-.ufe-style-inpage .upsellWrapper {
-  padding: 0;
-  border: none !important;
-  border-radius: 0 !important;
-}
-.upsellWrapper .offerOptionsWrap {
-  display: none !important;
-}
-.bundleWrapper .upsellBody {
-  padding-top: 25px;
-  padding-bottom: 15px;
-  border-top: 1px solid var(--grey);
-}
-.ubundle .buyButtonsWrap {
-  margin-top: 0 !important;
-  padding-top: 15px !important;
-}
-.ufe-wrap #ufe-comparePrice,
-.upsellPrice #uprice,
-.ufe-wrap .ubundle .utotal .udiscount.ubadge {
-  font-size: 18px !important;
-  color: var(--black) !important;
-  font-weight: 300;
-  padding: 0 !important;
-  border: none !important;
-}
-.upsellPrice #uprice {
-  font-weight: bold;
-  font-size: 22px !important;
-}
-
-.ufe-trigger-plus {
-	display: none;
-}
-.ufe-core .chkout span {
-	color: var(--black);
-	line-height: 1.5;
-	letter-spacing: .1rem;
-	transition: all .3s ease;
-}
-.ufe-wrap .ubadge-white,
-.ufe-wrap .ubundle .utotal .udiscount {
-  background: none !important;
-}
-.ufe-wrap .popTitle span {
-  text-transform: uppercase;
-} */
-
-/* END UFE UPSELL WIDGET */
-
 /* UFE UPSELL */
 
 .lps-product-upsell div:empty {
@@ -1119,7 +1017,8 @@ h1.collection-hero__title {
 }
 
 /* snowboard set upsell */
-.set-upsell-wrapper .ufe-trigger-product,
+
+/* .set-upsell-wrapper .ufe-trigger-product,
 .set-upsell-wrapper .upsellImg,
 .set-upsell-wrapper .upsellTitle,
 .set-upsell-wrapper .upsellPrice.ufe-price,
@@ -1192,6 +1091,61 @@ h1.collection-hero__title {
 }
 .set-upsell-wrapper .ufe-checkout-btns button span {
   color: var(--black);
+} */
+
+/* snowboard set page bundle upsell */
+
+.set-bundle-upsell-wrapper .m2m .upsellWrapper {
+  padding: 0;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important; 
+}
+.set-bundle-upsell-wrapper .ubadges {
+  display: none;
+}
+.set-bundle-upsell-wrapper .ubundle .ufe-variants-wrap>* {
+  margin-left: 0 !important;
+}
+.set-bundle-upsell-wrapper .ubundle .buyButtonsWrap {
+  border-top: none !important;
+}
+.set-bundle-upsell-wrapper .ufe-wrap .upsellImg span {
+  height: 100px;
+  width: 80px;
+}
+.set-bundle-upsell-wrapper .upsellWrapper .offerOptionsWrap {
+  margin: 15px 0;
+}
+.set-bundle-upsell-wrapper .ufe-wrap span.bundle-icon {
+  background-color: var(--dark-grey) !important;
+}
+.set-bundle-upsell-wrapper .buyButtonsWrap .upsellPrice #uprice {
+    color: var(--dark-grey)!important;
+    font-size: 22px;
+}
+.set-bundle-upsell-wrapper .buyButtonsWrap .upsellPrice #ufe-comparePrice {
+    color: var(--dark-grey)!important;
+}
+.set-bundle-upsell-wrapper .ufe-wrap .ubundle .utotal .udiscount_unitPrice_wrapper .udiscount {
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+  border: 0;
+  border-radius: 0;
+  padding: 4px 8px;
+  margin-right: 0;
+}
+.set-bundle-upsell-wrapper .ufe-wrap .ubundle .utotal .udiscount_unitPrice_wrapper {
+  margin-right: 0;
+}
+.set-bundle-upsell-wrapper .ufe-core .chkout.ufe-btn {
+  background-color: var(--yellow) !important;
+}
+.set-bundle-upsell-wrapper .ufe-core .chkout span {
+  color: var(--black) !important;
+}
+.set-bundle-upsell-wrapper .ufe-core .chkout:not(.uloader):before {
+  display: none;
 }
 
 /* END UFE UPSELL */
