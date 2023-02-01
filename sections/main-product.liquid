@@ -546,7 +546,10 @@
                 {% endif%}
               {% endfor %}
               </div>
-            
+          {%- when 'lps_set_ufe_wrapper' -%}
+          <div class="set-bundle-upsell-wrapper">
+            <div class="set-bundle-upsell"></div>
+          </div>
           {%- endcase -%}
         {%- endfor -%}
       </div>
@@ -766,6 +769,17 @@
         {
           "type": "paragraph",
           "content": "Displays messages for product tags: badge-pre-order-september, badge-pre-order-october, badge-pre-order-november, badge-pre-order-december"
+        }
+      ]
+    },
+    {
+      "type": "lps_set_ufe_wrapper",
+      "name": "LPS UFE Set Wrapper",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Adds a container to hook the UFE set bundle to. Class: .set-bundle-upsell"
         }
       ]
     },
