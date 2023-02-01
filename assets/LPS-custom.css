@@ -1139,7 +1139,7 @@ h1.collection-hero__title {
   margin-right: 0;
 }
 .set-bundle-upsell-wrapper .ufe-core .chkout.ufe-btn {
-  background-color: var(--yellow) !important;
+  background-color: var(--red) !important;
 }
 .set-bundle-upsell-wrapper .ufe-core .chkout span {
   color: var(--black) !important;
