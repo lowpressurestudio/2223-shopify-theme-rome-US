@@ -537,23 +537,15 @@
               </p>
             {%- endif -%}
           {%- when 'badge_message' -%}
-            
-            {% assign custom_badge = "" %}
-            {% for tag in product.tags %}
-              {% if tag == "badge-pre-order-september" %}
-                {% assign custom_badge = "Pre-order! Ships end of September" %}
-              {% elsif tag == "badge-pre-order-october" %}
-                {% assign custom_badge = "Pre-order! Ships mid-October" %}
-              {% elsif tag == "badge-pre-order-november" %}
-                {% assign custom_badge = "Pre-order! Ships mid-November" %}
-              {% elsif tag == "badge-pre-order-december" %}
-                {% assign custom_badge = "Pre-order! Ships early-December" %}
-              {% endif%}
-            {% endfor %}
-            
-            {% if custom_badge != "" %}
-            <div class="badge-message">{{ custom_badge }}</div>
-            {% endif%}
+              <div class="badge-messages">
+              {% for tag in product.tags %}
+                {% assign tag_lowercase = tag | downcase %}
+                {% if tag_lowercase contains "badge:" %}
+                  {% assign new_tag = tag | remove: 'badge:' | strip %}
+                  <div class="badge-message">{{ new_tag }}</div>
+                {% endif%}
+              {% endfor %}
+              </div>
             
           {%- endcase -%}
         {%- endfor -%}

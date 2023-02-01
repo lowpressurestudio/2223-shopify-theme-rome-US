@@ -113,6 +113,25 @@
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
             {%- endif -%}
+            
+            {% assign additional_badges = "" %}
+            {% for tag in card_product.tags %}
+              {% assign tag_lowercase = tag | downcase %}
+              {% if tag_lowercase contains "badge:" %}
+                {% assign new_tag = tag | remove: 'badge:' %}
+                {% assign additional_badges = additional_badges | append: new_tag | append: ',' %}
+              {% endif%}
+            {% endfor %}
+            
+            {% assign additional_badges = additional_badges | split: ',' %}
+            {% if additional_badges != "" %}
+              {% for badge in additional_badges %}
+                {% if badge != '' %}
+                  <span class="badge badge--bottom-left color-inverse badge-additional">{{ badge }}</span>
+                {%- endif -%}
+              {% endfor %}
+            {%- endif -%}
+
           </div>
         </div>
       </div>
