@@ -4,7 +4,7 @@
   <div id="size-table-anchor"></div>
   <div class="row justify-content-center lps-size-table-snowboard mb-3">
     <div class="col-12">
-      <h2>{% unless product.title contains 'set' or product.title contains 'Set' %}{{ product.title }} {% endunless %}Size Chart</h2>
+      <h2>{% if product.title contains 'set' or product.title contains 'Set' %}Snowboard{% else %}{{ product.title }} Size Chart</h2>
     </div>
     <div class="col-12 lps-size-table-col">
       <div class="lps-size-table-wrapper p-0">
