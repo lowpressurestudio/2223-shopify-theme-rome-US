@@ -1,5 +1,11 @@
 {{ 'LPS-section-product-details.css' | asset_url | stylesheet_tag }}
   
+{% if product.template_suffix == 'snowboard-set' and product.metafields.global.set-product != blank %}
+  {% assign target_product = all_products[product.metafields.global.set-product] %}
+{% else %}
+  {% assign target_product = product %}
+{% endif %}
+
 <!-- additional feature row -->
 
 <div id="lps-product-details-{{ section.id }}" class="container-indent wrapper-product-details wrapper-product-feature-row">
@@ -7,11 +13,11 @@
     <div class="row justify-content-center pt-5">
       <div class="col-10 col-md-4">
     
-        {% if product.metafields.global.feature-7 %}
+        {% if target_product.metafields.global.feature-7 %}
         <div class="row mb-5">
           <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Platform</span></h5></div>
           <div class="col-12 col-lg-10 mb-5">
-            {% assign file = 'product-binding-platform-' | append: product.metafields.global.feature-7 %}
+            {% assign file = 'product-binding-platform-' | append: target_product.metafields.global.feature-7 %}
             {% capture snippet_content %}{% include file %}{% endcapture %}
             {% if snippet_content contains "Liquid error" %}
                 {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
@@ -22,12 +28,12 @@
         </div>
         {% endif %}
             
-        {% if product.metafields.global.feature-8 or product.metafields.global.feature-9 or product.metafields.global.feature-11 or product.metafields.global.feature-12 %}
+        {% if target_product.metafields.global.feature-8 or target_product.metafields.global.feature-9 or target_product.metafields.global.feature-11 or target_product.metafields.global.feature-12 %}
         <div class="row mb-5">
           <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Straps</span></h5></div>
           <div class="col-12 col-lg-10 mb-5">
-            {% if product.metafields.global.feature-8 %}
-              {% assign file = 'product-binding-platform-straps-' | append: product.metafields.global.feature-8 %}
+            {% if target_product.metafields.global.feature-8 %}
+              {% assign file = 'product-binding-platform-straps-' | append: target_product.metafields.global.feature-8 %}
               {% capture snippet_content %}{% include file %}{% endcapture %}
               {% if snippet_content contains "Liquid error" %}
                 {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
@@ -35,8 +41,8 @@
               {{ snippet_content }}
               {% endif %}
             {% endif %}
-            {% if product.metafields.global.feature-9 %}
-              {% assign file = 'product-binding-platform-straps-' | append: product.metafields.global.feature-9 %}
+            {% if target_product.metafields.global.feature-9 %}
+              {% assign file = 'product-binding-platform-straps-' | append: target_product.metafields.global.feature-9 %}
               {% capture snippet_content %}{% include file %}{% endcapture %}
               {% if snippet_content contains "Liquid error" %}
                 {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
@@ -46,9 +52,9 @@
             {% endif %}
             
             {% assign contents = '' %}
-            {% assign contents = contents | append: product.metafields.global.feature-11 %}
+            {% assign contents = contents | append: target_product.metafields.global.feature-11 %}
             {% assign contents = contents | append: ',' %}
-            {% assign contents = contents | append: product.metafields.global.feature-12 %}
+            {% assign contents = contents | append: target_product.metafields.global.feature-12 %}
             {% assign contents = contents | split: ',' %}
             {% if contents contains "bombproof-buckles" or contents contains "fast-entry" %}
               {% if contents contains "fast-entry" %}
@@ -80,17 +86,17 @@
       </div>
       <div class="col-10 col-md-4">
  
-        {% if product.metafields.global.flex-1 %}
-          {% if product.metafields.global.flex-1 == 10 %}
-            {% assign val = product.metafields.global.flex-1 %}        
+        {% if target_product.metafields.global.flex-1 %}
+          {% if target_product.metafields.global.flex-1 == 10 %}
+            {% assign val = target_product.metafields.global.flex-1 %}        
           {% else %}
-            {% assign val = product.metafields.global.flex-1 | slice: -1, 1 %}        
+            {% assign val = target_product.metafields.global.flex-1 | slice: -1, 1 %}        
           {% endif %}
         <div class="row mb-5">
           <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Riding Style</span></h5></div>
           <div class="col-12 col-lg-10 mb-2">
             <div class="bar-container">
-              <div class="bar value-{{ val }}"><span>{{ product.metafields.global.flex-1 }}</span></div>
+              <div class="bar value-{{ val }}"><span>{{ target_product.metafields.global.flex-1 }}</span></div>
             </div>
           </div>
           <div class="col-6 col-lg-5 mb-5"><h6>Playful</h6></div>
@@ -99,12 +105,12 @@
         {% endif %}
             
         
-        {% if product.metafields.global.flex-2 %}
+        {% if target_product.metafields.global.flex-2 %}
         <div class="row mb-5">
           <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Customization</span></h5></div>
           <div class="col-12 col-lg-10 mb-2">
             <div class="bar-container">
-              <div class="bar value-{{ product.metafields.global.flex-2 }}"><span>{{ product.metafields.global.flex-2 }}</span></div>
+              <div class="bar value-{{ target_product.metafields.global.flex-2 }}"><span>{{ target_product.metafields.global.flex-2 }}</span></div>
             </div>
           </div>
           <div class="col-6 col-lg-5"><h6>Minimum</h6></div>
@@ -112,22 +118,22 @@
         </div>
         {% endif %}
         
-        {% if product.metafields.global.feature-1 or product.metafields.global.feature-2 or product.metafields.global.feature-3 or product.metafields.global.feature-4 or product.metafields.global.feature-5 or product.metafields.global.feature-6 %}
+        {% if target_product.metafields.global.feature-1 or target_product.metafields.global.feature-2 or target_product.metafields.global.feature-3 or target_product.metafields.global.feature-4 or target_product.metafields.global.feature-5 or target_product.metafields.global.feature-6 %}
         <div class="row mb-5">
           <div class="col-12 col-lg-10 mb-5">
                 
           {% assign features = '' %}
-          {% assign features = features | append: product.metafields.global.feature-1 %}
+          {% assign features = features | append: target_product.metafields.global.feature-1 %}
           {% assign features = features | append: ',' %}
-          {% assign features = features | append: product.metafields.global.feature-2 %}
+          {% assign features = features | append: target_product.metafields.global.feature-2 %}
           {% assign features = features | append: ',' %}
-          {% assign features = features | append: product.metafields.global.feature-3 %}
+          {% assign features = features | append: target_product.metafields.global.feature-3 %}
           {% assign features = features | append: ',' %}
-          {% assign features = features | append: product.metafields.global.feature-4 %}
+          {% assign features = features | append: target_product.metafields.global.feature-4 %}
           {% assign features = features | append: ',' %}
-          {% assign features = features | append: product.metafields.global.feature-5 %}
+          {% assign features = features | append: target_product.metafields.global.feature-5 %}
           {% assign features = features | append: ',' %}
-          {% assign features = features | append: product.metafields.global.feature-6 %}
+          {% assign features = features | append: target_product.metafields.global.feature-6 %}
           {% assign features = features | split: ',' %}
                     
           {% for feature in features %}
@@ -149,21 +155,21 @@
       </div>
       <div class="col-10 col-md-4">
         
-        {% if product.metafields.global.material-1 or product.metafields.global.material-2 or product.metafields.global.material-3 or product.metafields.global.material-4 or product.metafields.global.material-5 or product.metafields.global.feature-10 %}
+        {% if target_product.metafields.global.material-1 or target_product.metafields.global.material-2 or target_product.metafields.global.material-3 or target_product.metafields.global.material-4 or target_product.metafields.global.material-5 or target_product.metafields.global.feature-10 %}
         <div class="row mb-5">
 	        <div class="col-12 col-lg-10"><h5 class="title-feature"><span>Material</span></h5></div>
             <div class="col-12 col-lg-10 mb-5 binding-material-container">
                 
             {% assign materials = '' %}
-            {% assign materials = materials | append: product.metafields.global.material-1 %}
+            {% assign materials = materials | append: target_product.metafields.global.material-1 %}
             {% assign materials = materials | append: ',' %}
-            {% assign materials = materials | append: product.metafields.global.material-2 %}
+            {% assign materials = materials | append: target_product.metafields.global.material-2 %}
             {% assign materials = materials | append: ',' %}
-            {% assign materials = materials | append: product.metafields.global.material-3 %}
+            {% assign materials = materials | append: target_product.metafields.global.material-3 %}
             {% assign materials = materials | append: ',' %}
-            {% assign materials = materials | append: product.metafields.global.material-4 %}
+            {% assign materials = materials | append: target_product.metafields.global.material-4 %}
             {% assign materials = materials | append: ',' %}
-            {% assign materials = materials | append: product.metafields.global.material-5 %}
+            {% assign materials = materials | append: target_product.metafields.global.material-5 %}
             {% assign materials = materials | split: ',' %}
                       
             {% for material in materials %}
@@ -178,8 +184,8 @@
               {% endif %}
             {% endfor %}
               
-            {% if product.metafields.global.feature-10 %}
-              {% assign file = 'product-binding-tech-icon-' | append: product.metafields.global.feature-10 %}
+            {% if target_product.metafields.global.feature-10 %}
+              {% assign file = 'product-binding-tech-icon-' | append: target_product.metafields.global.feature-10 %}
               {% capture snippet_content %}{% include file %}{% endcapture %}
               {% if snippet_content contains "Liquid error" %}
                 {{ '<div class="missing">Missing snippet: ' | append: file  | append: '</div>' }}
