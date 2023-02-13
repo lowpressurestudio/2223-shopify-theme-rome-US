@@ -20,24 +20,36 @@
   assign compare_at_price = target.compare_at_price
   assign price = target.price | default: 1999
   
-  if customer.tags contains 'pro20' or customer.tags contains 'pro25' or customer.tags contains 'pro30' or customer.tags contains 'pro40' or customer.tags contains 'pro50'
-     if compare_at_price > price
-       assign price = compare_at_price
-     else
-       assign compare_at_price = price
-     endif
+  if product.template_suffix == 'snowboard-set' and product.metafields.global.set-product != blank
+    assign set_product = all_products[product.metafields.global.set-product]
+    assign compare_at_price = price | plus: set_product.price
+    if product.metafields.global.set-price
+     assign price = product.metafields.global.set-price | times: 100
+    else
+     assign price = price | plus: set_product.price     
+    endif
   endif
-  if customer.tags contains 'pro20'
-    assign price = price | times: 0.8 | round
-  elsif customer.tags contains 'pro25'
-    assign price = price | times: 0.75 | round
-  elsif customer.tags contains 'pro30'
-    assign price = price | times: 0.7 | round
-  elsif customer.tags contains 'pro40'
-    assign price = price | times: 0.6 | round
-  elsif customer.tags contains 'pro50'
-    assign price = price | times: 0.5 | round
-  endif  
+
+  unless product.tags contains 'exclude proform'
+    if customer.tags contains 'pro20' or customer.tags contains 'pro25' or customer.tags contains 'pro30' or customer.tags contains 'pro40' or customer.tags contains 'pro50'
+       if compare_at_price > price
+         assign price = compare_at_price
+       else
+         assign compare_at_price = price
+       endif
+    endif
+    if customer.tags contains 'pro20'
+      assign price = price | times: 0.8 | round
+    elsif customer.tags contains 'pro25'
+      assign price = price | times: 0.75 | round
+    elsif customer.tags contains 'pro30'
+      assign price = price | times: 0.7 | round
+    elsif customer.tags contains 'pro40'
+      assign price = price | times: 0.6 | round
+    elsif customer.tags contains 'pro50'
+      assign price = price | times: 0.5 | round
+    endif  
+  endunless
   
   assign available = target.available | default: false
   assign money_price = price | money
