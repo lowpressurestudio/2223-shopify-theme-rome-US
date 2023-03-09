@@ -55,7 +55,7 @@
               </div>
 
               <div class="col-12 mt-4 mb-2">
-                <p>The Rome Syndicate ProForm Program is our all-new online proform system for qualified outdoor professionals, media partners, and outdoor industry partners. Membership is by application, it is not guaranteed and can be revoked at any time. If you are interested in applying, please fill out the form below to start the application. We will usually get back to you within 5 working days.</p>
+                <p>The Rome Syndicate ProForm Program is our online proform system for qualified outdoor professionals, media partners, and outdoor industry partners. Membership is by application, it is not guaranteed and can be revoked at any time. If you are interested in applying, please fill out the form below to start the application. We will usually get back to you within 5 working days.</p>
                 <p>Use your work issued email address when creating and applying for your account.</p>
               </div>
               <div class="col-12 mt-0 mb-3">
@@ -179,57 +179,20 @@ $(document).ready(function() {
     $('.error-msg').html(param_x);
     $('.error-msg-col').show();
     
-	setTimeout(
+	  setTimeout(
       function() {
         $('html, body').animate({
             scrollTop: ($('.error-msg').first().offset().top - 200)
         },500);
       }, 1500);    
-
   }
   
-//   var $phoneField = $('#customer_phone'),
-
-//       phoneFormatValidated = false;
-
-//   // Set maxium size
-//   $phoneField.attr('maxlength', 20);
-
-//   function phoneNumberValidation() {
-//       phoneFormatValidated = false;
-//       var phoneFieldVal = $phoneField.val();
-
-//       // Strip out any non-numeric characters
-//       var formattedPhoneValue = phoneFieldVal.replace(/[^0-9]/g, '');
-//       $phoneField.val(formattedPhoneValue);
-//       phoneFormatValidated = true;
-//   }
-
-//   // Run validator if there is a previously cached phone number
-//   if ($phoneField.val() != "") {
-//       phoneNumberValidation()
-//   };
-
-//   // Run validator when the user has switched focus from the phone field
-//   $phoneField.on('blur', phoneNumberValidation);
-
-//   // Run the function when the continue button is clicked or the enter key is pressed
-//   $('#submit_form_button').on('click', function(e) {
-
-//       e.preventDefault();
-//       phoneNumberValidation();
-
-//       if (phoneFormatValidated) {
-//           $('#proform_form').trigger('submit');
-//       }
-//   });
-
-//   $('#proform_form').on('keypress', function(e) {
-//       if (e.keyCode === 13) {
-//           e.preventDefault();
-//           $('#submit_form_button').trigger('click');
-//       }
-//   });
+  setTimeout(
+    function() {
+      $("#customer_country option[value='Norway']").remove();
+      $("#customer_country option[value='Switzerland']").remove();
+      $("#customer_country option[value='Iceland']").remove();
+  }, 1500);
   
 });
 
