@@ -23,7 +23,7 @@ h2.heading-{{ section.id }} {
     font-size:{{ section.settings.heading_font_size }}px;
   }
 }
-button.btn-cta-{{ section.id }} {
+a.btn-cta-{{ section.id }} {
   font-size:{{ section.settings.cta_font_size }}px;
 }
 {%- if section.settings.bg_image_mobile != blank -%}
@@ -96,40 +96,40 @@ button.btn-cta-{{ section.id }} {
               {% when 1 %}
                 <div class="col-12">
                 {% if section.settings.cta_1 != blank and section.settings.cta_1_link != blank %}
-                  <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_1 }}</button>
+                  <a href="{{ section.settings.cta_1_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_1 }}</a>
                 {%- endif -%}
                 {% if section.settings.cta_2 != blank and section.settings.cta_2_link != blank %}
-                  <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_2 }}</button>
+                  <a href="{{ section.settings.cta_2_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_2 }}</a>
                 {%- endif -%}
                 {% if section.settings.cta_3 != blank and section.settings.cta_3_link != blank %}
-                  <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_3 }}</button>
+                  <a href="{{ section.settings.cta_3_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_3 }}</a>
                 {%- endif -%}
                 </div>
               {% when 2 %}
                 {% if section.settings.cta_1 != blank and section.settings.cta_1_link != blank %}
                   <div class="col-6">
-                     <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_1 }}</button>
+                     <a href="{{ section.settings.cta_1_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_1 }}</a>
                   </div>
                 {%- endif -%}
                 {% if section.settings.cta_2 != blank and section.settings.cta_2_link != blank %}
                   <div class="col-6">
-                     <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_2 }}</button>
+                     <a href="{{ section.settings.cta_2_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_2 }}</a>
                   </div>
                 {%- endif -%}
                 {% if section.settings.cta_3 != blank and section.settings.cta_3_link != blank %}
                   <div class="col-6">
-                     <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_3 }}</button>
+                     <a href="{{ section.settings.cta_3_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_3 }}</a>
                   </div>
                 {%- endif -%}
               {% when 3 %}
                 <div class="col-4">
-                   <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_1 }}</button>
+                   <a href="{{ section.settings.cta_1_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_1 }}</a>
                 </div>
                 <div class="col-4">
-                   <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_2 }}</button>
+                   <a href="{{ section.settings.cta_2_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_2 }}</a>
                 </div>
                 <div class="col-4">
-                   <button type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_3 }}</button>
+                   <a href="{{ section.settings.cta_3_link }}" type="button" class="btn btn-cta btn-cta-{{ section.id }}">{{ section.settings.cta_3 }}</a>
                 </div>
               {%- endcase -%}
               </div>
