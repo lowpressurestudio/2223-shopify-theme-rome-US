@@ -1,7 +1,29 @@
 {
   "sections": {
+    "8db7f733-d607-4cbc-90a0-1a904fb65075": {
+      "type": "LPS-image-banner",
+      "settings": {
+        "container-ratio-desktop": "21_9",
+        "container-ratio-mobile": "4_5",
+        "title": "30% Off Summer Sale",
+        "heading_font_size": 42,
+        "heading_alignment": "left top",
+        "cta_1": "Shop Now",
+        "cta_1_link": "shopify:\/\/collections\/rome-snowboards-sale-outlet",
+        "cta_2": "",
+        "cta_2_link": "",
+        "cta_3": "",
+        "cta_3_link": "",
+        "cta_font_size": 18,
+        "bg_image": "shopify:\/\/shop_images\/30_summer_sale_desktop.jpg",
+        "bg_image_mobile": "shopify:\/\/shop_images\/30_summer_sale_mobile.jpg",
+        "bg_alignment": "center center",
+        "bg_color": "#F0F0F0"
+      }
+    },
     "f91a2e88-60c2-466c-8214-d1fe493d2225": {
       "type": "LPS-video-banner",
+      "disabled": true,
       "settings": {
         "video": "https:\/\/www.youtube.com\/watch?v=zVbCwgHdZ0I",
         "title": "Shop the 20th Anniversary Collection",
@@ -361,6 +383,7 @@
     }
   },
   "order": [
+    "8db7f733-d607-4cbc-90a0-1a904fb65075",
     "f91a2e88-60c2-466c-8214-d1fe493d2225",
     "166240761103031986",
     "1661961727d501f386",
