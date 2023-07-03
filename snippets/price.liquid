@@ -11,6 +11,7 @@
     {% render 'price', product: product %}
 {% endcomment %}
 {%- liquid
+
   if use_variant
     assign target = product.selected_or_first_available_variant
   else
@@ -19,24 +20,26 @@
 
   assign compare_at_price = target.compare_at_price
   assign price = target.price | default: 1999
-  
+
+  # display pricing for snowboard sets (snowboard-set template) using set-product metafield price
   if product.template_suffix == 'snowboard-set' and product.metafields.global.set-product != blank
     assign set_product = all_products[product.metafields.global.set-product]
     assign compare_at_price = price | plus: set_product.price
     if product.metafields.global.set-price
-     assign price = product.metafields.global.set-price | times: 100
+    assign price = product.metafields.global.set-price | times: 100
     else
-     assign price = price | plus: set_product.price     
+    assign price = price | plus: set_product.price     
     endif
   endif
 
+  # display pricing for proform customers based on customer tag: pro20, pro25 etc...
   unless product.tags contains 'exclude proform'
     if customer.tags contains 'pro20' or customer.tags contains 'pro25' or customer.tags contains 'pro30' or customer.tags contains 'pro40' or customer.tags contains 'pro50'
-       if compare_at_price > price
-         assign price = compare_at_price
-       else
-         assign compare_at_price = price
-       endif
+      if compare_at_price > price
+        assign price = compare_at_price
+      else
+        assign compare_at_price = price
+      endif
     endif
     if customer.tags contains 'pro20'
       assign price = price | times: 0.8 | round
@@ -49,8 +52,23 @@
     elsif customer.tags contains 'pro50'
       assign price = price | times: 0.5 | round
     endif  
-  endunless
-  
+  endunless  
+
+  # display pricing for automatic discounts — set in collection metafield: display_automatic_discount_percentage
+  unless customer.tags contains 'pro20' or customer.tags contains 'pro25' or customer.tags contains 'pro30' or customer.tags contains 'pro40' or customer.tags contains 'pro50'
+    assign automatic_discount = 0
+    for collection in product.collections
+      if collection.metafields.custom.display_automatic_discount_percentage > automatic_discount
+        assign automatic_discount = collection.metafields.custom.display_automatic_discount_percentage
+      endif
+    endfor
+    assign automatic_discount_display = 100 | minus:automatic_discount | times: 0.01
+    if automatic_discount > 0
+      assign compare_at_price = price
+      assign price = price | times: automatic_discount_display
+    endif
+  endunless 
+
   assign available = target.available | default: false
   assign money_price = price | money
   if settings.currency_code_enabled
@@ -60,6 +78,7 @@
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
+
 -%}
 
 <div class="price
