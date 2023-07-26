@@ -1,7 +1,29 @@
 {
   "sections": {
+    "3a40952b-3304-42bc-a6c9-d764539e36cc": {
+      "type": "LPS-image-banner",
+      "settings": {
+        "container-ratio-desktop": "21_9",
+        "container-ratio-mobile": "4_5",
+        "title": "Help VT Flood Relief Efforts<br><span style=\"font-size:0.6em;\"> 10% of our online sales until August 2nd will be donated to the Vermont Main Street Flood Recovery Program<\/span>",
+        "heading_font_size": 28,
+        "heading_alignment": "left bottom",
+        "cta_1": "",
+        "cta_1_link": "",
+        "cta_2": "",
+        "cta_2_link": "",
+        "cta_3": "",
+        "cta_3_link": "",
+        "cta_font_size": 18,
+        "bg_image": "shopify:\/\/shop_images\/flood-web.jpg",
+        "bg_image_mobile": "shopify:\/\/shop_images\/flood-web-mobile.jpg",
+        "bg_alignment": "center center",
+        "bg_color": "#8eb792"
+      }
+    },
     "8db7f733-d607-4cbc-90a0-1a904fb65075": {
       "type": "LPS-image-banner",
+      "disabled": true,
       "settings": {
         "container-ratio-desktop": "21_9",
         "container-ratio-mobile": "4_5",
@@ -383,6 +405,7 @@
     }
   },
   "order": [
+    "3a40952b-3304-42bc-a6c9-d764539e36cc",
     "8db7f733-d607-4cbc-90a0-1a904fb65075",
     "f91a2e88-60c2-466c-8214-d1fe493d2225",
     "166240761103031986",
