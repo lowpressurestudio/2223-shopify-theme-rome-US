@@ -32,6 +32,12 @@ customer.tags contains 'pro50'
     
     <script src="{{ 'ascii-only.min.js' | asset_url }}" defer></script>
 
+
+  <!-- REAMAZE INTEGRATION START - DO NOT REMOVE -->
+{% render 'reamaze-config' %}
+{% render 'reamaze-sso' %}
+<!-- REAMAZE INTEGRATION END - DO NOT REMOVE -->
+
 </head>
   <body>
     {{ skip_to_content_link }}
