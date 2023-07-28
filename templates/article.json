@@ -111,12 +111,19 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "715f9e98-4b5e-4881-b597-dcb0390a2db5": {
+      "type": "LPS-klaviyo-sign-up",
+      "settings": {
+        "bg_color": "#000000"
+      }
     }
   },
   "order": [
     "main",
     "c3783399-aae5-4843-ac8b-fb9b9360b4cf",
     "f0765515-6250-4d89-bca8-2921e9989f5d",
-    "1690550905be9d8306"
+    "1690550905be9d8306",
+    "715f9e98-4b5e-4881-b597-dcb0390a2db5"
   ]
 }
